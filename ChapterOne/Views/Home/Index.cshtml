@@ -1,39 +1,22 @@
-﻿<!-- Main Area -->
+﻿@model HomeVM
+<!-- Main Area -->
 <main>
     <section id="slider">
         <div class="container">
             <div class="swiper mySwiper">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <img src="~/assets/images/home/slider-image-1.png" alt="">
-                        <p>IT'S CHAPTERONE</p>
-                        <h1>We love literature</h1>
-                        <h3>
-                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nihil pariatur facere deserunt
-                            consequatur.
-                        </h3>
-                        <button class="shop">READ MORE</button>
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="~/assets/images/home/slider-image-2.jpg" alt="">
-                        <p>IT'S CHAPTERONE</p>
-                        <h1>You world of words</h1>
-                        <h3>
-                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nihil pariatur facere deserunt
-                            consequatur.
-                        </h3>
-                        <button class="shop">READ MORE</button>
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="~/assets/images/home/slider-image-3.png" alt="">
-                        <p>IT'S CHAPTERONE</p>
-                        <h1>The all-time classics</h1>
-                        <h3>
-                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nihil pariatur facere deserunt
-                            consequatur.
-                        </h3>
-                        <button class="shop">READ MORE</button>
-                    </div>
+                    @foreach (var slider in Model.Sliders)
+                    {
+                        <div class="swiper-slide">
+                            <img src="~/assets/images/home/@slider.Image" alt="">
+                            <p>@slider.Title</p>
+                            <h1>@slider.Name</h1>
+                            <h3>
+                                @slider.Description
+                            </h3>
+                            <button class="shop">READ MORE</button>
+                        </div>
+                    }
                 </div>
                 <div class="swiper-button-next"></div>
                 <div class="swiper-button-prev"></div>
