@@ -309,27 +309,30 @@
     </section>
     <section id="our-services">
         <div class="container">
-            <div class="service">
-                <div class="background-image" style="background-image: url(assets/images/home/our-service.jpg)">
-                    <div class="icon">
-                        <span>❦</span>
-                    </div>
-                    <div class="name">
-                        <p>OUR SERVICES</p>
-                    </div>
-                    <div class="description">
-                        <h3>
-                            Aorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                            incididunt ut labore et dolore magna aliqua. Ut enim ad minim.
-                        </h3>
-                    </div>
-                    <div class="button">
-                        <button>
-                            <p>READ MORE</p>
-                        </button>
+            @foreach (var our in Model.Ours)
+            {
+                <div class="service">
+                    <div class="background-image" style="background-image: url(assets/images/home/@our.Image)">
+                        <div class="icon">
+                            <span>❦</span>
+                        </div>
+                        <div class="name">
+                            <p>@our.Name</p>
+                        </div>
+                        <div class="description">
+                            <h3>
+                                @our.Description
+                            </h3>
+                        </div>
+                        <div class="button">
+                            <button>
+                                <p>READ MORE</p>
+                            </button>
+                        </div>
                     </div>
                 </div>
-            </div>
+            }
+            
         </div>
     </section>
     <section id="authors">

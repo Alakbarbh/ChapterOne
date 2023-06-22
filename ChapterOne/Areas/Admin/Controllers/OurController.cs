@@ -2,6 +2,7 @@
 using ChapterOne.Data;
 using ChapterOne.Helpers;
 using ChapterOne.Models;
+using ChapterOne.Services;
 using ChapterOne.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -9,32 +10,33 @@ using Microsoft.EntityFrameworkCore;
 namespace ChapterOne.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    public class SliderController : Controller
+    public class OurController : Controller
     {
         private readonly AppDbContext _context;
         private readonly IWebHostEnvironment _env;
-        private readonly ISliderService _sliderService;
-        public SliderController(AppDbContext context,
+        private readonly IourService _ourService;
+        public OurController(AppDbContext context,
                                 IWebHostEnvironment env,
-                                ISliderService sliderService)
+                                IourService ourService)
         {
             _context = context;
             _env = env;
-            _sliderService = sliderService;
+            _ourService = ourService;
         }
 
         public async Task<IActionResult> Index()
         {
-            List<Slider> sliders = await _context.Sliders.ToListAsync();
-            return View(sliders);
+            List<Our> ours = await _context.Ours.ToListAsync();
+            return View(ours);
         }
+
 
         public async Task<IActionResult> Detail(int? id)
         {
             if (id == null) return BadRequest();
-            Slider slider = await _sliderService.GetById(id);
-            if (slider is null) return NotFound();
-            return View(slider);
+            Our our = await _ourService.GetByIdAsync(id);
+            if (our is null) return NotFound();
+            return View(our);
         }
 
 
@@ -48,7 +50,7 @@ namespace ChapterOne.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(SliderCreateVM slider)
+        public async Task<IActionResult> Create(OurCreateVM our)
         {
             try
             {
@@ -59,7 +61,7 @@ namespace ChapterOne.Areas.Admin.Controllers
 
 
 
-                if (!slider.Photos.CheckFileType("image/"))
+                if (!our.Photos.CheckFileType("image/"))
                 {
                     ModelState.AddModelError("Photo", "File type must be image");
                     return View();
@@ -67,8 +69,7 @@ namespace ChapterOne.Areas.Admin.Controllers
 
 
 
-
-                if (!slider.Photos.CheckFileSize(200))
+                if (!our.Photos.CheckFileSize(200))
                 {
                     ModelState.AddModelError("Photo", "Image size must be max 200kb");
                     return View();
@@ -76,26 +77,22 @@ namespace ChapterOne.Areas.Admin.Controllers
 
 
 
-                string fileName = Guid.NewGuid().ToString() + "_" + slider.Photos.FileName;
+                string fileName = Guid.NewGuid().ToString() + "_" + our.Photos.FileName;
 
 
                 string path = FileHelper.GetFilePath(_env.WebRootPath, "assets/images/home", fileName);
 
-                await FileHelper.SaveFileAsync(path, slider.Photos);
+                await FileHelper.SaveFileAsync(path, our.Photos);
 
-                Slider newSlider = new()
+                Our newOur = new()
                 {
                     Image = fileName,
-                    Title = slider.Title,
-                    Name = slider.Name,
-                    Description = slider.Description
+                    Name = our.Name,
+                    Description = our.Description
                 };
 
 
-                await _context.Sliders.AddAsync(newSlider);
-
-
-
+                await _context.Ours.AddAsync(newOur);
 
 
                 await _context.SaveChangesAsync();
@@ -109,20 +106,19 @@ namespace ChapterOne.Areas.Admin.Controllers
         }
 
 
-
         [HttpPost]
         public async Task<IActionResult> Delete(int? id)
         {
             try
             {
                 if (id == null) return BadRequest();
-                Slider dbSlider = await _sliderService.GetById(id);
-                if (dbSlider is null) return NotFound();
+                Our dbOur = await _ourService.GetByIdAsync(id);
+                if (dbOur is null) return NotFound();
 
-                string path = FileHelper.GetFilePath(_env.WebRootPath, "assets/images/home", dbSlider.Image);
+                string path = FileHelper.GetFilePath(_env.WebRootPath, "assets/images/home", dbOur.Image);
                 FileHelper.DeleteFile(path);
 
-                _context.Sliders.Remove(dbSlider);
+                _context.Ours.Remove(dbOur);
                 await _context.SaveChangesAsync();
 
                 return Ok();
@@ -136,20 +132,18 @@ namespace ChapterOne.Areas.Admin.Controllers
 
 
 
-
         [HttpGet]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null) return BadRequest();
-            Slider dbSlider = await _sliderService.GetById(id);
-            if (dbSlider is null) return NotFound();
+            Our dbOur = await _ourService.GetByIdAsync(id);
+            if (dbOur is null) return NotFound();
 
-            SliderUpdateVM model = new()
+            OurUpdateVM model = new()
             {
-                Image = dbSlider.Image,
-                Title = dbSlider.Title,
-                Description = dbSlider.Description,
-                Name = dbSlider.Name
+                Image = dbOur.Image,
+                Description = dbOur.Description,
+                Name = dbOur.Name
             };
 
             return View(model);
@@ -160,23 +154,22 @@ namespace ChapterOne.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int? id, SliderUpdateVM sliderUpdate)
+        public async Task<IActionResult> Edit(int? id, OurUpdateVM ourUpdate)
         {
             try
             {
 
                 if (id == null) return BadRequest();
 
-                Slider dbSlider = await _sliderService.GetById(id);
+                Our dbOur = await _ourService.GetByIdAsync(id);
 
-                if (dbSlider is null) return NotFound();
+                if (dbOur is null) return NotFound();
 
-                SliderUpdateVM model = new()
+                OurUpdateVM model = new()
                 {
-                    Image = dbSlider.Image,
-                    Title = dbSlider.Title,
-                    Description = dbSlider.Description,
-                    Name = dbSlider.Name
+                    Image = dbOur.Image,
+                    Description = dbOur.Description,
+                    Name = dbOur.Name
                 };
 
 
@@ -185,46 +178,45 @@ namespace ChapterOne.Areas.Admin.Controllers
                 //    return View(model);
                 //}
 
-                if (sliderUpdate.Photo != null)
+                if (ourUpdate.Photo != null)
                 {
-                    if (!sliderUpdate.Photo.CheckFileType("image/"))
+                    if (!ourUpdate.Photo.CheckFileType("image/"))
                     {
                         ModelState.AddModelError("Photo", "Please choose correct image type");
                         return View(model);
                     }
 
-                    if (!sliderUpdate.Photo.CheckFileSize(200))
+                    if (!ourUpdate.Photo.CheckFileSize(200))
                     {
                         ModelState.AddModelError("Photo", "Image size must be max 200kb");
                         return View(model);
                     }
 
 
-                    string dbPath = FileHelper.GetFilePath(_env.WebRootPath, "assets/images/home", dbSlider.Image);
+                    string dbPath = FileHelper.GetFilePath(_env.WebRootPath, "assets/images/home", dbOur.Image);
 
                     FileHelper.DeleteFile(dbPath);
 
 
-                    string fileName = Guid.NewGuid().ToString() + "_" + sliderUpdate.Photo.FileName;
+                    string fileName = Guid.NewGuid().ToString() + "_" + ourUpdate.Photo.FileName;
 
                     string newPath = FileHelper.GetFilePath(_env.WebRootPath, "assets/images/home", fileName);
 
-                    await FileHelper.SaveFileAsync(newPath, sliderUpdate.Photo);
+                    await FileHelper.SaveFileAsync(newPath, ourUpdate.Photo);
 
-                    dbSlider.Image = fileName;
+                    dbOur.Image = fileName;
                 }
                 else
                 {
-                    Slider slider = new()
+                    Our our = new()
                     {
-                        Image = dbSlider.Image
+                        Image = dbOur.Image
                     };
                 }
 
 
-                dbSlider.Title = sliderUpdate.Title;
-                dbSlider.Description = sliderUpdate.Description;
-                dbSlider.Name = sliderUpdate.Name;
+                dbOur.Description = ourUpdate.Description;
+                dbOur.Name = ourUpdate.Name;
 
                 await _context.SaveChangesAsync();
 

@@ -9,6 +9,8 @@ namespace ChapterOne.Data
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
         public DbSet<Slider> Sliders { get; set; }
+        public DbSet<Our> Ours { get; set; }
+        public DbSet<AutobiographyOne> AutobiographyOnes { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

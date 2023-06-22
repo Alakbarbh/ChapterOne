@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "KUmbkGfSUgEIxpLCW9JJYLvV75bbKX7ufHskxk8qd6o=",
+  "Hash": "buwRooUTN0Xs3Hj7aISMiI6IC2hi/pNWyyWqnxLBYxE=",
   "Source": "ChapterOne",
   "BasePath": "_content/ChapterOne",
   "Mode": "Default",
@@ -15521,12 +15521,12 @@
       "OriginalItemSpec": "wwwroot\\assets\\images\\forgot-password\\forgot-password-backgorund-image.jpg"
     },
     {
-      "Identity": "C:\\Users\\VICTUS\\Desktop\\ChapterOne\\ChapterOne\\wwwroot\\assets\\images\\home\\73a87edb-d1db-4ec9-bd06-e2a33fa562fe_WIN_20230208_02_24_00_Pro.jpg",
+      "Identity": "C:\\Users\\VICTUS\\Desktop\\ChapterOne\\ChapterOne\\wwwroot\\assets\\images\\home\\656aef27-6215-4c18-9265-0bbee51f94f8_WIN_20230208_02_24_00_Pro.jpg",
       "SourceId": "ChapterOne",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\VICTUS\\Desktop\\ChapterOne\\ChapterOne\\wwwroot\\",
       "BasePath": "_content/ChapterOne",
-      "RelativePath": "assets/images/home/73a87edb-d1db-4ec9-bd06-e2a33fa562fe_WIN_20230208_02_24_00_Pro.jpg",
+      "RelativePath": "assets/images/home/656aef27-6215-4c18-9265-0bbee51f94f8_WIN_20230208_02_24_00_Pro.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -15535,7 +15535,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\assets\\images\\home\\73a87edb-d1db-4ec9-bd06-e2a33fa562fe_WIN_20230208_02_24_00_Pro.jpg"
+      "OriginalItemSpec": "wwwroot\\assets\\images\\home\\656aef27-6215-4c18-9265-0bbee51f94f8_WIN_20230208_02_24_00_Pro.jpg"
     },
     {
       "Identity": "C:\\Users\\VICTUS\\Desktop\\ChapterOne\\ChapterOne\\wwwroot\\assets\\images\\home\\authobiography-backgorund.jpg",

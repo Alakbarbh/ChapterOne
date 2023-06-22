@@ -4,7 +4,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Connect Plus</title>
+    <title>ChapterOne - Admin</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="~/admin/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="~/admin/vendors/flag-icon-css/css/flag-icon.min.css">
@@ -13,6 +13,7 @@
     <!-- Plugin css for this page -->
     <link rel="stylesheet" href="~/admin/vendors/font-awesome/css/font-awesome.min.css" />
     <link rel="stylesheet" href="~/admin/vendors/bootstrap-datepicker/bootstrap-datepicker.min.css">
+    <link rel="icon" type="image/png" href="~/assets/images/home/book-logo-5.png" />
     <!-- End plugin css for this page -->
     <!-- inject:css -->
     <!-- endinject -->
@@ -21,14 +22,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     @await RenderSectionAsync("Css", required: false)
     <!-- End layout styles -->
-    <link rel="shortcut icon" href="~/admin/images/favicon.png" />
 </head>
 <body>
     <div class="container-scroller">
         <!-- partial:partials/_navbar.html -->
         <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
             <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-                <a class="navbar-brand brand-logo" href="index.html"><img src="~/admin/images/logo.svg" alt="logo" /></a>
+                <a class="navbar-brand brand-logo mt-2" href="index.html"><img src="~/assets/images/home/book-logo-5.png" alt="logo" style="width:60px;height:60px;"/></a>
                 <a class="navbar-brand brand-logo-mini" href="index.html"><img src="~/admin/images/logo-mini.svg" alt="logo" /></a>
             </div>
             <div class="navbar-menu-wrapper d-flex align-items-stretch">
@@ -109,7 +109,7 @@
                                 <img src="~/admin/images/faces/face28.png" alt="image">
                             </div>
                             <div class="nav-profile-text">
-                                <p class="mb-1 text-black">Henry Klein</p>
+                                <p class="mb-1 text-black">Alakbar Hasanov</p>
                             </div>
                         </a>
                         <div class="dropdown-menu navbar-dropdown dropdown-menu-right p-0 border-0 font-size-sm" aria-labelledby="profileDropdown" data-x-placement="bottom-end">
@@ -250,7 +250,7 @@
                 <ul class="nav">
                     <li class="nav-item nav-category">Main</li>
                     <li class="nav-item">
-                        <a class="nav-link" href="index.html">
+                        <a class="nav-link" asp-controller="Dashboard" asp-action="Index">
                             <span class="icon-bg"><i class="mdi mdi-cube menu-icon"></i></span>
                             <span class="menu-title">Dashboard</span>
                         </a>
@@ -264,7 +264,7 @@
                         <div class="collapse" id="ui-basic">
                             <ul class="nav flex-column sub-menu">
                                 <li class="nav-item"> <a class="nav-link" asp-controller="Slider" asp-action="Index">Slider</a></li>
-                                <li class="nav-item"> <a class="nav-link" href="pages/ui-features/dropdowns.html">Dropdowns</a></li>
+                                <li class="nav-item"> <a class="nav-link" asp-controller="Our" asp-action="Index">Our</a></li>
                                 <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">Typography</a></li>
                             </ul>
                         </div>
@@ -326,7 +326,7 @@
                                             <img src="~/admin/images/faces/face28.png" alt="image">
                                         </div>
                                         <div class="sidebar-profile-text">
-                                            <p class="mb-1">Henry Klein</p>
+                                            <p class="mb-1">Alakbar Hasanov</p>
                                         </div>
                                     </div>
                                 </div>
