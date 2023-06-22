@@ -11,6 +11,7 @@ namespace ChapterOne.Data
         public DbSet<Slider> Sliders { get; set; }
         public DbSet<Our> Ours { get; set; }
         public DbSet<AutobiographyOne> AutobiographyOnes { get; set; }
+        public DbSet<AutobiographyTwo> AutobiographyTwos { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

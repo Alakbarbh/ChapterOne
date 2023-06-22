@@ -1,11 +1,11 @@
 ﻿namespace ChapterOne.Models
 {
-    public class AutobiographyOne
+    public class AutobiographyOne : BaseEntity
     {
-        public string Image { get; set; }
         public string Title { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public bool Islarge { get; set; } = false;
+        public string LargeImage { get; set; }
+        public string SmallImage { get; set; }
     }
 }

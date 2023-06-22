@@ -25,6 +25,7 @@ builder.Services.AddIdentity<AppUser, IdentityRole>().AddEntityFrameworkStores<A
 builder.Services.AddScoped<ISliderService, SliderService>();
 builder.Services.AddScoped<IourService, OurService>();
 builder.Services.AddScoped<IAutobiographyOneService, AutobiographyOneService>();
+builder.Services.AddScoped<IAutobiographyTwoService, AutobiographyTwoService>();
 
 var app = builder.Build();
 

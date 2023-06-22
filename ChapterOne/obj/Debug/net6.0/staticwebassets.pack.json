@@ -157,6 +157,10 @@
       "PackagePath": "staticwebassets\\admin\\fonts\\Ubuntu\\Ubuntu-Regular.woff2"
     },
     {
+      "Id": "C:\\Users\\VICTUS\\Desktop\\ChapterOne\\ChapterOne\\wwwroot\\admin\\images\\Alakbar-Hasanov.jpg",
+      "PackagePath": "staticwebassets\\admin\\images\\Alakbar-Hasanov.jpg"
+    },
+    {
       "Id": "C:\\Users\\VICTUS\\Desktop\\ChapterOne\\ChapterOne\\wwwroot\\admin\\images\\auth\\lockscreen-bg.jpg",
       "PackagePath": "staticwebassets\\admin\\images\\auth\\lockscreen-bg.jpg"
     },
@@ -3645,8 +3649,24 @@
       "PackagePath": "staticwebassets\\assets\\images\\forgot-password\\forgot-password-backgorund-image.jpg"
     },
     {
-      "Id": "C:\\Users\\VICTUS\\Desktop\\ChapterOne\\ChapterOne\\wwwroot\\assets\\images\\home\\656aef27-6215-4c18-9265-0bbee51f94f8_WIN_20230208_02_24_00_Pro.jpg",
-      "PackagePath": "staticwebassets\\assets\\images\\home\\656aef27-6215-4c18-9265-0bbee51f94f8_WIN_20230208_02_24_00_Pro.jpg"
+      "Id": "C:\\Users\\VICTUS\\Desktop\\ChapterOne\\ChapterOne\\wwwroot\\assets\\images\\home\\26bfefab-5e7e-4787-b292-2bbccde2c300_WIN_20230208_02_24_00_Pro.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\home\\26bfefab-5e7e-4787-b292-2bbccde2c300_WIN_20230208_02_24_00_Pro.jpg"
+    },
+    {
+      "Id": "C:\\Users\\VICTUS\\Desktop\\ChapterOne\\ChapterOne\\wwwroot\\assets\\images\\home\\555401e7-c238-4fe2-b54c-32971b743b03_WIN_20230208_02_24_04_Pro.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\home\\555401e7-c238-4fe2-b54c-32971b743b03_WIN_20230208_02_24_04_Pro.jpg"
+    },
+    {
+      "Id": "C:\\Users\\VICTUS\\Desktop\\ChapterOne\\ChapterOne\\wwwroot\\assets\\images\\home\\80aa38b7-e3b6-4d6d-95d8-ce5e9fdb7c53_WIN_20230208_02_24_04_Pro.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\home\\80aa38b7-e3b6-4d6d-95d8-ce5e9fdb7c53_WIN_20230208_02_24_04_Pro.jpg"
+    },
+    {
+      "Id": "C:\\Users\\VICTUS\\Desktop\\ChapterOne\\ChapterOne\\wwwroot\\assets\\images\\home\\83b064b6-b3cc-45da-98ef-92099566585e_WIN_20230208_02_24_20_Pro.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\home\\83b064b6-b3cc-45da-98ef-92099566585e_WIN_20230208_02_24_20_Pro.jpg"
+    },
+    {
+      "Id": "C:\\Users\\VICTUS\\Desktop\\ChapterOne\\ChapterOne\\wwwroot\\assets\\images\\home\\8d4e9684-3257-45dc-8824-d1b9528b0921_WIN_20230522_15_27_11_Pro.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\home\\8d4e9684-3257-45dc-8824-d1b9528b0921_WIN_20230522_15_27_11_Pro.jpg"
     },
     {
       "Id": "C:\\Users\\VICTUS\\Desktop\\ChapterOne\\ChapterOne\\wwwroot\\assets\\images\\home\\authobiography-backgorund.jpg",
@@ -3711,6 +3731,10 @@
     {
       "Id": "C:\\Users\\VICTUS\\Desktop\\ChapterOne\\ChapterOne\\wwwroot\\assets\\images\\home\\brand-6.png",
       "PackagePath": "staticwebassets\\assets\\images\\home\\brand-6.png"
+    },
+    {
+      "Id": "C:\\Users\\VICTUS\\Desktop\\ChapterOne\\ChapterOne\\wwwroot\\assets\\images\\home\\c72b02e5-d308-4206-90fc-ccb26803ea31_WIN_20230208_02_24_20_Pro.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\home\\c72b02e5-d308-4206-90fc-ccb26803ea31_WIN_20230208_02_24_20_Pro.jpg"
     },
     {
       "Id": "C:\\Users\\VICTUS\\Desktop\\ChapterOne\\ChapterOne\\wwwroot\\assets\\images\\home\\coffe.png",
