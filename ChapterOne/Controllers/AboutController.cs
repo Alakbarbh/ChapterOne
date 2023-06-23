@@ -1,12 +1,44 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using ChapterOne.Data;
+using ChapterOne.Models;
+using ChapterOne.Services;
+using ChapterOne.Services.Interfaces;
+using ChapterOne.ViewModels;
+using Microsoft.AspNetCore.Mvc;
 
 namespace ChapterOne.Controllers
 {
     public class AboutController : Controller
     {
-        public IActionResult Index()
+        private readonly AppDbContext _context;
+        private readonly IWrapperService _wrapperService;
+        private readonly IAutobiographyThreeService _autobiographyThreeService;
+        private readonly IAutobiographyFourService _autobiographyFourService;
+
+        public AboutController(AppDbContext context,
+                               IWrapperService wrapperService,
+                               IAutobiographyThreeService autobiographyThreeService,
+                               IAutobiographyFourService autobiographyFourService)
         {
-            return View();
+            _context = context;
+            _wrapperService = wrapperService;
+            _autobiographyThreeService = autobiographyThreeService;
+            _autobiographyFourService = autobiographyFourService;
+        }
+        public async Task<IActionResult> Index()
+        {
+            List<Wrapper> wrappers = await _wrapperService.GetAllAsync();
+            List<AutobiographyThree> autobiographyThrees = await _autobiographyThreeService.GetAllAsync();
+            List<AutobiographyFour> autobiographyFours = await _autobiographyFourService.GetAllAsync();
+
+
+            AboutVM model = new()
+            {
+                Wrappers = wrappers,
+                AutobiographyThrees = autobiographyThrees,
+                AutobiographyFours = autobiographyFours,
+            };
+
+            return View(model);
         }
     }
 }

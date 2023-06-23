@@ -42,13 +42,11 @@ namespace ChapterOne.Areas.Admin.Controllers
         }
 
 
-
         [HttpGet]
         public IActionResult Create()
         {
             return View();
         }
-
 
 
         [HttpPost]
@@ -163,7 +161,6 @@ namespace ChapterOne.Areas.Admin.Controllers
                 return View();
             }
         }
-
 
 
         [HttpGet]

@@ -1,4 +1,4 @@
-﻿@model AutobiographyTwoCreateVM
+﻿@model AutobiographyThreeCreateVM
 
 @{
     ViewData["Title"] = "Create";
@@ -38,8 +38,6 @@
             <span class="text-danger" asp-validation-for="Description"></span>
         </div>
 
-
-
         <div class="buttons my-3">
             <button type="submit" class="btn btn-primary mr-2">Submit</button>
             <a class="btn btn-light" asp-action="Index">Cancel</a>
@@ -49,12 +47,6 @@
 </div>
 
 
-@section Scripts{
-    <script src="~/ckeditor/ckeditor.js"></script>
-    <script>
-        CKEDITOR.replace("category-text");
-    </script>
-}
 
 
 

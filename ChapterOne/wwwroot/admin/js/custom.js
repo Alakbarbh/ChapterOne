@@ -135,4 +135,74 @@
             }
         })
     })
+
+
+    $(document).on("click", ".delete-wrapper", function (e) {
+        e.preventDefault();
+        let Id = $(this).parent().parent().attr("data-id");
+        let deletedElem = $(this).parent().parent();
+        let data = { id: Id };
+
+        $.ajax({
+            url: "wrapper/Delete",
+            type: "post",
+            data: data,
+            success: function (res) {
+
+                $(deletedElem).remove();
+                $(".tooltip-inner").remove();
+                $(".arrow").remove();
+                if ($(tbody).length == 1) {
+                    $(".table").remove();
+                }
+            }
+        })
+    })
+
+
+    $(document).on("click", ".delete-autobiographythree", function (e) {
+        e.preventDefault();
+        let Id = $(this).parent().parent().attr("data-id");
+        let deletedElem = $(this).parent().parent();
+        let data = { id: Id };
+
+        $.ajax({
+            url: "autobiographythree/Delete",
+            type: "post",
+            data: data,
+            success: function (res) {
+
+                $(deletedElem).remove();
+                $(".tooltip-inner").remove();
+                $(".arrow").remove();
+                if ($(tbody).length == 1) {
+                    $(".table").remove();
+                }
+            }
+        })
+    })
+
+
+
+    $(document).on("click", ".delete-autobiographyfour", function (e) {
+        e.preventDefault();
+        let Id = $(this).parent().parent().attr("data-id");
+        let deletedElem = $(this).parent().parent();
+        let data = { id: Id };
+
+        $.ajax({
+            url: "autobiographyfour/Delete",
+            type: "post",
+            data: data,
+            success: function (res) {
+
+                $(deletedElem).remove();
+                $(".tooltip-inner").remove();
+                $(".arrow").remove();
+                if ($(tbody).length == 1) {
+                    $(".table").remove();
+                }
+            }
+        })
+    })
 })

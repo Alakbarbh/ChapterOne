@@ -16,6 +16,22 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\VICTUS\Desktop\ChapterOne\ChapterOne
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/VICTUS/Desktop/ChapterOne/ChapterOne/Areas/Admin/Views/AutobiographyFour/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQXV0b2Jpb2dyYXBoeUZvdXJcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/VICTUS/Desktop/ChapterOne/ChapterOne/Areas/Admin/Views/AutobiographyFour/Detail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQXV0b2Jpb2dyYXBoeUZvdXJcRGV0YWlsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/VICTUS/Desktop/ChapterOne/ChapterOne/Areas/Admin/Views/AutobiographyFour/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQXV0b2Jpb2dyYXBoeUZvdXJcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/VICTUS/Desktop/ChapterOne/ChapterOne/Areas/Admin/Views/AutobiographyFour/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQXV0b2Jpb2dyYXBoeUZvdXJcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/VICTUS/Desktop/ChapterOne/ChapterOne/Areas/Admin/Views/AutobiographyOne/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQXV0b2Jpb2dyYXBoeU9uZVxDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -30,6 +46,22 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/VICTUS/Desktop/ChapterOne/ChapterOne/Areas/Admin/Views/AutobiographyOne/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQXV0b2Jpb2dyYXBoeU9uZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/VICTUS/Desktop/ChapterOne/ChapterOne/Areas/Admin/Views/AutobiographyThree/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQXV0b2Jpb2dyYXBoeVRocmVlXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/VICTUS/Desktop/ChapterOne/ChapterOne/Areas/Admin/Views/AutobiographyThree/Detail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQXV0b2Jpb2dyYXBoeVRocmVlXERldGFpbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/VICTUS/Desktop/ChapterOne/ChapterOne/Areas/Admin/Views/AutobiographyThree/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQXV0b2Jpb2dyYXBoeVRocmVlXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/VICTUS/Desktop/ChapterOne/ChapterOne/Areas/Admin/Views/AutobiographyThree/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQXV0b2Jpb2dyYXBoeVRocmVlXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/VICTUS/Desktop/ChapterOne/ChapterOne/Areas/Admin/Views/AutobiographyTwo/Create.cshtml]
@@ -118,6 +150,22 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/VICTUS/Desktop/ChapterOne/ChapterOne/Areas/Admin/Views/Slider/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2xpZGVyXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/VICTUS/Desktop/ChapterOne/ChapterOne/Areas/Admin/Views/Wrapper/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcV3JhcHBlclxDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/VICTUS/Desktop/ChapterOne/ChapterOne/Areas/Admin/Views/Wrapper/Detail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcV3JhcHBlclxEZXRhaWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/VICTUS/Desktop/ChapterOne/ChapterOne/Areas/Admin/Views/Wrapper/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcV3JhcHBlclxFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/VICTUS/Desktop/ChapterOne/ChapterOne/Areas/Admin/Views/Wrapper/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcV3JhcHBlclxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/VICTUS/Desktop/ChapterOne/ChapterOne/Areas/Admin/Views/_ViewImports.cshtml]
