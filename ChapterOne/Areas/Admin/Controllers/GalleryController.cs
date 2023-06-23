@@ -10,33 +10,33 @@ using Microsoft.EntityFrameworkCore;
 namespace ChapterOne.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    public class OurController : Controller
+    public class GalleryController : Controller
     {
         private readonly AppDbContext _context;
         private readonly IWebHostEnvironment _env;
-        private readonly IourService _ourService;
-        public OurController(AppDbContext context,
+        private IGalleryService _galleryService;
+        public GalleryController(AppDbContext context,
                                 IWebHostEnvironment env,
-                                IourService ourService)
+                                IGalleryService galleryService)
+
         {
             _context = context;
             _env = env;
-            _ourService = ourService;
+            _galleryService = galleryService;
         }
-
         public async Task<IActionResult> Index()
         {
-            List<Our> ours = await _context.Ours.ToListAsync();
-            return View(ours);
+            List<Gallery> galleries = await _context.Galleries.ToListAsync();
+            return View(galleries);
         }
 
 
         public async Task<IActionResult> Detail(int? id)
         {
             if (id == null) return BadRequest();
-            Our our = await _ourService.GetByIdAsync(id);
-            if (our is null) return NotFound();
-            return View(our);
+            Gallery gallery = await _galleryService.GetByIdAsync(id);
+            if (gallery is null) return NotFound();
+            return View(gallery);
         }
 
 
@@ -50,7 +50,7 @@ namespace ChapterOne.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(OurCreateVM our)
+        public async Task<IActionResult> Create(GalleryCreateVM gallery)
         {
             try
             {
@@ -60,16 +60,14 @@ namespace ChapterOne.Areas.Admin.Controllers
                 }
 
 
-
-                if (!our.Photos.CheckFileType("image/"))
+                if (!gallery.Photo.CheckFileType("image/"))
                 {
                     ModelState.AddModelError("Photo", "File type must be image");
                     return View();
                 }
 
 
-
-                if (!our.Photos.CheckFileSize(200))
+                if (!gallery.Photo.CheckFileSize(200))
                 {
                     ModelState.AddModelError("Photo", "Image size must be max 200kb");
                     return View();
@@ -77,22 +75,21 @@ namespace ChapterOne.Areas.Admin.Controllers
 
 
 
-                string fileName = Guid.NewGuid().ToString() + "_" + our.Photos.FileName;
+                string fileName = Guid.NewGuid().ToString() + "_" + gallery.Photo.FileName;
 
 
                 string path = FileHelper.GetFilePath(_env.WebRootPath, "assets/images/home", fileName);
 
-                await FileHelper.SaveFileAsync(path, our.Photos);
+                await FileHelper.SaveFileAsync(path, gallery.Photo);
 
-                Our newOur = new()
+                Gallery newGallery = new()
                 {
                     Image = fileName,
-                    Name = our.Name,
-                    Description = our.Description
                 };
 
 
-                await _context.Ours.AddAsync(newOur);
+                await _context.Galleries.AddAsync(newGallery);
+
 
 
                 await _context.SaveChangesAsync();
@@ -105,20 +102,19 @@ namespace ChapterOne.Areas.Admin.Controllers
             }
         }
 
-
         [HttpPost]
         public async Task<IActionResult> Delete(int? id)
         {
             try
             {
                 if (id == null) return BadRequest();
-                Our dbOur = await _ourService.GetByIdAsync(id);
-                if (dbOur is null) return NotFound();
+                Gallery dbGallery = await _galleryService.GetByIdAsync(id);
+                if (dbGallery is null) return NotFound();
 
-                string path = FileHelper.GetFilePath(_env.WebRootPath, "assets/images/home", dbOur.Image);
+                string path = FileHelper.GetFilePath(_env.WebRootPath, "assets/images/home", dbGallery.Image);
                 FileHelper.DeleteFile(path);
 
-                _context.Ours.Remove(dbOur);
+                _context.Galleries.Remove(dbGallery);
                 await _context.SaveChangesAsync();
 
                 return Ok();
@@ -131,19 +127,15 @@ namespace ChapterOne.Areas.Admin.Controllers
         }
 
 
-
-        [HttpGet]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null) return BadRequest();
-            Our dbOur = await _ourService.GetByIdAsync(id);
-            if (dbOur is null) return NotFound();
+            Gallery dbGallery = await _galleryService.GetByIdAsync(id);
+            if (dbGallery is null) return NotFound();
 
-            OurUpdateVM model = new()
+            GalleryUpdateVM model = new()
             {
-                Image = dbOur.Image,
-                Description = dbOur.Description,
-                Name = dbOur.Name
+                Image = dbGallery.Image,
             };
 
             return View(model);
@@ -152,71 +144,67 @@ namespace ChapterOne.Areas.Admin.Controllers
 
 
 
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int? id, OurUpdateVM ourUpdate)
+        public async Task<IActionResult> Edit(int? id, GalleryUpdateVM galleryUpdate)
         {
             try
             {
 
                 if (id == null) return BadRequest();
 
-                Our dbOur = await _ourService.GetByIdAsync(id);
+                Gallery dbGallery = await _galleryService.GetByIdAsync(id);
 
-                if (dbOur is null) return NotFound();
+                if (dbGallery is null) return NotFound();
 
-                OurUpdateVM model = new()
+                GalleryUpdateVM model = new()
                 {
-                    Image = dbOur.Image,
-                    Description = dbOur.Description,
-                    Name = dbOur.Name
+                    Image = dbGallery.Image,
                 };
 
 
-                //if (!ModelState.IsValid)
-                //{
-                //    return View(model);
-                //}
-
-                if (ourUpdate.Photo != null)
+                if (!ModelState.IsValid)
                 {
-                    if (!ourUpdate.Photo.CheckFileType("image/"))
+                    return View(model);
+                }
+
+                if (galleryUpdate.Photo != null)
+                {
+                    if (!galleryUpdate.Photo.CheckFileType("image/"))
                     {
                         ModelState.AddModelError("Photo", "Please choose correct image type");
                         return View(model);
                     }
 
-                    if (!ourUpdate.Photo.CheckFileSize(200))
+                    if (!galleryUpdate.Photo.CheckFileSize(200))
                     {
                         ModelState.AddModelError("Photo", "Image size must be max 200kb");
                         return View(model);
                     }
 
 
-                    string dbPath = FileHelper.GetFilePath(_env.WebRootPath, "assets/images/home", dbOur.Image);
+                    string dbPath = FileHelper.GetFilePath(_env.WebRootPath, "assets/images/home", galleryUpdate.Image);
 
                     FileHelper.DeleteFile(dbPath);
 
 
-                    string fileName = Guid.NewGuid().ToString() + "_" + ourUpdate.Photo.FileName;
+                    string fileName = Guid.NewGuid().ToString() + "_" + galleryUpdate.Photo.FileName;
 
                     string newPath = FileHelper.GetFilePath(_env.WebRootPath, "assets/images/home", fileName);
 
-                    await FileHelper.SaveFileAsync(newPath, ourUpdate.Photo);
+                    await FileHelper.SaveFileAsync(newPath, galleryUpdate.Photo);
 
-                    dbOur.Image = fileName;
+                    galleryUpdate.Image = fileName;
                 }
                 else
                 {
-                    Our our = new()
+                    Gallery gallery = new()
                     {
-                        Image = dbOur.Image
+                        Image = dbGallery.Image
                     };
                 }
 
-
-                dbOur.Description = ourUpdate.Description;
-                dbOur.Name = ourUpdate.Name;
 
                 await _context.SaveChangesAsync();
 
@@ -228,6 +216,5 @@ namespace ChapterOne.Areas.Admin.Controllers
                 return View();
             }
         }
-
     }
 }

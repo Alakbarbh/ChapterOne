@@ -10,33 +10,33 @@ using Microsoft.EntityFrameworkCore;
 namespace ChapterOne.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    public class OurController : Controller
+    public class BrandController : Controller
     {
         private readonly AppDbContext _context;
         private readonly IWebHostEnvironment _env;
-        private readonly IourService _ourService;
-        public OurController(AppDbContext context,
+        private IBrandService _brandService;
+        public BrandController(AppDbContext context,
                                 IWebHostEnvironment env,
-                                IourService ourService)
+                                IBrandService brandService)
+
         {
             _context = context;
             _env = env;
-            _ourService = ourService;
+            _brandService = brandService;
         }
-
         public async Task<IActionResult> Index()
         {
-            List<Our> ours = await _context.Ours.ToListAsync();
-            return View(ours);
+            List<Brand> brands = await _context.Brands.ToListAsync();
+            return View(brands);
         }
 
 
         public async Task<IActionResult> Detail(int? id)
         {
             if (id == null) return BadRequest();
-            Our our = await _ourService.GetByIdAsync(id);
-            if (our is null) return NotFound();
-            return View(our);
+            Brand brand = await _brandService.GetByIdAsync(id);
+            if (brand is null) return NotFound();
+            return View(brand);
         }
 
 
@@ -50,7 +50,7 @@ namespace ChapterOne.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(OurCreateVM our)
+        public async Task<IActionResult> Create(BrandCreateVM brand)
         {
             try
             {
@@ -61,7 +61,7 @@ namespace ChapterOne.Areas.Admin.Controllers
 
 
 
-                if (!our.Photos.CheckFileType("image/"))
+                if (!brand.Photo.CheckFileType("image/"))
                 {
                     ModelState.AddModelError("Photo", "File type must be image");
                     return View();
@@ -69,7 +69,8 @@ namespace ChapterOne.Areas.Admin.Controllers
 
 
 
-                if (!our.Photos.CheckFileSize(200))
+
+                if (!brand.Photo.CheckFileSize(200))
                 {
                     ModelState.AddModelError("Photo", "Image size must be max 200kb");
                     return View();
@@ -77,22 +78,21 @@ namespace ChapterOne.Areas.Admin.Controllers
 
 
 
-                string fileName = Guid.NewGuid().ToString() + "_" + our.Photos.FileName;
+                string fileName = Guid.NewGuid().ToString() + "_" + brand.Photo.FileName;
 
 
                 string path = FileHelper.GetFilePath(_env.WebRootPath, "assets/images/home", fileName);
 
-                await FileHelper.SaveFileAsync(path, our.Photos);
+                await FileHelper.SaveFileAsync(path, brand.Photo);
 
-                Our newOur = new()
+                Brand newBrand = new()
                 {
                     Image = fileName,
-                    Name = our.Name,
-                    Description = our.Description
                 };
 
 
-                await _context.Ours.AddAsync(newOur);
+                await _context.Brands.AddAsync(newBrand);
+
 
 
                 await _context.SaveChangesAsync();
@@ -112,13 +112,13 @@ namespace ChapterOne.Areas.Admin.Controllers
             try
             {
                 if (id == null) return BadRequest();
-                Our dbOur = await _ourService.GetByIdAsync(id);
-                if (dbOur is null) return NotFound();
+                Brand dbBrand = await _brandService.GetByIdAsync(id);
+                if (dbBrand is null) return NotFound();
 
-                string path = FileHelper.GetFilePath(_env.WebRootPath, "assets/images/home", dbOur.Image);
+                string path = FileHelper.GetFilePath(_env.WebRootPath, "assets/images/home", dbBrand.Image);
                 FileHelper.DeleteFile(path);
 
-                _context.Ours.Remove(dbOur);
+                _context.Brands.Remove(dbBrand);
                 await _context.SaveChangesAsync();
 
                 return Ok();
@@ -132,18 +132,15 @@ namespace ChapterOne.Areas.Admin.Controllers
 
 
 
-        [HttpGet]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null) return BadRequest();
-            Our dbOur = await _ourService.GetByIdAsync(id);
-            if (dbOur is null) return NotFound();
+            Brand dbBrand = await _brandService.GetByIdAsync(id);
+            if (dbBrand is null) return NotFound();
 
-            OurUpdateVM model = new()
+            BrandUpdateVM model = new()
             {
-                Image = dbOur.Image,
-                Description = dbOur.Description,
-                Name = dbOur.Name
+                Image = dbBrand.Image,
             };
 
             return View(model);
@@ -152,71 +149,67 @@ namespace ChapterOne.Areas.Admin.Controllers
 
 
 
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int? id, OurUpdateVM ourUpdate)
+        public async Task<IActionResult> Edit(int? id, BrandUpdateVM brandUpdate)
         {
             try
             {
 
                 if (id == null) return BadRequest();
 
-                Our dbOur = await _ourService.GetByIdAsync(id);
+                Brand dbBrand = await _brandService.GetByIdAsync(id);
 
-                if (dbOur is null) return NotFound();
+                if (dbBrand is null) return NotFound();
 
-                OurUpdateVM model = new()
+                BrandUpdateVM model = new()
                 {
-                    Image = dbOur.Image,
-                    Description = dbOur.Description,
-                    Name = dbOur.Name
+                    Image = dbBrand.Image,
                 };
 
 
-                //if (!ModelState.IsValid)
-                //{
-                //    return View(model);
-                //}
-
-                if (ourUpdate.Photo != null)
+                if (!ModelState.IsValid)
                 {
-                    if (!ourUpdate.Photo.CheckFileType("image/"))
+                    return View(model);
+                }
+
+                if (brandUpdate.Photo != null)
+                {
+                    if (!brandUpdate.Photo.CheckFileType("image/"))
                     {
                         ModelState.AddModelError("Photo", "Please choose correct image type");
                         return View(model);
                     }
 
-                    if (!ourUpdate.Photo.CheckFileSize(200))
+                    if (!brandUpdate.Photo.CheckFileSize(200))
                     {
                         ModelState.AddModelError("Photo", "Image size must be max 200kb");
                         return View(model);
                     }
 
 
-                    string dbPath = FileHelper.GetFilePath(_env.WebRootPath, "assets/images/home", dbOur.Image);
+                    string dbPath = FileHelper.GetFilePath(_env.WebRootPath, "assets/images/home", dbBrand.Image);
 
                     FileHelper.DeleteFile(dbPath);
 
 
-                    string fileName = Guid.NewGuid().ToString() + "_" + ourUpdate.Photo.FileName;
+                    string fileName = Guid.NewGuid().ToString() + "_" + brandUpdate.Photo.FileName;
 
                     string newPath = FileHelper.GetFilePath(_env.WebRootPath, "assets/images/home", fileName);
 
-                    await FileHelper.SaveFileAsync(newPath, ourUpdate.Photo);
+                    await FileHelper.SaveFileAsync(newPath, brandUpdate.Photo);
 
-                    dbOur.Image = fileName;
+                    dbBrand.Image = fileName;
                 }
                 else
                 {
-                    Our our = new()
+                    Brand brand = new()
                     {
-                        Image = dbOur.Image
+                        Image = dbBrand.Image
                     };
                 }
 
-
-                dbOur.Description = ourUpdate.Description;
-                dbOur.Name = ourUpdate.Name;
 
                 await _context.SaveChangesAsync();
 
@@ -228,6 +221,5 @@ namespace ChapterOne.Areas.Admin.Controllers
                 return View();
             }
         }
-
     }
 }

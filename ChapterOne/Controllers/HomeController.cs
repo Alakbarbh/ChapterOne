@@ -15,18 +15,24 @@ namespace ChapterOne.Controllers
         private readonly IourService _ourService;
         private readonly IAutobiographyOneService _autobiographyOneService;
         private readonly IAutobiographyTwoService _autobiographyTwoService;
+        private readonly IBrandService _brandService;
+        private readonly IGalleryService _galleryService;
 
         public HomeController(AppDbContext context,
                               ISliderService sliderService,
                               IourService ourService,
                               IAutobiographyOneService autobiographyOneService,
-                              IAutobiographyTwoService autobiographyTwoService)
+                              IAutobiographyTwoService autobiographyTwoService,
+                              IBrandService brandService,
+                              IGalleryService galleryService)
         {
             _context = context;
             _sliderService = sliderService;
             _ourService = ourService;
             _autobiographyOneService = autobiographyOneService;
             _autobiographyTwoService = autobiographyTwoService;
+            _brandService = brandService;
+            _galleryService = galleryService;
         }
 
         public async Task<IActionResult> Index()
@@ -35,6 +41,8 @@ namespace ChapterOne.Controllers
             List<Our> ours = await _ourService.GetAllAsync();
             List<AutobiographyOne> autobiographyOnes = await _autobiographyOneService.GetAllAsync();
             List<AutobiographyTwo> autobiographyTwos = await _autobiographyTwoService.GetAllAsync();
+            List<Brand> brands = await _brandService.GetAllAsync();
+            List<Gallery> galleries = await _galleryService.GetAllAsync();
 
             HomeVM model = new()
             {
@@ -42,6 +50,8 @@ namespace ChapterOne.Controllers
                 Ours = ours,
                 AutobiographyOnes = autobiographyOnes,
                 AutobiographyTwos = autobiographyTwos,
+                Brands = brands,
+                Galleries = galleries,
             };
 
             return View(model);

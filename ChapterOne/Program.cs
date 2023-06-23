@@ -26,6 +26,8 @@ builder.Services.AddScoped<ISliderService, SliderService>();
 builder.Services.AddScoped<IourService, OurService>();
 builder.Services.AddScoped<IAutobiographyOneService, AutobiographyOneService>();
 builder.Services.AddScoped<IAutobiographyTwoService, AutobiographyTwoService>();
+builder.Services.AddScoped<IBrandService, BrandService>();
+builder.Services.AddScoped<IGalleryService, GalleryService>();
 
 var app = builder.Build();
 

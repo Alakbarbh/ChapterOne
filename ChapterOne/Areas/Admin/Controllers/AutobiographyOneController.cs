@@ -244,9 +244,6 @@ namespace ChapterOne.Areas.Admin.Controllers
                     await FileHelper.SaveFileAsync(newPath1, autobiographyOneUpdate.LargePhoto);
 
                     dbAutobiography.LargeImage = fileName1;
-
-
-
                     
                 }
                 else
@@ -274,7 +271,7 @@ namespace ChapterOne.Areas.Admin.Controllers
                         return View(model);
                     }
 
-                    string dbPath2 = FileHelper.GetFilePath(_env.WebRootPath, "assets/images/home", dbAutobiography.LargeImage);
+                    string dbPath2 = FileHelper.GetFilePath(_env.WebRootPath, "assets/images/home", dbAutobiography.SmallImage);
 
                     FileHelper.DeleteFile(dbPath2);
 
@@ -285,7 +282,7 @@ namespace ChapterOne.Areas.Admin.Controllers
 
                     await FileHelper.SaveFileAsync(newPath2, autobiographyOneUpdate.SmallPhoto);
 
-                    dbAutobiography.LargeImage = fileName2;
+                    dbAutobiography.SmallImage = fileName2;
                 }
                 else
                 {

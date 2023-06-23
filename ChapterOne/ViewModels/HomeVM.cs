@@ -8,5 +8,7 @@ namespace ChapterOne.ViewModels
         public List<Our> Ours { get; set; }
         public List<AutobiographyOne> AutobiographyOnes { get; set; }
         public List<AutobiographyTwo> AutobiographyTwos { get; set; }
+        public List<Brand> Brands { get; set; }
+        public List<Gallery> Galleries { get; set; }
     }
 }

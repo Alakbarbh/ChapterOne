@@ -12,6 +12,8 @@ namespace ChapterOne.Data
         public DbSet<Our> Ours { get; set; }
         public DbSet<AutobiographyOne> AutobiographyOnes { get; set; }
         public DbSet<AutobiographyTwo> AutobiographyTwos { get; set; }
+        public DbSet<Brand> Brands { get; set; }
+        public DbSet<Gallery> Galleries { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
