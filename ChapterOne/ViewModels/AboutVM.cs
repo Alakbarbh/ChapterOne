@@ -7,5 +7,6 @@ namespace ChapterOne.ViewModels
         public List<Wrapper> Wrappers { get; set; }
         public List<AutobiographyThree> AutobiographyThrees { get; set; }
         public List<AutobiographyFour> AutobiographyFours { get; set; }
+        public List<Promo> Promos { get; set; }
     }
 }

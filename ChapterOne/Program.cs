@@ -31,6 +31,8 @@ builder.Services.AddScoped<IGalleryService, GalleryService>();
 builder.Services.AddScoped<IWrapperService, WrapperService>();
 builder.Services.AddScoped<IAutobiographyThreeService, AutobiographyThreeService>();
 builder.Services.AddScoped<IAutobiographyFourService, AutobiographyFourService>();
+builder.Services.AddScoped<IPromoService, PromoService>();
+builder.Services.AddScoped<IStoreService, StoreService>();
 
 var app = builder.Build();
 

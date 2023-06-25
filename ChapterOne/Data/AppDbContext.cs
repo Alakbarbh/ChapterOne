@@ -17,6 +17,8 @@ namespace ChapterOne.Data
         public DbSet<Wrapper> Wrappers { get; set; }
         public DbSet<AutobiographyThree> AutobiographyThrees { get; set; }
         public DbSet<AutobiographyFour> AutobiographyFours { get; set; }
+        public DbSet<Promo> Promos { get; set; }
+        public DbSet<Store> Stores { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
