@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "N6lI3WJkzcPSR9o8DCesZcl3LEnLGoEYSR4yBU55hhA=",
+  "Hash": "I5eeQahE7lW0t9jB9sNMVTWbV/o0ZdfIuNxugUPrKtg=",
   "Source": "ChapterOne",
   "BasePath": "_content/ChapterOne",
   "Mode": "Default",
@@ -15385,12 +15385,12 @@
       "OriginalItemSpec": "wwwroot\\assets\\images\\cart\\cart-backgorund-image.jpg"
     },
     {
-      "Identity": "C:\\Users\\VICTUS\\Desktop\\ChapterOne\\ChapterOne\\wwwroot\\assets\\images\\contact\\1.webp",
+      "Identity": "C:\\Users\\VICTUS\\Desktop\\ChapterOne\\ChapterOne\\wwwroot\\assets\\images\\contact\\brand-1.png",
       "SourceId": "ChapterOne",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\VICTUS\\Desktop\\ChapterOne\\ChapterOne\\wwwroot\\",
       "BasePath": "_content/ChapterOne",
-      "RelativePath": "assets/images/contact/1.webp",
+      "RelativePath": "assets/images/contact/brand-1.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -15399,15 +15399,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\assets\\images\\contact\\1.webp"
+      "OriginalItemSpec": "wwwroot\\assets\\images\\contact\\brand-1.png"
     },
     {
-      "Identity": "C:\\Users\\VICTUS\\Desktop\\ChapterOne\\ChapterOne\\wwwroot\\assets\\images\\contact\\2.jpg",
+      "Identity": "C:\\Users\\VICTUS\\Desktop\\ChapterOne\\ChapterOne\\wwwroot\\assets\\images\\contact\\brand-2.png",
       "SourceId": "ChapterOne",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\VICTUS\\Desktop\\ChapterOne\\ChapterOne\\wwwroot\\",
       "BasePath": "_content/ChapterOne",
-      "RelativePath": "assets/images/contact/2.jpg",
+      "RelativePath": "assets/images/contact/brand-2.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -15416,15 +15416,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\assets\\images\\contact\\2.jpg"
+      "OriginalItemSpec": "wwwroot\\assets\\images\\contact\\brand-2.png"
     },
     {
-      "Identity": "C:\\Users\\VICTUS\\Desktop\\ChapterOne\\ChapterOne\\wwwroot\\assets\\images\\contact\\3.jpg",
+      "Identity": "C:\\Users\\VICTUS\\Desktop\\ChapterOne\\ChapterOne\\wwwroot\\assets\\images\\contact\\brand-3.png",
       "SourceId": "ChapterOne",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\VICTUS\\Desktop\\ChapterOne\\ChapterOne\\wwwroot\\",
       "BasePath": "_content/ChapterOne",
-      "RelativePath": "assets/images/contact/3.jpg",
+      "RelativePath": "assets/images/contact/brand-3.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -15433,15 +15433,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\assets\\images\\contact\\3.jpg"
+      "OriginalItemSpec": "wwwroot\\assets\\images\\contact\\brand-3.png"
     },
     {
-      "Identity": "C:\\Users\\VICTUS\\Desktop\\ChapterOne\\ChapterOne\\wwwroot\\assets\\images\\contact\\4.jpg",
+      "Identity": "C:\\Users\\VICTUS\\Desktop\\ChapterOne\\ChapterOne\\wwwroot\\assets\\images\\contact\\brand-4.png",
       "SourceId": "ChapterOne",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\VICTUS\\Desktop\\ChapterOne\\ChapterOne\\wwwroot\\",
       "BasePath": "_content/ChapterOne",
-      "RelativePath": "assets/images/contact/4.jpg",
+      "RelativePath": "assets/images/contact/brand-4.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -15450,15 +15450,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\assets\\images\\contact\\4.jpg"
+      "OriginalItemSpec": "wwwroot\\assets\\images\\contact\\brand-4.png"
     },
     {
-      "Identity": "C:\\Users\\VICTUS\\Desktop\\ChapterOne\\ChapterOne\\wwwroot\\assets\\images\\contact\\5.jpeg",
+      "Identity": "C:\\Users\\VICTUS\\Desktop\\ChapterOne\\ChapterOne\\wwwroot\\assets\\images\\contact\\brand-5.png",
       "SourceId": "ChapterOne",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\VICTUS\\Desktop\\ChapterOne\\ChapterOne\\wwwroot\\",
       "BasePath": "_content/ChapterOne",
-      "RelativePath": "assets/images/contact/5.jpeg",
+      "RelativePath": "assets/images/contact/brand-5.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -15467,15 +15467,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\assets\\images\\contact\\5.jpeg"
+      "OriginalItemSpec": "wwwroot\\assets\\images\\contact\\brand-5.png"
     },
     {
-      "Identity": "C:\\Users\\VICTUS\\Desktop\\ChapterOne\\ChapterOne\\wwwroot\\assets\\images\\contact\\b.webp",
+      "Identity": "C:\\Users\\VICTUS\\Desktop\\ChapterOne\\ChapterOne\\wwwroot\\assets\\images\\contact\\brand-6.png",
       "SourceId": "ChapterOne",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\VICTUS\\Desktop\\ChapterOne\\ChapterOne\\wwwroot\\",
       "BasePath": "_content/ChapterOne",
-      "RelativePath": "assets/images/contact/b.webp",
+      "RelativePath": "assets/images/contact/brand-6.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -15484,41 +15484,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\assets\\images\\contact\\b.webp"
-    },
-    {
-      "Identity": "C:\\Users\\VICTUS\\Desktop\\ChapterOne\\ChapterOne\\wwwroot\\assets\\images\\contact\\back.jpg",
-      "SourceId": "ChapterOne",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\VICTUS\\Desktop\\ChapterOne\\ChapterOne\\wwwroot\\",
-      "BasePath": "_content/ChapterOne",
-      "RelativePath": "assets/images/contact/back.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\assets\\images\\contact\\back.jpg"
-    },
-    {
-      "Identity": "C:\\Users\\VICTUS\\Desktop\\ChapterOne\\ChapterOne\\wwwroot\\assets\\images\\contact\\background.jpg",
-      "SourceId": "ChapterOne",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\VICTUS\\Desktop\\ChapterOne\\ChapterOne\\wwwroot\\",
-      "BasePath": "_content/ChapterOne",
-      "RelativePath": "assets/images/contact/background.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\assets\\images\\contact\\background.jpg"
+      "OriginalItemSpec": "wwwroot\\assets\\images\\contact\\brand-6.png"
     },
     {
       "Identity": "C:\\Users\\VICTUS\\Desktop\\ChapterOne\\ChapterOne\\wwwroot\\assets\\images\\forgot-password\\forgot-password-backgorund-image.jpg",

@@ -1,4 +1,6 @@
-﻿using ChapterOne.Data;
+﻿using ChapterOne.Areas.Admin.ViewModels;
+using ChapterOne.Data;
+using ChapterOne.Helpers;
 using ChapterOne.Models;
 using ChapterOne.Services;
 using ChapterOne.Services.Interfaces;
@@ -35,6 +37,130 @@ namespace ChapterOne.Areas.Admin.Controllers
             Store store = await _storeService.GetByIdAsync(id);
             if (store is null) return NotFound();
             return View(store);
+        }
+
+
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create(StoreCreateVM store)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return View();
+                }
+                
+
+                Store newStore = new()
+                {
+                    Location = store.Location,
+                    Phone = store.Phone,
+                    Mail = store.Mail
+                };
+
+
+                await _context.Stores.AddAsync(newStore);
+
+
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+        }
+
+
+        [HttpPost]
+        public async Task<IActionResult> Delete(int? id)
+        {
+            try
+            {
+                if (id == null) return BadRequest();
+                Store dbStore = await _storeService.GetByIdAsync(id);
+                if (dbStore is null) return NotFound();
+
+                _context.Stores.Remove(dbStore);
+                await _context.SaveChangesAsync();
+
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                ViewBag.error = ex.Message;
+                return View();
+            }
+        }
+
+
+        [HttpGet]
+        public async Task<IActionResult> Edit(int? id)
+        {
+            if (id == null) return BadRequest();
+            Store dbStore = await _storeService.GetByIdAsync(id);
+            if (dbStore is null) return NotFound();
+
+            StoreUpdateVM model = new()
+            {
+                Location = dbStore.Location,
+                Phone = dbStore.Phone,
+                Mail = dbStore.Mail
+            };
+
+            return View(model);
+
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int? id, StoreUpdateVM storeUpdate)
+        {
+            try
+            {
+
+                if (id == null) return BadRequest();
+
+                Store dbStore = await _storeService.GetByIdAsync(id);
+
+                if (dbStore is null) return NotFound();
+
+                StoreUpdateVM model = new()
+                {
+                    Location = dbStore.Location,
+                    Phone = dbStore.Phone,
+                    Mail = dbStore.Mail
+                };
+
+
+                //if (!ModelState.IsValid)
+                //{
+                //    return View(model);
+                //}
+
+                dbStore.Location = storeUpdate.Location;
+                dbStore.Phone = storeUpdate.Phone;
+                dbStore.Mail = storeUpdate.Mail;
+
+                await _context.SaveChangesAsync();
+
+                return RedirectToAction(nameof(Index));
+            }
+            catch (Exception ex)
+            {
+                @ViewBag.error = ex.Message;
+                return View();
+            }
         }
     }
 }

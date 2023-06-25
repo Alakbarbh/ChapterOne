@@ -33,6 +33,7 @@ builder.Services.AddScoped<IAutobiographyThreeService, AutobiographyThreeService
 builder.Services.AddScoped<IAutobiographyFourService, AutobiographyFourService>();
 builder.Services.AddScoped<IPromoService, PromoService>();
 builder.Services.AddScoped<IStoreService, StoreService>();
+builder.Services.AddScoped<IBrandTwoService, BrandTwoService>();
 
 var app = builder.Build();
 

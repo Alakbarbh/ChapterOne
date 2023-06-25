@@ -10,33 +10,34 @@ using Microsoft.EntityFrameworkCore;
 namespace ChapterOne.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    public class BrandController : Controller
+    public class BrandTwoController : Controller
     {
         private readonly AppDbContext _context;
         private readonly IWebHostEnvironment _env;
-        private IBrandService _brandService;
-        public BrandController(AppDbContext context,
+        private IBrandTwoService _brandTwoService;
+        public BrandTwoController(AppDbContext context,
                                 IWebHostEnvironment env,
-                                IBrandService brandService)
+                                IBrandTwoService brandTwoService)
 
         {
             _context = context;
             _env = env;
-            _brandService = brandService;
+            _brandTwoService = brandTwoService;
         }
+
         public async Task<IActionResult> Index()
         {
-            List<Brand> brands = await _context.Brands.ToListAsync();
-            return View(brands);
+            List<BrandTwo> brandTwos = await _context.BrandTwos.ToListAsync();
+            return View(brandTwos);
         }
 
 
         public async Task<IActionResult> Detail(int? id)
         {
             if (id == null) return BadRequest();
-            Brand brand = await _brandService.GetByIdAsync(id);
-            if (brand is null) return NotFound();
-            return View(brand);
+            BrandTwo brandTwo = await _brandTwoService.GetByIdAsync(id);
+            if (brandTwo is null) return NotFound();
+            return View(brandTwo);
         }
 
 
@@ -49,7 +50,7 @@ namespace ChapterOne.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(BrandCreateVM brand)
+        public async Task<IActionResult> Create(BrandTwoCreateVM brand)
         {
             try
             {
@@ -80,17 +81,17 @@ namespace ChapterOne.Areas.Admin.Controllers
                 string fileName = Guid.NewGuid().ToString() + "_" + brand.Photo.FileName;
 
 
-                string path = FileHelper.GetFilePath(_env.WebRootPath, "assets/images/home", fileName);
+                string path = FileHelper.GetFilePath(_env.WebRootPath, "assets/images/contact", fileName);
 
                 await FileHelper.SaveFileAsync(path, brand.Photo);
 
-                Brand newBrand = new()
+                BrandTwo newBrandTwo = new()
                 {
                     Image = fileName,
                 };
 
 
-                await _context.Brands.AddAsync(newBrand);
+                await _context.BrandTwos.AddAsync(newBrandTwo);
 
 
 
@@ -111,13 +112,13 @@ namespace ChapterOne.Areas.Admin.Controllers
             try
             {
                 if (id == null) return BadRequest();
-                Brand dbBrand = await _brandService.GetByIdAsync(id);
-                if (dbBrand is null) return NotFound();
+                BrandTwo dbBrandTwo = await _brandTwoService.GetByIdAsync(id);
+                if (dbBrandTwo is null) return NotFound();
 
-                string path = FileHelper.GetFilePath(_env.WebRootPath, "assets/images/home", dbBrand.Image);
+                string path = FileHelper.GetFilePath(_env.WebRootPath, "assets/images/contact", dbBrandTwo.Image);
                 FileHelper.DeleteFile(path);
 
-                _context.Brands.Remove(dbBrand);
+                _context.BrandTwos.Remove(dbBrandTwo);
                 await _context.SaveChangesAsync();
 
                 return Ok();
@@ -133,12 +134,12 @@ namespace ChapterOne.Areas.Admin.Controllers
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null) return BadRequest();
-            Brand dbBrand = await _brandService.GetByIdAsync(id);
-            if (dbBrand is null) return NotFound();
+            BrandTwo dbBrandTwo = await _brandTwoService.GetByIdAsync(id);
+            if (dbBrandTwo is null) return NotFound();
 
-            BrandUpdateVM model = new()
+            BrandTwoUpdateVM model = new()
             {
-                Image = dbBrand.Image,
+                Image = dbBrandTwo.Image,
             };
 
             return View(model);
@@ -148,20 +149,20 @@ namespace ChapterOne.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int? id, BrandUpdateVM brandUpdate)
+        public async Task<IActionResult> Edit(int? id, BrandTwoUpdateVM brandTwoUpdate)
         {
             try
             {
 
                 if (id == null) return BadRequest();
 
-                Brand dbBrand = await _brandService.GetByIdAsync(id);
+                BrandTwo dbBrandTwo = await _brandTwoService.GetByIdAsync(id);
 
-                if (dbBrand is null) return NotFound();
+                if (dbBrandTwo is null) return NotFound();
 
-                BrandUpdateVM model = new()
+                BrandTwoUpdateVM model = new()
                 {
-                    Image = dbBrand.Image,
+                    Image = dbBrandTwo.Image,
                 };
 
 
@@ -170,39 +171,39 @@ namespace ChapterOne.Areas.Admin.Controllers
                     return View(model);
                 }
 
-                if (brandUpdate.Photo != null)
+                if (brandTwoUpdate.Photo != null)
                 {
-                    if (!brandUpdate.Photo.CheckFileType("image/"))
+                    if (!brandTwoUpdate.Photo.CheckFileType("image/"))
                     {
                         ModelState.AddModelError("Photo", "Please choose correct image type");
                         return View(model);
                     }
 
-                    if (!brandUpdate.Photo.CheckFileSize(200))
+                    if (!brandTwoUpdate.Photo.CheckFileSize(200))
                     {
                         ModelState.AddModelError("Photo", "Image size must be max 200kb");
                         return View(model);
                     }
 
 
-                    string dbPath = FileHelper.GetFilePath(_env.WebRootPath, "assets/images/home", dbBrand.Image);
+                    string dbPath = FileHelper.GetFilePath(_env.WebRootPath, "assets/images/contact", dbBrandTwo.Image);
 
                     FileHelper.DeleteFile(dbPath);
 
 
-                    string fileName = Guid.NewGuid().ToString() + "_" + brandUpdate.Photo.FileName;
+                    string fileName = Guid.NewGuid().ToString() + "_" + brandTwoUpdate.Photo.FileName;
 
-                    string newPath = FileHelper.GetFilePath(_env.WebRootPath, "assets/images/home", fileName);
+                    string newPath = FileHelper.GetFilePath(_env.WebRootPath, "assets/images/contact", fileName);
 
-                    await FileHelper.SaveFileAsync(newPath, brandUpdate.Photo);
+                    await FileHelper.SaveFileAsync(newPath, brandTwoUpdate.Photo);
 
-                    dbBrand.Image = fileName;
+                    dbBrandTwo.Image = fileName;
                 }
                 else
                 {
-                    Brand brand = new()
+                    BrandTwo brandTwo = new()
                     {
-                        Image = dbBrand.Image
+                        Image = dbBrandTwo.Image
                     };
                 }
 
