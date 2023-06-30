@@ -20,6 +20,18 @@ namespace ChapterOne.Data
         public DbSet<Promo> Promos { get; set; }
         public DbSet<Store> Stores { get; set; }
         public DbSet<BrandTwo> BrandTwos { get; set; }
+        public DbSet<Settings> Settings { get; set; }
+        public DbSet<Social> Socials { get; set; }
+        public DbSet<Position> Positions { get; set; }
+        public DbSet<Team> Teams { get; set; }
+        public DbSet<Tag> Tags { get; set; }
+        public DbSet<Author> Authors { get; set; }
+        public DbSet<Genre> Genres { get; set; }
+        public DbSet<Product> Products { get; set; }
+        public DbSet<ProductComment> ProductComments { get; set; }
+        public DbSet<ProductAuthor> ProductAuthors { get; set; }
+        public DbSet<ProductGenre> ProductGenres { get; set; }
+        public DbSet<ProductTag> ProductTags { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

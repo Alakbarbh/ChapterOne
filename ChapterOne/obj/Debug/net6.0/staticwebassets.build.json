@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "I5eeQahE7lW0t9jB9sNMVTWbV/o0ZdfIuNxugUPrKtg=",
+  "Hash": "DmBTTTeYSxDDl3rrSTZqKr/9XTnr3ls8GBNX72vKvYg=",
   "Source": "ChapterOne",
   "BasePath": "_content/ChapterOne",
   "Mode": "Default",
@@ -14788,6 +14788,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets\\images\\404-error-page\\error-image.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\VICTUS\\Desktop\\ChapterOne\\ChapterOne\\wwwroot\\assets\\images\\8523300a-9397-4a10-9fee-c430f9049228 headphone1 (2).png",
+      "SourceId": "ChapterOne",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\VICTUS\\Desktop\\ChapterOne\\ChapterOne\\wwwroot\\",
+      "BasePath": "_content/ChapterOne",
+      "RelativePath": "assets/images/8523300a-9397-4a10-9fee-c430f9049228 headphone1 (2).png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\images\\8523300a-9397-4a10-9fee-c430f9049228 headphone1 (2).png"
     },
     {
       "Identity": "C:\\Users\\VICTUS\\Desktop\\ChapterOne\\ChapterOne\\wwwroot\\assets\\images\\about\\autography-image-1.jpg",

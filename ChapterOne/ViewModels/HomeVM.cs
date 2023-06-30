@@ -10,5 +10,7 @@ namespace ChapterOne.ViewModels
         public List<AutobiographyTwo> AutobiographyTwos { get; set; }
         public List<Brand> Brands { get; set; }
         public List<Gallery> Galleries { get; set; }
+        public List<Team> Teams { get; set; }
+        public List<Position> Positions { get; set; }
     }
 }

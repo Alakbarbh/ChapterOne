@@ -34,6 +34,14 @@ builder.Services.AddScoped<IAutobiographyFourService, AutobiographyFourService>(
 builder.Services.AddScoped<IPromoService, PromoService>();
 builder.Services.AddScoped<IStoreService, StoreService>();
 builder.Services.AddScoped<IBrandTwoService, BrandTwoService>();
+builder.Services.AddScoped<ILayoutService, LayoutService>();
+builder.Services.AddScoped<ISocialService, SocialService>();
+builder.Services.AddScoped<IPositionService, PositionService>();
+builder.Services.AddScoped<ITeamService, TeamService>();
+builder.Services.AddScoped<ITagService, TagService>();
+builder.Services.AddScoped<IGenreService, GenreService>();
+builder.Services.AddScoped<IAuthorService, AuthorService>();
+builder.Services.AddScoped<IProductService, ProductService>();
 
 var app = builder.Build();
 
