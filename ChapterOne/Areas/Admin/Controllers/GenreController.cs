@@ -1,6 +1,5 @@
 ﻿using ChapterOne.Areas.Admin.ViewModels;
 using ChapterOne.Data;
-using ChapterOne.Helpers;
 using ChapterOne.Models;
 using ChapterOne.Services;
 using ChapterOne.Services.Interfaces;
@@ -9,33 +8,33 @@ using Microsoft.AspNetCore.Mvc;
 namespace ChapterOne.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    public class TagController : Controller
+    public class GenreController : Controller
     {
         private readonly AppDbContext _context;
         private readonly IWebHostEnvironment _env;
-        private readonly ITagService _tagService;
-        public TagController(AppDbContext context,
+        private readonly IGenreService _genreService;
+        public GenreController(AppDbContext context,
                                 IWebHostEnvironment env,
-                                ITagService tagService)
+                                IGenreService genreService)
         {
             _context = context;
             _env = env;
-            _tagService = tagService;
+            _genreService = genreService;
         }
 
         public async Task<IActionResult> Index()
         {
-            List<Tag> tags = await _tagService.GetAllAsync();
-            return View(tags);
+            List<Genre> genres = await _genreService.GetAllAsync();
+            return View(genres);
         }
 
 
         public async Task<IActionResult> Detail(int? id)
         {
             if (id == null) return BadRequest();
-            Tag tag = await _tagService.GetByIdAsync(id);
-            if (tag is null) return NotFound();
-            return View(tag);
+            Genre genre = await _genreService.GetByIdAsync(id);
+            if (genre is null) return NotFound();
+            return View(genre);
         }
 
 
@@ -48,18 +47,18 @@ namespace ChapterOne.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(TagCreateVM tag)
+        public async Task<IActionResult> Create(GenreCreateVM genre)
         {
             try
             {
 
-                Tag newTag = new()
+                Genre newGenre = new()
                 {
-                    Name = tag.Name
+                    Name = genre.Name
                 };
 
 
-                await _context.Tags.AddAsync(newTag);
+                await _context.Genres.AddAsync(newGenre);
 
 
 
@@ -80,10 +79,10 @@ namespace ChapterOne.Areas.Admin.Controllers
             try
             {
                 if (id == null) return BadRequest();
-                Tag dbTag = await _tagService.GetByIdAsync(id);
-                if (dbTag is null) return NotFound();
+                Genre dbGenre = await _genreService.GetByIdAsync(id);
+                if (dbGenre is null) return NotFound();
 
-                _context.Tags.Remove(dbTag);
+                _context.Genres.Remove(dbGenre);
                 await _context.SaveChangesAsync();
 
                 return Ok();
@@ -100,12 +99,12 @@ namespace ChapterOne.Areas.Admin.Controllers
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null) return BadRequest();
-            Tag dbTag = await _tagService.GetByIdAsync(id);
-            if (dbTag is null) return NotFound();
+            Genre dbGenre = await _genreService.GetByIdAsync(id);
+            if (dbGenre is null) return NotFound();
 
-            TagUpdateVM model = new()
+            GenreUpdateVM model = new()
             {
-                Name = dbTag.Name
+                Name = dbGenre.Name
             };
 
             return View(model);
@@ -115,20 +114,20 @@ namespace ChapterOne.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int? id, TagUpdateVM tagUpdate)
+        public async Task<IActionResult> Edit(int? id, GenreUpdateVM genreUpdate)
         {
             try
             {
 
                 if (id == null) return BadRequest();
 
-                Tag dbTag = await _tagService.GetByIdAsync(id);
+                Genre dbGenre = await _genreService.GetByIdAsync(id);
 
-                if (dbTag is null) return NotFound();
+                if (dbGenre is null) return NotFound();
 
-                TagUpdateVM model = new()
+                GenreUpdateVM model = new()
                 {
-                    Name = dbTag.Name
+                    Name = dbGenre.Name
                 };
 
 
@@ -139,7 +138,7 @@ namespace ChapterOne.Areas.Admin.Controllers
 
 
 
-                dbTag.Name = tagUpdate.Name;
+                dbGenre.Name = genreUpdate.Name;
 
                 await _context.SaveChangesAsync();
 

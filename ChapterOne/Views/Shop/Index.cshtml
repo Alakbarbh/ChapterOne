@@ -1,4 +1,5 @@
-﻿<!-- Main Area -->
+﻿@model ShopVM
+<!-- Main Area -->
 <main>
     <section id="background">
         <div class="background-images" style="background-image:url(/assets/images/shop/bookstore.jpg)">
@@ -418,42 +419,13 @@
                         </div>
 
                         <div class="product-categories">
-                            <div class="product-category">
-                                <p>ACTION</p>
-                                <span>( 13 )</span>
-                            </div>
-                            <div class="product-category">
-                                <p>ART</p>
-                                <span>( 3 )</span>
-                            </div>
-                            <div class="product-category">
-                                <p>BEST SELLERS</p>
-                                <span>( 12 )</span>
-                            </div>
-                            <div class="product-category">
-                                <p>DESIGN</p>
-                                <span>( 6 )</span>
-                            </div>
-                            <div class="product-category">
-                                <p>FANTASY</p>
-                                <span>( 2 )</span>
-                            </div>
-                            <div class="product-category">
-                                <p>HISTORY</p>
-                                <span>( 3 )</span>
-                            </div>
-                            <div class="product-category">
-                                <p>HOME</p>
-                                <span>( 10 )</span>
-                            </div>
-                            <div class="product-category">
-                                <p>LOVE STORIES</p>
-                                <span>( 2 )</span>
-                            </div>
-                            <div class="product-category">
-                                <p>NEW</p>
-                                <span>( 12 )</span>
-                            </div>
+                            @foreach (var genre in Model.Genres)
+                            {
+                                <div class="product-category">
+                                    <p>@genre.Name</p>
+                                    <span>( 13 )</span>
+                                </div>
+                            }
                         </div>
 
                         <div class="borders">
@@ -472,34 +444,13 @@
 
 
                         <div class="product-categories">
-                            <div class="product-category">
-                                <p>JOHN STRASS</p>
-                                <span>( 13 )</span>
-                            </div>
-                            <div class="product-category">
-                                <p>JESSICA JOHNSON</p>
-                                <span>( 3 )</span>
-                            </div>
-                            <div class="product-category">
-                                <p>JANE DOE</p>
-                                <span>( 12 )</span>
-                            </div>
-                            <div class="product-category">
-                                <p>JAMES HOFFMAN</p>
-                                <span>( 6 )</span>
-                            </div>
-                            <div class="product-category">
-                                <p>ADAM STRASS</p>
-                                <span>( 2 )</span>
-                            </div>
-                            <div class="product-category">
-                                <p>LEO TOLSTOY</p>
-                                <span>( 3 )</span>
-                            </div>
-                            <div class="product-category">
-                                <p>STEFAN ZWEIG</p>
-                                <span>( 10 )</span>
-                            </div>
+                            @foreach (var author in Model.Authors)
+                            {
+                                <div class="product-category">
+                                    <p>@author.Name</p>
+                                    <span>( 13 )</span>
+                                </div>
+                            }
                         </div>
 
 
@@ -518,14 +469,10 @@
                             <h5>Tags</h5>
                         </div>
                         <div class="tags-name">
-                            <p>Adventure</p>
-                            <p>Bestseller</p>
-                            <p>Biography</p>
-                            <p>Design</p>
-                            <p>Fiction</p>
-                            <p>New</p>
-                            <p>Novel</p>
-                            <p>Pulitzer</p>
+                            @foreach (var tag in Model.Tags)
+                            {
+                                <p>@tag.Name</p>
+                            }
                         </div>
                         <div class="borders">
                             <div class="border">

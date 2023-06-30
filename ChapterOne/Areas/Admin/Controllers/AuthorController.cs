@@ -1,6 +1,5 @@
 ﻿using ChapterOne.Areas.Admin.ViewModels;
 using ChapterOne.Data;
-using ChapterOne.Helpers;
 using ChapterOne.Models;
 using ChapterOne.Services;
 using ChapterOne.Services.Interfaces;
@@ -9,33 +8,34 @@ using Microsoft.AspNetCore.Mvc;
 namespace ChapterOne.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    public class TagController : Controller
+    public class AuthorController : Controller
     {
         private readonly AppDbContext _context;
         private readonly IWebHostEnvironment _env;
-        private readonly ITagService _tagService;
-        public TagController(AppDbContext context,
+        private readonly IAuthorService _authorService;
+        public AuthorController(AppDbContext context,
                                 IWebHostEnvironment env,
-                                ITagService tagService)
+                                IAuthorService authorService)
         {
             _context = context;
             _env = env;
-            _tagService = tagService;
+            _authorService = authorService;
         }
+
 
         public async Task<IActionResult> Index()
         {
-            List<Tag> tags = await _tagService.GetAllAsync();
-            return View(tags);
+            List<Author> authors = await _authorService.GetAllAsync();
+            return View(authors);
         }
 
 
         public async Task<IActionResult> Detail(int? id)
         {
             if (id == null) return BadRequest();
-            Tag tag = await _tagService.GetByIdAsync(id);
-            if (tag is null) return NotFound();
-            return View(tag);
+            Author author = await _authorService.GetByIdAsync(id);
+            if (author is null) return NotFound();
+            return View(author);
         }
 
 
@@ -48,18 +48,18 @@ namespace ChapterOne.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(TagCreateVM tag)
+        public async Task<IActionResult> Create(AuthorCreateVM author)
         {
             try
             {
 
-                Tag newTag = new()
+                Author newAuthor = new()
                 {
-                    Name = tag.Name
+                    Name = author.Name
                 };
 
 
-                await _context.Tags.AddAsync(newTag);
+                await _context.Authors.AddAsync(newAuthor);
 
 
 
@@ -80,10 +80,10 @@ namespace ChapterOne.Areas.Admin.Controllers
             try
             {
                 if (id == null) return BadRequest();
-                Tag dbTag = await _tagService.GetByIdAsync(id);
-                if (dbTag is null) return NotFound();
+                Author dbAuthor = await _authorService.GetByIdAsync(id);
+                if (dbAuthor is null) return NotFound();
 
-                _context.Tags.Remove(dbTag);
+                _context.Authors.Remove(dbAuthor);
                 await _context.SaveChangesAsync();
 
                 return Ok();
@@ -100,12 +100,12 @@ namespace ChapterOne.Areas.Admin.Controllers
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null) return BadRequest();
-            Tag dbTag = await _tagService.GetByIdAsync(id);
-            if (dbTag is null) return NotFound();
+            Author dbAuthor = await _authorService.GetByIdAsync(id);
+            if (dbAuthor is null) return NotFound();
 
-            TagUpdateVM model = new()
+            AuthorUpdateVM model = new()
             {
-                Name = dbTag.Name
+                Name = dbAuthor.Name
             };
 
             return View(model);
@@ -115,20 +115,20 @@ namespace ChapterOne.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int? id, TagUpdateVM tagUpdate)
+        public async Task<IActionResult> Edit(int? id, AuthorUpdateVM authorUpdate)
         {
             try
             {
 
                 if (id == null) return BadRequest();
 
-                Tag dbTag = await _tagService.GetByIdAsync(id);
+                Author dbAuthor = await _authorService.GetByIdAsync(id);
 
-                if (dbTag is null) return NotFound();
+                if (dbAuthor is null) return NotFound();
 
-                TagUpdateVM model = new()
+                AuthorUpdateVM model = new()
                 {
-                    Name = dbTag.Name
+                    Name = dbAuthor.Name
                 };
 
 
@@ -139,7 +139,7 @@ namespace ChapterOne.Areas.Admin.Controllers
 
 
 
-                dbTag.Name = tagUpdate.Name;
+                dbAuthor.Name = authorUpdate.Name;
 
                 await _context.SaveChangesAsync();
 
