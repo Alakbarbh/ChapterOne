@@ -9,7 +9,7 @@
         public int SaleCount { get; set; }
         public int StockCount { get; set; }
         public string SKU { get; set; }
-        public string Rate { get; set; }
+        public int Rate { get; set; }
         public ICollection<ProductTag> ProductTags { get; set; }
         public ICollection<ProductAuthor> ProductAuthors { get; set; }
         public ICollection<ProductGenre> ProductGenres { get; set; }

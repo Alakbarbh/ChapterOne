@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\VICTUS\\Desktop\\ChapterOne\\ChapterOne\\ChapterOne.csproj": {}
+    "C:\\Users\\VICTUS\\Desktop\\bghnjmk,\\ChapterOne\\ChapterOne\\ChapterOne.csproj": {}
   },
   "projects": {
-    "C:\\Users\\VICTUS\\Desktop\\ChapterOne\\ChapterOne\\ChapterOne.csproj": {
+    "C:\\Users\\VICTUS\\Desktop\\bghnjmk,\\ChapterOne\\ChapterOne\\ChapterOne.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\VICTUS\\Desktop\\ChapterOne\\ChapterOne\\ChapterOne.csproj",
+        "projectUniqueName": "C:\\Users\\VICTUS\\Desktop\\bghnjmk,\\ChapterOne\\ChapterOne\\ChapterOne.csproj",
         "projectName": "ChapterOne",
-        "projectPath": "C:\\Users\\VICTUS\\Desktop\\ChapterOne\\ChapterOne\\ChapterOne.csproj",
+        "projectPath": "C:\\Users\\VICTUS\\Desktop\\bghnjmk,\\ChapterOne\\ChapterOne\\ChapterOne.csproj",
         "packagesPath": "C:\\Users\\VICTUS\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\VICTUS\\Desktop\\ChapterOne\\ChapterOne\\obj\\",
+        "outputPath": "C:\\Users\\VICTUS\\Desktop\\bghnjmk,\\ChapterOne\\ChapterOne\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

@@ -448,8 +448,8 @@ namespace ChapterOne.Migrations
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<string>("Rate")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Rate")
+                        .HasColumnType("int");
 
                     b.Property<string>("SKU")
                         .HasColumnType("nvarchar(max)");

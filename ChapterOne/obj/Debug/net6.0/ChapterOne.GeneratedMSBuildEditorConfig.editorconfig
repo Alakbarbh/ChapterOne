@@ -9,341 +9,349 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = ChapterOne
 build_property.RootNamespace = ChapterOne
-build_property.ProjectDir = C:\Users\VICTUS\Desktop\ChapterOne\ChapterOne\
+build_property.ProjectDir = C:\Users\VICTUS\Desktop\bghnjmk,\ChapterOne\ChapterOne\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\VICTUS\Desktop\ChapterOne\ChapterOne
+build_property.MSBuildProjectDirectory = C:\Users\VICTUS\Desktop\bghnjmk,\ChapterOne\ChapterOne
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/VICTUS/Desktop/ChapterOne/ChapterOne/Areas/Admin/Views/Author/Create.cshtml]
+[C:/Users/VICTUS/Desktop/bghnjmk\,/ChapterOne/ChapterOne/Areas/Admin/Views/Author/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQXV0aG9yXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/VICTUS/Desktop/ChapterOne/ChapterOne/Areas/Admin/Views/Author/Detail.cshtml]
+[C:/Users/VICTUS/Desktop/bghnjmk\,/ChapterOne/ChapterOne/Areas/Admin/Views/Author/Detail.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQXV0aG9yXERldGFpbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/VICTUS/Desktop/ChapterOne/ChapterOne/Areas/Admin/Views/Author/Edit.cshtml]
+[C:/Users/VICTUS/Desktop/bghnjmk\,/ChapterOne/ChapterOne/Areas/Admin/Views/Author/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQXV0aG9yXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/VICTUS/Desktop/ChapterOne/ChapterOne/Areas/Admin/Views/Author/Index.cshtml]
+[C:/Users/VICTUS/Desktop/bghnjmk\,/ChapterOne/ChapterOne/Areas/Admin/Views/Author/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQXV0aG9yXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/VICTUS/Desktop/ChapterOne/ChapterOne/Areas/Admin/Views/AutobiographyFour/Create.cshtml]
+[C:/Users/VICTUS/Desktop/bghnjmk\,/ChapterOne/ChapterOne/Areas/Admin/Views/AutobiographyFour/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQXV0b2Jpb2dyYXBoeUZvdXJcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/VICTUS/Desktop/ChapterOne/ChapterOne/Areas/Admin/Views/AutobiographyFour/Detail.cshtml]
+[C:/Users/VICTUS/Desktop/bghnjmk\,/ChapterOne/ChapterOne/Areas/Admin/Views/AutobiographyFour/Detail.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQXV0b2Jpb2dyYXBoeUZvdXJcRGV0YWlsLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/VICTUS/Desktop/ChapterOne/ChapterOne/Areas/Admin/Views/AutobiographyFour/Edit.cshtml]
+[C:/Users/VICTUS/Desktop/bghnjmk\,/ChapterOne/ChapterOne/Areas/Admin/Views/AutobiographyFour/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQXV0b2Jpb2dyYXBoeUZvdXJcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/VICTUS/Desktop/ChapterOne/ChapterOne/Areas/Admin/Views/AutobiographyFour/Index.cshtml]
+[C:/Users/VICTUS/Desktop/bghnjmk\,/ChapterOne/ChapterOne/Areas/Admin/Views/AutobiographyFour/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQXV0b2Jpb2dyYXBoeUZvdXJcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/VICTUS/Desktop/ChapterOne/ChapterOne/Areas/Admin/Views/AutobiographyOne/Create.cshtml]
+[C:/Users/VICTUS/Desktop/bghnjmk\,/ChapterOne/ChapterOne/Areas/Admin/Views/AutobiographyOne/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQXV0b2Jpb2dyYXBoeU9uZVxDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/VICTUS/Desktop/ChapterOne/ChapterOne/Areas/Admin/Views/AutobiographyOne/Detail.cshtml]
+[C:/Users/VICTUS/Desktop/bghnjmk\,/ChapterOne/ChapterOne/Areas/Admin/Views/AutobiographyOne/Detail.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQXV0b2Jpb2dyYXBoeU9uZVxEZXRhaWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/VICTUS/Desktop/ChapterOne/ChapterOne/Areas/Admin/Views/AutobiographyOne/Edit.cshtml]
+[C:/Users/VICTUS/Desktop/bghnjmk\,/ChapterOne/ChapterOne/Areas/Admin/Views/AutobiographyOne/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQXV0b2Jpb2dyYXBoeU9uZVxFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/VICTUS/Desktop/ChapterOne/ChapterOne/Areas/Admin/Views/AutobiographyOne/Index.cshtml]
+[C:/Users/VICTUS/Desktop/bghnjmk\,/ChapterOne/ChapterOne/Areas/Admin/Views/AutobiographyOne/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQXV0b2Jpb2dyYXBoeU9uZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/VICTUS/Desktop/ChapterOne/ChapterOne/Areas/Admin/Views/AutobiographyThree/Create.cshtml]
+[C:/Users/VICTUS/Desktop/bghnjmk\,/ChapterOne/ChapterOne/Areas/Admin/Views/AutobiographyThree/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQXV0b2Jpb2dyYXBoeVRocmVlXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/VICTUS/Desktop/ChapterOne/ChapterOne/Areas/Admin/Views/AutobiographyThree/Detail.cshtml]
+[C:/Users/VICTUS/Desktop/bghnjmk\,/ChapterOne/ChapterOne/Areas/Admin/Views/AutobiographyThree/Detail.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQXV0b2Jpb2dyYXBoeVRocmVlXERldGFpbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/VICTUS/Desktop/ChapterOne/ChapterOne/Areas/Admin/Views/AutobiographyThree/Edit.cshtml]
+[C:/Users/VICTUS/Desktop/bghnjmk\,/ChapterOne/ChapterOne/Areas/Admin/Views/AutobiographyThree/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQXV0b2Jpb2dyYXBoeVRocmVlXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/VICTUS/Desktop/ChapterOne/ChapterOne/Areas/Admin/Views/AutobiographyThree/Index.cshtml]
+[C:/Users/VICTUS/Desktop/bghnjmk\,/ChapterOne/ChapterOne/Areas/Admin/Views/AutobiographyThree/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQXV0b2Jpb2dyYXBoeVRocmVlXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/VICTUS/Desktop/ChapterOne/ChapterOne/Areas/Admin/Views/AutobiographyTwo/Create.cshtml]
+[C:/Users/VICTUS/Desktop/bghnjmk\,/ChapterOne/ChapterOne/Areas/Admin/Views/AutobiographyTwo/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQXV0b2Jpb2dyYXBoeVR3b1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/VICTUS/Desktop/ChapterOne/ChapterOne/Areas/Admin/Views/AutobiographyTwo/Detail.cshtml]
+[C:/Users/VICTUS/Desktop/bghnjmk\,/ChapterOne/ChapterOne/Areas/Admin/Views/AutobiographyTwo/Detail.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQXV0b2Jpb2dyYXBoeVR3b1xEZXRhaWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/VICTUS/Desktop/ChapterOne/ChapterOne/Areas/Admin/Views/AutobiographyTwo/Edit.cshtml]
+[C:/Users/VICTUS/Desktop/bghnjmk\,/ChapterOne/ChapterOne/Areas/Admin/Views/AutobiographyTwo/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQXV0b2Jpb2dyYXBoeVR3b1xFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/VICTUS/Desktop/ChapterOne/ChapterOne/Areas/Admin/Views/AutobiographyTwo/Index.cshtml]
+[C:/Users/VICTUS/Desktop/bghnjmk\,/ChapterOne/ChapterOne/Areas/Admin/Views/AutobiographyTwo/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQXV0b2Jpb2dyYXBoeVR3b1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/VICTUS/Desktop/ChapterOne/ChapterOne/Areas/Admin/Views/BrandTwo/Create.cshtml]
+[C:/Users/VICTUS/Desktop/bghnjmk\,/ChapterOne/ChapterOne/Areas/Admin/Views/BrandTwo/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQnJhbmRUd29cQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/VICTUS/Desktop/ChapterOne/ChapterOne/Areas/Admin/Views/BrandTwo/Detail.cshtml]
+[C:/Users/VICTUS/Desktop/bghnjmk\,/ChapterOne/ChapterOne/Areas/Admin/Views/BrandTwo/Detail.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQnJhbmRUd29cRGV0YWlsLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/VICTUS/Desktop/ChapterOne/ChapterOne/Areas/Admin/Views/BrandTwo/Edit.cshtml]
+[C:/Users/VICTUS/Desktop/bghnjmk\,/ChapterOne/ChapterOne/Areas/Admin/Views/BrandTwo/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQnJhbmRUd29cRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/VICTUS/Desktop/ChapterOne/ChapterOne/Areas/Admin/Views/BrandTwo/Index.cshtml]
+[C:/Users/VICTUS/Desktop/bghnjmk\,/ChapterOne/ChapterOne/Areas/Admin/Views/BrandTwo/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQnJhbmRUd29cSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/VICTUS/Desktop/ChapterOne/ChapterOne/Areas/Admin/Views/Brand/Create.cshtml]
+[C:/Users/VICTUS/Desktop/bghnjmk\,/ChapterOne/ChapterOne/Areas/Admin/Views/Brand/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQnJhbmRcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/VICTUS/Desktop/ChapterOne/ChapterOne/Areas/Admin/Views/Brand/Detail.cshtml]
+[C:/Users/VICTUS/Desktop/bghnjmk\,/ChapterOne/ChapterOne/Areas/Admin/Views/Brand/Detail.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQnJhbmRcRGV0YWlsLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/VICTUS/Desktop/ChapterOne/ChapterOne/Areas/Admin/Views/Brand/Edit.cshtml]
+[C:/Users/VICTUS/Desktop/bghnjmk\,/ChapterOne/ChapterOne/Areas/Admin/Views/Brand/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQnJhbmRcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/VICTUS/Desktop/ChapterOne/ChapterOne/Areas/Admin/Views/Brand/Index.cshtml]
+[C:/Users/VICTUS/Desktop/bghnjmk\,/ChapterOne/ChapterOne/Areas/Admin/Views/Brand/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQnJhbmRcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/VICTUS/Desktop/ChapterOne/ChapterOne/Areas/Admin/Views/Dashboard/Index.cshtml]
+[C:/Users/VICTUS/Desktop/bghnjmk\,/ChapterOne/ChapterOne/Areas/Admin/Views/Dashboard/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcRGFzaGJvYXJkXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/VICTUS/Desktop/ChapterOne/ChapterOne/Areas/Admin/Views/Gallery/Create.cshtml]
+[C:/Users/VICTUS/Desktop/bghnjmk\,/ChapterOne/ChapterOne/Areas/Admin/Views/Gallery/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcR2FsbGVyeVxDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/VICTUS/Desktop/ChapterOne/ChapterOne/Areas/Admin/Views/Gallery/Detail.cshtml]
+[C:/Users/VICTUS/Desktop/bghnjmk\,/ChapterOne/ChapterOne/Areas/Admin/Views/Gallery/Detail.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcR2FsbGVyeVxEZXRhaWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/VICTUS/Desktop/ChapterOne/ChapterOne/Areas/Admin/Views/Gallery/Edit.cshtml]
+[C:/Users/VICTUS/Desktop/bghnjmk\,/ChapterOne/ChapterOne/Areas/Admin/Views/Gallery/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcR2FsbGVyeVxFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/VICTUS/Desktop/ChapterOne/ChapterOne/Areas/Admin/Views/Gallery/Index.cshtml]
+[C:/Users/VICTUS/Desktop/bghnjmk\,/ChapterOne/ChapterOne/Areas/Admin/Views/Gallery/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcR2FsbGVyeVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/VICTUS/Desktop/ChapterOne/ChapterOne/Areas/Admin/Views/Genre/Create.cshtml]
+[C:/Users/VICTUS/Desktop/bghnjmk\,/ChapterOne/ChapterOne/Areas/Admin/Views/Genre/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcR2VucmVcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/VICTUS/Desktop/ChapterOne/ChapterOne/Areas/Admin/Views/Genre/Detail.cshtml]
+[C:/Users/VICTUS/Desktop/bghnjmk\,/ChapterOne/ChapterOne/Areas/Admin/Views/Genre/Detail.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcR2VucmVcRGV0YWlsLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/VICTUS/Desktop/ChapterOne/ChapterOne/Areas/Admin/Views/Genre/Edit.cshtml]
+[C:/Users/VICTUS/Desktop/bghnjmk\,/ChapterOne/ChapterOne/Areas/Admin/Views/Genre/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcR2VucmVcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/VICTUS/Desktop/ChapterOne/ChapterOne/Areas/Admin/Views/Genre/Index.cshtml]
+[C:/Users/VICTUS/Desktop/bghnjmk\,/ChapterOne/ChapterOne/Areas/Admin/Views/Genre/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcR2VucmVcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/VICTUS/Desktop/ChapterOne/ChapterOne/Areas/Admin/Views/Our/Create.cshtml]
+[C:/Users/VICTUS/Desktop/bghnjmk\,/ChapterOne/ChapterOne/Areas/Admin/Views/Our/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcT3VyXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/VICTUS/Desktop/ChapterOne/ChapterOne/Areas/Admin/Views/Our/Detail.cshtml]
+[C:/Users/VICTUS/Desktop/bghnjmk\,/ChapterOne/ChapterOne/Areas/Admin/Views/Our/Detail.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcT3VyXERldGFpbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/VICTUS/Desktop/ChapterOne/ChapterOne/Areas/Admin/Views/Our/Edit.cshtml]
+[C:/Users/VICTUS/Desktop/bghnjmk\,/ChapterOne/ChapterOne/Areas/Admin/Views/Our/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcT3VyXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/VICTUS/Desktop/ChapterOne/ChapterOne/Areas/Admin/Views/Our/Index.cshtml]
+[C:/Users/VICTUS/Desktop/bghnjmk\,/ChapterOne/ChapterOne/Areas/Admin/Views/Our/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcT3VyXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/VICTUS/Desktop/ChapterOne/ChapterOne/Areas/Admin/Views/Product/Index.cshtml]
+[C:/Users/VICTUS/Desktop/bghnjmk\,/ChapterOne/ChapterOne/Areas/Admin/Views/Product/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUHJvZHVjdFxDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/VICTUS/Desktop/bghnjmk\,/ChapterOne/ChapterOne/Areas/Admin/Views/Product/Detail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUHJvZHVjdFxEZXRhaWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/VICTUS/Desktop/bghnjmk\,/ChapterOne/ChapterOne/Areas/Admin/Views/Product/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUHJvZHVjdFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/VICTUS/Desktop/ChapterOne/ChapterOne/Areas/Admin/Views/Promo/Create.cshtml]
+[C:/Users/VICTUS/Desktop/bghnjmk\,/ChapterOne/ChapterOne/Areas/Admin/Views/Promo/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUHJvbW9cQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/VICTUS/Desktop/ChapterOne/ChapterOne/Areas/Admin/Views/Promo/Detail.cshtml]
+[C:/Users/VICTUS/Desktop/bghnjmk\,/ChapterOne/ChapterOne/Areas/Admin/Views/Promo/Detail.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUHJvbW9cRGV0YWlsLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/VICTUS/Desktop/ChapterOne/ChapterOne/Areas/Admin/Views/Promo/Edit.cshtml]
+[C:/Users/VICTUS/Desktop/bghnjmk\,/ChapterOne/ChapterOne/Areas/Admin/Views/Promo/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUHJvbW9cRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/VICTUS/Desktop/ChapterOne/ChapterOne/Areas/Admin/Views/Promo/Index.cshtml]
+[C:/Users/VICTUS/Desktop/bghnjmk\,/ChapterOne/ChapterOne/Areas/Admin/Views/Promo/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUHJvbW9cSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/VICTUS/Desktop/ChapterOne/ChapterOne/Areas/Admin/Views/Shared/_Layout.cshtml]
+[C:/Users/VICTUS/Desktop/bghnjmk\,/ChapterOne/ChapterOne/Areas/Admin/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/VICTUS/Desktop/ChapterOne/ChapterOne/Areas/Admin/Views/Slider/Create.cshtml]
+[C:/Users/VICTUS/Desktop/bghnjmk\,/ChapterOne/ChapterOne/Areas/Admin/Views/Slider/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2xpZGVyXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/VICTUS/Desktop/ChapterOne/ChapterOne/Areas/Admin/Views/Slider/Detail.cshtml]
+[C:/Users/VICTUS/Desktop/bghnjmk\,/ChapterOne/ChapterOne/Areas/Admin/Views/Slider/Detail.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2xpZGVyXERldGFpbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/VICTUS/Desktop/ChapterOne/ChapterOne/Areas/Admin/Views/Slider/Edit.cshtml]
+[C:/Users/VICTUS/Desktop/bghnjmk\,/ChapterOne/ChapterOne/Areas/Admin/Views/Slider/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2xpZGVyXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/VICTUS/Desktop/ChapterOne/ChapterOne/Areas/Admin/Views/Slider/Index.cshtml]
+[C:/Users/VICTUS/Desktop/bghnjmk\,/ChapterOne/ChapterOne/Areas/Admin/Views/Slider/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2xpZGVyXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/VICTUS/Desktop/ChapterOne/ChapterOne/Areas/Admin/Views/Store/Create.cshtml]
+[C:/Users/VICTUS/Desktop/bghnjmk\,/ChapterOne/ChapterOne/Areas/Admin/Views/Store/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU3RvcmVcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/VICTUS/Desktop/ChapterOne/ChapterOne/Areas/Admin/Views/Store/Detail.cshtml]
+[C:/Users/VICTUS/Desktop/bghnjmk\,/ChapterOne/ChapterOne/Areas/Admin/Views/Store/Detail.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU3RvcmVcRGV0YWlsLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/VICTUS/Desktop/ChapterOne/ChapterOne/Areas/Admin/Views/Store/Edit.cshtml]
+[C:/Users/VICTUS/Desktop/bghnjmk\,/ChapterOne/ChapterOne/Areas/Admin/Views/Store/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU3RvcmVcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/VICTUS/Desktop/ChapterOne/ChapterOne/Areas/Admin/Views/Store/Index.cshtml]
+[C:/Users/VICTUS/Desktop/bghnjmk\,/ChapterOne/ChapterOne/Areas/Admin/Views/Store/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU3RvcmVcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/VICTUS/Desktop/ChapterOne/ChapterOne/Areas/Admin/Views/Tag/Create.cshtml]
+[C:/Users/VICTUS/Desktop/bghnjmk\,/ChapterOne/ChapterOne/Areas/Admin/Views/Tag/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVGFnXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/VICTUS/Desktop/ChapterOne/ChapterOne/Areas/Admin/Views/Tag/Detail.cshtml]
+[C:/Users/VICTUS/Desktop/bghnjmk\,/ChapterOne/ChapterOne/Areas/Admin/Views/Tag/Detail.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVGFnXERldGFpbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/VICTUS/Desktop/ChapterOne/ChapterOne/Areas/Admin/Views/Tag/Edit.cshtml]
+[C:/Users/VICTUS/Desktop/bghnjmk\,/ChapterOne/ChapterOne/Areas/Admin/Views/Tag/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVGFnXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/VICTUS/Desktop/ChapterOne/ChapterOne/Areas/Admin/Views/Tag/Index.cshtml]
+[C:/Users/VICTUS/Desktop/bghnjmk\,/ChapterOne/ChapterOne/Areas/Admin/Views/Tag/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVGFnXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/VICTUS/Desktop/ChapterOne/ChapterOne/Areas/Admin/Views/Team/Create.cshtml]
+[C:/Users/VICTUS/Desktop/bghnjmk\,/ChapterOne/ChapterOne/Areas/Admin/Views/Team/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVGVhbVxDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/VICTUS/Desktop/ChapterOne/ChapterOne/Areas/Admin/Views/Team/Detail.cshtml]
+[C:/Users/VICTUS/Desktop/bghnjmk\,/ChapterOne/ChapterOne/Areas/Admin/Views/Team/Detail.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVGVhbVxEZXRhaWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/VICTUS/Desktop/ChapterOne/ChapterOne/Areas/Admin/Views/Team/Edit.cshtml]
+[C:/Users/VICTUS/Desktop/bghnjmk\,/ChapterOne/ChapterOne/Areas/Admin/Views/Team/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVGVhbVxFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/VICTUS/Desktop/ChapterOne/ChapterOne/Areas/Admin/Views/Team/Index.cshtml]
+[C:/Users/VICTUS/Desktop/bghnjmk\,/ChapterOne/ChapterOne/Areas/Admin/Views/Team/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVGVhbVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/VICTUS/Desktop/ChapterOne/ChapterOne/Areas/Admin/Views/Wrapper/Create.cshtml]
+[C:/Users/VICTUS/Desktop/bghnjmk\,/ChapterOne/ChapterOne/Areas/Admin/Views/Wrapper/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcV3JhcHBlclxDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/VICTUS/Desktop/ChapterOne/ChapterOne/Areas/Admin/Views/Wrapper/Detail.cshtml]
+[C:/Users/VICTUS/Desktop/bghnjmk\,/ChapterOne/ChapterOne/Areas/Admin/Views/Wrapper/Detail.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcV3JhcHBlclxEZXRhaWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/VICTUS/Desktop/ChapterOne/ChapterOne/Areas/Admin/Views/Wrapper/Edit.cshtml]
+[C:/Users/VICTUS/Desktop/bghnjmk\,/ChapterOne/ChapterOne/Areas/Admin/Views/Wrapper/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcV3JhcHBlclxFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/VICTUS/Desktop/ChapterOne/ChapterOne/Areas/Admin/Views/Wrapper/Index.cshtml]
+[C:/Users/VICTUS/Desktop/bghnjmk\,/ChapterOne/ChapterOne/Areas/Admin/Views/Wrapper/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcV3JhcHBlclxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/VICTUS/Desktop/ChapterOne/ChapterOne/Areas/Admin/Views/_ViewImports.cshtml]
+[C:/Users/VICTUS/Desktop/bghnjmk\,/ChapterOne/ChapterOne/Areas/Admin/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/VICTUS/Desktop/ChapterOne/ChapterOne/Areas/Admin/Views/_ViewStart.cshtml]
+[C:/Users/VICTUS/Desktop/bghnjmk\,/ChapterOne/ChapterOne/Areas/Admin/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/VICTUS/Desktop/ChapterOne/ChapterOne/Views/About/Index.cshtml]
+[C:/Users/VICTUS/Desktop/bghnjmk\,/ChapterOne/ChapterOne/Views/About/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWJvdXRcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/VICTUS/Desktop/ChapterOne/ChapterOne/Views/Blog/Index.cshtml]
+[C:/Users/VICTUS/Desktop/bghnjmk\,/ChapterOne/ChapterOne/Views/Blog/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmxvZ1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/VICTUS/Desktop/ChapterOne/ChapterOne/Views/Cart/Index.cshtml]
+[C:/Users/VICTUS/Desktop/bghnjmk\,/ChapterOne/ChapterOne/Views/Cart/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FydFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/VICTUS/Desktop/ChapterOne/ChapterOne/Views/Contact/Index.cshtml]
+[C:/Users/VICTUS/Desktop/bghnjmk\,/ChapterOne/ChapterOne/Views/Contact/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udGFjdFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/VICTUS/Desktop/ChapterOne/ChapterOne/Views/Error/Index.cshtml]
+[C:/Users/VICTUS/Desktop/bghnjmk\,/ChapterOne/ChapterOne/Views/Error/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXJyb3JcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/VICTUS/Desktop/ChapterOne/ChapterOne/Views/Home/Index.cshtml]
+[C:/Users/VICTUS/Desktop/bghnjmk\,/ChapterOne/ChapterOne/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/VICTUS/Desktop/ChapterOne/ChapterOne/Views/Shared/Components/Footer/Default.cshtml]
+[C:/Users/VICTUS/Desktop/bghnjmk\,/ChapterOne/ChapterOne/Views/Shared/Components/Footer/Default.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcRm9vdGVyXERlZmF1bHQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/VICTUS/Desktop/ChapterOne/ChapterOne/Views/Shared/Components/Header/Default.cshtml]
+[C:/Users/VICTUS/Desktop/bghnjmk\,/ChapterOne/ChapterOne/Views/Shared/Components/Header/Default.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcSGVhZGVyXERlZmF1bHQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/VICTUS/Desktop/ChapterOne/ChapterOne/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/VICTUS/Desktop/bghnjmk\,/ChapterOne/ChapterOne/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/VICTUS/Desktop/ChapterOne/ChapterOne/Views/Shop/Index.cshtml]
+[C:/Users/VICTUS/Desktop/bghnjmk\,/ChapterOne/ChapterOne/Views/Shop/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hvcFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/VICTUS/Desktop/ChapterOne/ChapterOne/Views/Wishlist/Index.cshtml]
+[C:/Users/VICTUS/Desktop/bghnjmk\,/ChapterOne/ChapterOne/Views/Wishlist/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV2lzaGxpc3RcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/VICTUS/Desktop/ChapterOne/ChapterOne/Views/_ViewImports.cshtml]
+[C:/Users/VICTUS/Desktop/bghnjmk\,/ChapterOne/ChapterOne/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/VICTUS/Desktop/ChapterOne/ChapterOne/Views/_ViewStart.cshtml]
+[C:/Users/VICTUS/Desktop/bghnjmk\,/ChapterOne/ChapterOne/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/VICTUS/Desktop/ChapterOne/ChapterOne/Views/Shared/_Layout.cshtml]
+[C:/Users/VICTUS/Desktop/bghnjmk\,/ChapterOne/ChapterOne/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-n94xaf6yxf
