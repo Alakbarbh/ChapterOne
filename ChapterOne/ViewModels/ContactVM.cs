@@ -6,5 +6,6 @@ namespace ChapterOne.ViewModels
     {
         public List<Store> Stores { get; set; }
         public List<BrandTwo> BrandTwos { get; set; }
+        public Dictionary<string, string> HeaderBackgrounds { get; set; }
     }
 }

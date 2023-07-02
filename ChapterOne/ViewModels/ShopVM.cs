@@ -12,5 +12,6 @@ namespace ChapterOne.ViewModels
         public List<Author> Authors { get; set; }
         public Paginate<Product> PaginateProduct { get; set; }
         public List<Tag> Tags { get; set; }
+        public Dictionary<string, string> HeaderBackgrounds { get; set; }
     }
 }

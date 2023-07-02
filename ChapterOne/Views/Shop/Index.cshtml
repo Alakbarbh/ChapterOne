@@ -1,4 +1,8 @@
 ﻿@model ShopVM
+@{
+    ViewData["Title"] = "Index";
+    int sumCategoryProducts = 0;
+}
 <!-- Main Area -->
 <main>
     <section id="background">
@@ -24,8 +28,9 @@
                             </select>
                         </div>
                     </div>
-                    <div class="row">
-                        @foreach (var product in Model.Products)
+                    <div class="row product-list">
+                        <partial name="_ProductsPartial" model="@Model.PaginateProduct.Datas" />
+                        @*@foreach (var product in Model.Products)
                         {
                             <div class="col-lg-4 col-md-6 col-sm-12 all-products">
                                 <div class="products">
@@ -52,7 +57,7 @@
                                    title="Add To Cart"></i>
                                 </div>
                             </div>
-                        }
+                        }*@
                         
                         
                     </div>
@@ -149,6 +154,14 @@
                         </div>
 
                         <div class="product-categories">
+
+                            @foreach (var genre in Model.Genres)
+                            {
+                                <div class="product-category">
+                                    <p>All</p>
+                                    <span>( 12 )</span>
+                                </div>
+                            }
                             @foreach (var genre in Model.Genres)
                             {
                                 <div class="product-category">
@@ -176,8 +189,16 @@
                         <div class="product-categories">
                             @foreach (var author in Model.Authors)
                             {
+                                sumCategoryProducts += (int)author.ProductAuthors?.Count();
+                            }
+                            <div class="product-category">
+                                <p class="all-product">All</p>
+                                <span>(@sumCategoryProducts)</span>
+                            </div>
+                            @foreach (var author in Model.Authors)
+                            {
                                 <div class="product-category">
-                                    <p>@author.Name</p>
+                                    <p class="genre" data-id="@author.Id">@author.Name</p>
                                     <span>( 13 )</span>
                                 </div>
                             }

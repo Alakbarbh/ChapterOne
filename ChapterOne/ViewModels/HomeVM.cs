@@ -12,5 +12,6 @@ namespace ChapterOne.ViewModels
         public List<Gallery> Galleries { get; set; }
         public List<Team> Teams { get; set; }
         public List<Position> Positions { get; set; }
+        public Dictionary<string, string> HeaderBackgrounds { get; set; }
     }
 }

@@ -33,7 +33,7 @@ namespace ChapterOne.Controllers
             List<AutobiographyThree> autobiographyThrees = await _autobiographyThreeService.GetAllAsync();
             List<AutobiographyFour> autobiographyFours = await _autobiographyFourService.GetAllAsync();
             List<Promo> promos = await _promoService.GetAllAsync();
-
+            Dictionary<string, string> headerBackground = _context.HeaderBackgrounds.AsEnumerable().ToDictionary(m => m.Key, m => m.Value);
 
             AboutVM model = new()
             {
@@ -41,6 +41,7 @@ namespace ChapterOne.Controllers
                 AutobiographyThrees = autobiographyThrees,
                 AutobiographyFours = autobiographyFours,
                 Promos = promos,
+                HeaderBackgrounds = headerBackground,
             };
 
             return View(model);

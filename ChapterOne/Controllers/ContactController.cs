@@ -29,12 +29,13 @@ namespace ChapterOne.Controllers
         {
             List<Store> stores = await _storeService.GetAllAsync();
             List<BrandTwo> brandTwos = await _brandTwoService.GetAllAsync();
-
+            Dictionary<string, string> headerBackground = _context.HeaderBackgrounds.AsEnumerable().ToDictionary(m => m.Key, m => m.Value);
 
             ContactVM model = new()
             {
                 Stores = stores,
                 BrandTwos = brandTwos,
+                HeaderBackgrounds = headerBackground,
             };
 
             return View(model);

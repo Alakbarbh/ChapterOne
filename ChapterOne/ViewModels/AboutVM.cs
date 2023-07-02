@@ -8,5 +8,6 @@ namespace ChapterOne.ViewModels
         public List<AutobiographyThree> AutobiographyThrees { get; set; }
         public List<AutobiographyFour> AutobiographyFours { get; set; }
         public List<Promo> Promos { get; set; }
+        public Dictionary<string, string> HeaderBackgrounds { get; set; }
     }
 }

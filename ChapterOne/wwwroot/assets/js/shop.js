@@ -28,6 +28,45 @@ $(document).ready(function () {
     });
   });
 
-  validateRange(inputElements[0].value, inputElements[1].value);
+    validateRange(inputElements[0].value, inputElements[1].value);
+
+
+    ////get products by category  on click category
+    $(document).on("click", ".genre", function (e) {
+
+        e.preventDefault();
+        let colorId = $(this).attr("data-id");
+        let parent = $(".product-list")
+        $.ajax({
+
+            url: `shop/GetProductByCategory?id=${colorId}`,
+            type: "Get",
+
+            success: function (res) {
+                $(parent).html(res);
+            }
+        })
+
+
+
+    })
+
+
+    //get all products by category  on click All
+    $(document).on("click", ".all-product", function (e) {
+
+        e.preventDefault();
+        let parent = $(".product-list")
+        $.ajax({
+
+            url: "shop/GetAllProduct",
+            type: "Get",
+
+            success: function (res) {
+                $(parent).html(res);
+            }
+        })
+
+    })
 
 })

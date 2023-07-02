@@ -15,7 +15,7 @@ namespace ChapterOne.Services
 
         public async Task<List<Author>> GetAllAsync()
         {
-            return await _context.Authors.Where(m => !m.SoftDelete).ToListAsync();
+            return await _context.Authors.Include(m => m.ProductAuthors).Where(m => !m.SoftDelete).ToListAsync();
         }
 
         public async Task<Author> GetByIdAsync(int? id)

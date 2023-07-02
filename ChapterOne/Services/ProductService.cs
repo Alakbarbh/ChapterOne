@@ -18,6 +18,7 @@ namespace ChapterOne.Services
                                                                                        .Include(m => m.ProductComments)
                                                                                        .Include(m => m.ProductGenres)
                                                                                        .Include(m => m.ProductAuthors)
+                                                                                       .ThenInclude(m => m.Author)
                                                                                        .ToListAsync();
 
         public async Task<Product> GettFullDataById(int id)

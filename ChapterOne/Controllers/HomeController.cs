@@ -47,6 +47,7 @@ namespace ChapterOne.Controllers
             List<Brand> brands = await _brandService.GetAllAsync();
             List<Gallery> galleries = await _galleryService.GetAllAsync();
             List<Team> teams = await _teamService.GetAllAsync();
+            Dictionary<string, string> headerBackground = _context.HeaderBackgrounds.AsEnumerable().ToDictionary(m => m.Key, m => m.Value);
 
             HomeVM model = new()
             {
@@ -57,6 +58,7 @@ namespace ChapterOne.Controllers
                 Brands = brands,
                 Galleries = galleries,
                 Teams = teams,
+                HeaderBackgrounds = headerBackground
             };
 
             return View(model);
