@@ -1,20 +1,24 @@
 ﻿@model List<Product>
 
+@{
+    ViewData["Title"] = "ProductDetail";
+}
+
 @foreach (var product in Model)
 {
     <div class="col-lg-4 col-md-6 col-sm-12 all-products">
         <div class="products">
             <div class="image">
-                <a href="ProductDetail.html">
+                <a asp-controller="Shop" asp-action="ProductDetail" asp-route-id="@product.Id">
                     <img src="~/assets/images/shop/@product.Image"
                      alt="">
                 </a>
             </div>
             <div class="name">
-                <a href="ProductDetail.html">@product.ProductAuthors.FirstOrDefault().Author.Name</a>
+                <a asp-controller="Shop" asp-action="ProductDetail" asp-route-id="@product.Id">@product.ProductAuthors?.FirstOrDefault().Author.Name</a>
             </div>
             <div class="category-name">
-                <a href="ProductDetail.html">@product.Name</a>
+                <a asp-controller="Shop" asp-action="ProductDetail" asp-route-id="@product.Id">@product.Name</a>
             </div>
             <div class="price-button">
                 <p>$@product.Price</p>

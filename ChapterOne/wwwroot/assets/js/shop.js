@@ -31,15 +31,15 @@ $(document).ready(function () {
     validateRange(inputElements[0].value, inputElements[1].value);
 
 
-    ////get products by category  on click category
-    $(document).on("click", ".genre", function (e) {
+    //get products by author 
+    $(document).on("click", ".author", function (e) {
 
         e.preventDefault();
-        let colorId = $(this).attr("data-id");
+        let authorId = $(this).attr("data-id");
         let parent = $(".product-list")
         $.ajax({
 
-            url: `shop/GetProductByCategory?id=${colorId}`,
+            url: `/shop/GetProductByAuthor?id=${authorId}`,
             type: "Get",
 
             success: function (res) {
@@ -47,9 +47,28 @@ $(document).ready(function () {
             }
         })
 
+    })
 
+
+
+    ////get products by author 
+    $(document).on("click", ".genre", function (e) {
+
+        e.preventDefault();
+        let genreId = $(this).attr("data-id");
+        let parent = $(".product-list")
+        $.ajax({
+
+            url: `/shop/GetProductByGenre?id=${genreId}`,
+            type: "Get",
+
+            success: function (res) {
+                $(parent).html(res);
+            }
+        })
 
     })
+
 
 
     //get all products by category  on click All
@@ -65,6 +84,46 @@ $(document).ready(function () {
             success: function (res) {
                 $(parent).html(res);
             }
+        })
+
+    })
+
+
+    $(document).on("click", ".product-tag", function (e) {
+
+        e.preventDefault();
+        let tagId = $(this).attr("data-id");
+        let parent = $(".product-list")
+        $.ajax({
+
+            url: `shop/GetProductsByTag?id=${tagId}`,
+            type: "Get",
+
+            success: function (res) {
+                $(parent).html(res);
+            }
+        })
+
+    })
+
+
+    $(document).on("keyup", ".input-field", function () {
+        $("#search-list li").slice(1).remove();
+        let value = $(".input-field").val();
+
+        $.ajax({
+
+            url: `shop/search?searchText=${value}`,
+
+            type: "Get",
+
+            success: function (res) {
+
+                $("#search-list").append(res);
+            }
+
+
+
         })
 
     })

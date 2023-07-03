@@ -1,4 +1,5 @@
-﻿using ChapterOne.Data;
+﻿using ChapterOne.Areas.Admin.ViewModels;
+using ChapterOne.Data;
 using ChapterOne.Helpers;
 using ChapterOne.Models;
 using ChapterOne.Services.Interfaces;
@@ -6,6 +7,7 @@ using ChapterOne.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Drawing;
+using ProductDetailVM = ChapterOne.ViewModels.ProductDetailVM;
 
 namespace ChapterOne.Controllers
 {
@@ -30,6 +32,7 @@ namespace ChapterOne.Controllers
             _authorService = authorService;
             _tagService = tagService;
         }
+
 
         public async Task<IActionResult> Index(int page = 1, int take = 5, int? cateId = null)
         {
@@ -58,6 +61,7 @@ namespace ChapterOne.Controllers
             return View(model);
         }
 
+
         private async Task<int> GetPageCountAsync(int take)
         {
             var productCount = await _productService.GetCountAsync();
@@ -75,7 +79,7 @@ namespace ChapterOne.Controllers
 
         public async Task<IActionResult> GetProductByAuthor(int? id)
         {
-            List<Product> products = await _context.ProductAuthors.Include(m => m.Product).ThenInclude(m => m.ProductAuthors).Where(m => m.AuthorId == id).Select(m => m.Product).ToListAsync();
+            List<Product> products = await _context.ProductAuthors.Include(m => m.Author).Include(m => m.Product).Where(m => m.AuthorId == id).Select(m => m.Product).ToListAsync();
 
             return PartialView("_ProductsPartial", products);
         }
@@ -97,13 +101,54 @@ namespace ChapterOne.Controllers
         }
 
 
-
-
         public async Task<IActionResult> GetProductFilteredByPrice(string icon)
         {
             List<Product> products = await _context.Products.OrderByDescending(m => m.Price).ToListAsync();
 
             return PartialView("_ProductsPartial", products);
         }
+
+
+        public async Task<IActionResult> Search(string searchText)
+        {
+            List<Product> products = await _context.Products.Include(m => m.Image)
+                                            .Include(m => m.ProductGenres)
+                                            .Include(m => m.ProductAuthors)
+                                            .Include(m => m.ProductTags)
+                                            .Where(m => m.Name.ToLower().Contains(searchText.ToLower()))
+                                            .Take(5)
+                                            .ToListAsync();
+            return PartialView("_SearchPartial", products);
+        }
+
+
+        public async Task<IActionResult> ProductDetail(int? id)
+        {
+            Product productDt = await _productService.GettFullDataById((int)id);
+            Dictionary<string, string> headerBackgrounds = _context.HeaderBackgrounds.AsEnumerable().ToDictionary(m => m.Key, m => m.Value);
+            List<Genre> genres = await _genreService.GetAllAsync();
+            List<Product> releatedProducts = new();
+
+            List<ProductComment> productComments = await _context.ProductComments.Include(m => m.AppUser).Where(m => m.ProductId == id).ToListAsync();
+            CommentVM commentVM = new CommentVM();
+
+            foreach (var genre in genres)
+            {
+                Product releatedProduct = await _context.ProductGenres.Include(m => m.Product).Where(m => m.Genre.Id == genre.Id).Select(m => m.Product).FirstAsync();
+                releatedProducts.Add(releatedProduct);
+            }
+
+            ProductDetailVM model = new()
+            {
+                ProductDt = productDt,
+                HeaderBackgrounds = headerBackgrounds,
+                RelatedProducts = releatedProducts,
+                CommentVM = commentVM,
+                ProductComments = productComments
+            };
+
+            return View(model);
+        }
+
     }
 }

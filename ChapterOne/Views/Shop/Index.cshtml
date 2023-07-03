@@ -2,6 +2,7 @@
 @{
     ViewData["Title"] = "Index";
     int sumCategoryProducts = 0;
+    int sumCategoryProductss = 0;
 }
 <!-- Main Area -->
 <main>
@@ -30,36 +31,6 @@
                     </div>
                     <div class="row product-list">
                         <partial name="_ProductsPartial" model="@Model.PaginateProduct.Datas" />
-                        @*@foreach (var product in Model.Products)
-                        {
-                            <div class="col-lg-4 col-md-6 col-sm-12 all-products">
-                                <div class="products">
-                                    <div class="image">
-                                        <a href="ProductDetail.html">
-                                            <img src="~/assets/images/shop/@product.Image"
-                                             alt="">
-                                        </a>
-                                    </div>
-                                    <div class="name">
-                                        <a href="ProductDetail.html">@product.ProductAuthors.FirstOrDefault().Author.Name</a>
-                                    </div>
-                                    <div class="category-name">
-                                        <a href="ProductDetail.html">@product.Name</a>
-                                    </div>
-                                    <div class="price-button">
-                                        <p>$@product.Price</p>
-                                    </div>
-                                </div>
-                                <div class="wishlist-cart">
-                                    <i class="fa-solid fa-heart" data-toggle="tooltip" data-placement="top"
-                                   title="Add To Wishlist"></i>
-                                    <i class="fa-solid fa-cart-shopping" data-toggle="tooltip" data-placement="top"
-                                   title="Add To Cart"></i>
-                                </div>
-                            </div>
-                        }*@
-                        
-                        
                     </div>
                     <div class="pagination">
                         <div class="left-icon">
@@ -78,7 +49,17 @@
                 <div class="col-lg-3 col-sm-12">
                     <div class="right-section">
                         <div class="search">
-                            <input type="text" placeholder="Search">
+                            <form id="widgets-searchbox">
+                                <ul id="search-list">
+                                    <li>
+                                        <input class="input-field"
+                                               type="text"
+                                               placeholder="Search" />
+                                    </li>
+                                </ul>
+                                
+                            </form>
+                            
                         </div>
 
                         <div class="product-price mt-5">
@@ -157,16 +138,17 @@
 
                             @foreach (var genre in Model.Genres)
                             {
-                                <div class="product-category">
-                                    <p>All</p>
-                                    <span>( 12 )</span>
-                                </div>
+                                sumCategoryProducts += (int)genre.ProductGenres?.Count();
                             }
+                            <div class="product-category">
+                                <p class="all-product">All</p>
+                                <span>( @sumCategoryProducts )</span>
+                            </div>
                             @foreach (var genre in Model.Genres)
                             {
                                 <div class="product-category">
-                                    <p>@genre.Name</p>
-                                    <span>( 13 )</span>
+                                    <p data-id="@genre.Id" class="genre">@genre.Name</p>
+                                    <span>( @genre.ProductGenres?.Count() )</span>
                                 </div>
                             }
                         </div>
@@ -189,17 +171,17 @@
                         <div class="product-categories">
                             @foreach (var author in Model.Authors)
                             {
-                                sumCategoryProducts += (int)author.ProductAuthors?.Count();
+                                sumCategoryProductss += (int)author.ProductAuthors?.Count();
                             }
                             <div class="product-category">
                                 <p class="all-product">All</p>
-                                <span>(@sumCategoryProducts)</span>
+                                <span>(@sumCategoryProductss)</span>
                             </div>
                             @foreach (var author in Model.Authors)
                             {
                                 <div class="product-category">
-                                    <p class="genre" data-id="@author.Id">@author.Name</p>
-                                    <span>( 13 )</span>
+                                    <p data-id="@author.Id" class="author">@author.Name</p>
+                                    <span>(@author.ProductAuthors?.Count())</span>
                                 </div>
                             }
                         </div>
@@ -222,7 +204,7 @@
                         <div class="tags-name">
                             @foreach (var tag in Model.Tags)
                             {
-                                <p>@tag.Name</p>
+                                <p data-id="@tag.Id" class="product-tag">@tag.Name</p>
                             }
                         </div>
                         <div class="borders">

@@ -1,0 +1,256 @@
+﻿@model ProductDetailVM
+
+@inject UserManager<AppUser> userManager;
+
+<!-- Main Area -->
+<main>
+    <section id="background">
+        <div class="background-images" style="background-image:url(/assets/images/product-detail/bacground.jpg)">
+            <h2>Product Detail</h2>
+        </div>
+    </section>
+    <section id="detail">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-sm-12">
+                    <div class="product-image">
+                        <img src="~/assets/images/shop/@Model.ProductDt?.Image" alt="">
+                    </div>
+                </div>
+                <div class="col-lg-8 col-sm-12">
+                    <div class="section-1">
+                        <div class="name">
+                            <p>BY @Model.ProductDt.ProductAuthors?.FirstOrDefault().Author.Name</p>
+                        </div>
+                        <div class="wellness">
+                            <h2>@Model.ProductDt.ProductAuthors?.FirstOrDefault().Product.Name</h2>
+                        </div>
+                        <div class="price">
+                            <p>$@Model.ProductDt.Price</p>
+                        </div>
+                        <div class="description">
+                            <p>
+                                @Model.ProductDt.Description
+                            </p>
+                        </div>
+                        <div class="add-basket-button d-flex">
+                            <button>ADD TO BASKET</button>
+                            <button>ADD TO WISHLIST</button>
+                        </div>
+                        <div class="sku-code">
+                            <p>SKU:</p>
+                            <span>@Model.ProductDt.SKU</span>
+                        </div>
+                        <div class="categories">
+                            <p>Genre: </p>
+                            <span> @Model.ProductDt.ProductGenres?.FirstOrDefault().Genre.Name</span>
+                        </div>
+                        <div class="tags">
+                            <p>Tags:</p>
+                            <span>@Model.ProductDt.ProductTags?.FirstOrDefault().Tag.Name</span>
+                        </div>
+
+                        <div class="border"></div>
+
+                        <div class="authorimage-authorname">
+                            <div class="author-image">
+                                <img src="~/assets/images/product-detail/user-1.png" alt="">
+                            </div>
+                            <div class="author-name">
+                                <p>France</p>
+                                <span>Jane Doe</span>
+                            </div>
+                        </div>
+
+                        <div class="author-description">
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                                exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                                irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                                pariatur.
+                            </p>
+                        </div>
+
+                        <div class="border mt-5"></div>
+
+                        <div class="author-comment">
+                            <div class="starts">
+                                <i class="fa-solid fa-star text-danger"></i>
+                                <i class="fa-solid fa-star text-danger"></i>
+                                <i class="fa-solid fa-star text-danger"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                            </div>
+
+                            <div class="comment">
+                                <p>
+                                    "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+                                    nostrud exercitation ullamco laboris nisi ut aliquip ex ea."
+                                </p>
+                            </div>
+
+                            <div class="logo-name">
+                                <div class="logo-image">
+                                    <img src="~/assets/images/product-detail/logo-1.png" alt="">
+                                </div>
+                                <div class="names">
+                                    <p>Michael Lord - New York Times</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="author-comment mt-3">
+                            <div class="starts">
+                                <i class="fa-solid fa-star text-danger"></i>
+                                <i class="fa-solid fa-star text-danger"></i>
+                                <i class="fa-solid fa-star text-danger"></i>
+                                <i class="fa-solid fa-star text-danger"></i>
+                                <i class="fa-solid fa-star text-danger"></i>
+                            </div>
+
+                            <div class="comment">
+                                <p>
+                                    "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+                                    nostrud exercitation ullamco laboris nisi ut aliquip ex ea."
+                                </p>
+                            </div>
+
+                            <div class="logo-name">
+                                <div class="logo-image">
+                                    <img src="~/assets/images/product-detail/logo-2.png" alt="">
+                                </div>
+                                <div class="names">
+                                    <p>Joanne Smith - Huffington Post</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="author-comment mt-3">
+                            <div class="starts">
+                                <i class="fa-solid fa-star text-danger"></i>
+                                <i class="fa-solid fa-star text-danger"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                            </div>
+
+                            <div class="comment">
+                                <p>
+                                    "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+                                    nostrud exercitation ullamco laboris nisi ut aliquip ex ea."
+                                </p>
+                            </div>
+
+                            <div class="logo-name">
+                                <div class="logo-image">
+                                    <img src="~/assets/images/product-detail/logo-3.png" alt="">
+                                </div>
+                                <div class="names">
+                                    <p>Minnie Loyd - The Guardian</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <section id="review-area">
+        <div class="container">
+            <div class="tab-menu">
+                <ul id="myBtnContainer">
+                    <li onclick="filterSelection('description')" class="item1 active btn-tab" data-id="description">
+                        <a>Description</a>
+                    </li>
+                    <li onclick="filterSelection('additional')" class="item2 btn-tab" data-id="additional">
+                        <a>
+                            Additional
+                        </a>
+                    </li>
+                    <li onclick="filterSelection('reviews')" class="item3 btn-tab" data-id="reviews">
+                        <a>
+                            Reviews
+                            <span>(0)</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="filterDiv description">
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+                    labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                    laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+                    voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+                    non proident.
+                </p>
+            </div>
+            <div class="additional-information filterDiv description d-none">
+                <p>Weight:0.5 kg</p>
+                <p>Dimensions:56 × 23 × 27 cm</p>
+                <p>Type:Paperback, Hardcover, Audiobook, Audio CD, Kindle</p>
+            </div>
+            <div class="user-comment filterDiv reviews d-none">
+                <p>Leave a comment</p>
+                <div class="stars">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                </div>
+                <input class="mt-4" type="text" placeholder="Your Name">
+                <input type="email" placeholder="Your Email" class="mt-3">
+                <input type="text" placeholder="Subject" class="mt-3">
+                <textarea name="" id="" cols="30" rows="10" class="mt-3" placeholder="Your Review"></textarea>
+                <div class="submit-button">
+                    <button>Submit</button>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <section id="related-products">
+        <div class="container">
+            <div class="related-products-word">
+                <h2>Related products</h2>
+            </div>
+            <div class="border mt-4"></div>
+
+            <div class="row">
+                @foreach (var relatedProduct in Model.RelatedProducts)
+                {
+                    <div class="col-lg-2 col-md-6 col-sm-12">
+                    <div class="related-products">
+                        <div class="image">
+                            <a asp-action="ProductDetail" asp-route-id="@relatedProduct.Id">
+                                <img src="~/assets/images/shop/@relatedProduct.Image" alt="">
+                            </a>
+                        </div>
+                        <div class="author-name">
+                            <p>@relatedProduct.ProductAuthors?.FirstOrDefault().Author.Name</p>
+                        </div>
+                        <div class="book-name">
+                            <span>@relatedProduct.Name</span>
+                        </div>
+                        <div class="book-price">
+                            <p>$@relatedProduct.Price</p>
+                        </div>
+                    </div>
+                </div>
+                }
+                
+                
+            </div>
+        </div>
+    </section>
+</main>
+<!-- Main Area -->
+@section Scripts{
+    <script src="~/assets/js/productdetail.js"></script>
+}
+

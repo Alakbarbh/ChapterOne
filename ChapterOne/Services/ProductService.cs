@@ -17,7 +17,7 @@ namespace ChapterOne.Services
                                                                                        .ThenInclude(m => m.Tag)
                                                                                        .Include(m => m.ProductComments)
                                                                                        .Include(m => m.ProductGenres)
-                                                                                       .Include(m => m.ProductAuthors)
+                                                                                       .ThenInclude(m => m.Genre)                                                                                       .Include(m => m.ProductAuthors)
                                                                                        .ThenInclude(m => m.Author)
                                                                                        .ToListAsync();
 

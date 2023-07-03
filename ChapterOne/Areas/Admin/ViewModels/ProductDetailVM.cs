@@ -1,4 +1,5 @@
 ﻿using ChapterOne.Models;
+using ChapterOne.ViewModels;
 
 namespace ChapterOne.Areas.Admin.ViewModels
 {
