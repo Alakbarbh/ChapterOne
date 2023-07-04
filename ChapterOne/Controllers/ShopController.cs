@@ -4,6 +4,7 @@ using ChapterOne.Helpers;
 using ChapterOne.Models;
 using ChapterOne.Services.Interfaces;
 using ChapterOne.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Drawing;
@@ -109,6 +110,18 @@ namespace ChapterOne.Controllers
         }
 
 
+        public async Task<IActionResult> MainSearch(string searchText)
+        {
+            var products = await _context.Products
+                                .Include(m => m.ProductGenres)?
+                                .OrderByDescending(m => m.Id)
+                                .Where(m => !m.SoftDelete && m.Name.ToLower().Trim().Contains(searchText.ToLower().Trim()))
+                                .ToListAsync();
+
+            return View(products);
+        }
+
+
         public async Task<IActionResult> Search(string searchText)
         {
             List<Product> products = await _context.Products.Include(m => m.Image)
@@ -149,6 +162,36 @@ namespace ChapterOne.Controllers
 
             return View(model);
         }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Authorize]
+        public async Task<IActionResult> PostComment(ProductDetailVM productDetailVM, string userId, int productId)
+        {
+            if (productDetailVM.CommentVM.Message == null)
+            {
+                ModelState.AddModelError("Message", "Don't empty");
+                return RedirectToAction(nameof(ProductDetail), new { id = productId });
+            }
+
+            ProductComment productComment = new()
+            {
+                FullName = productDetailVM.CommentVM?.FullName,
+                Email = productDetailVM.CommentVM?.Email,
+                Subject = productDetailVM.CommentVM?.Subject,
+                Message = productDetailVM.CommentVM?.Message,
+                AppUserId = userId,
+                ProductId = productId
+            };
+
+            await _context.ProductComments.AddAsync(productComment);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction(nameof(ProductDetail), new { id = productId });
+
+        }
+
 
     }
 }

@@ -110,22 +110,17 @@ $(document).ready(function () {
     $(document).on("keyup", ".input-field", function () {
         $("#search-list li").slice(1).remove();
         let value = $(".input-field").val();
-
         $.ajax({
-
             url: `shop/search?searchText=${value}`,
-
             type: "Get",
-
             success: function (res) {
 
                 $("#search-list").append(res);
             }
-
-
-
         })
-
     })
+
+
+    
 
 })

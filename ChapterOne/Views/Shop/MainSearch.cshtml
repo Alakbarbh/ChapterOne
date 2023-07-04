@@ -1,0 +1,47 @@
+﻿@model List<Product>
+@{
+    ViewData["Title"] = "Search";
+}
+
+@section Css{
+    <link href="~/assets/scss/home.scss" rel="stylesheet" />
+}
+<div class="container">
+
+    @if (Model.Count() == 0)
+    {
+        <h1 class="d-flex justify-content-center">Product not found</h1>
+    }
+
+
+    @foreach (var product in Model)
+    {
+        <div class="col-lg-4 col-md-6 col-sm-12 all-products">
+            <div class="products">
+                <div class="image">
+                    <a asp-controller="Shop" asp-action="ProductDetail" asp-route-id="@product.Id">
+                        <img src="~/assets/images/shop/@product.Image"
+                         alt="">
+                    </a>
+                </div>
+                <div class="name">
+                    <a asp-controller="Shop" asp-action="ProductDetail" asp-route-id="@product.Id">@product.ProductAuthors?.FirstOrDefault().Author.Name</a>
+                </div>
+                <div class="category-name">
+                    <a asp-controller="Shop" asp-action="ProductDetail" asp-route-id="@product.Id">@product.Name</a>
+                </div>
+                <div class="price-button">
+                    <p>$@product.Price</p>
+                </div>
+            </div>
+            <div class="wishlist-cart">
+                <i class="fa-solid fa-heart" data-toggle="tooltip" data-placement="top"
+               title="Add To Wishlist"></i>
+                <i class="fa-solid fa-cart-shopping" data-toggle="tooltip" data-placement="top"
+               title="Add To Cart"></i>
+            </div>
+        </div>
+    }
+
+
+</div>

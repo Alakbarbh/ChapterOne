@@ -45,13 +45,33 @@
                     </div>
                     <div class="search-input d-none">
                         <div class="border"></div>
-                        <input type="text" placeholder="Search">
+                        <form action="#" class="hm-searchbox">
+                            <input class="input-search" type="text" placeholder="Search">
+                        </form>
                         <div class="border"></div>
                     </div>
                     <div class="login-register d-none">
-                        <a asp-controller="Account" asp-action="Login">Login</a>
-                        <div class="border"></div>
-                        <a asp-controller="Account" asp-action="Register">Register</a>
+                        <ul style="list-style:none;">
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <li>
+                                    <a class="dropdown-item" href="my-account.html">@User.Identity.Name</a>
+                                </li>
+                                <div class="border"></div>
+                                <li class="nav-item">
+                                    <form asp-controller="Account" asp-action="Logout" method="post">
+                                        <button style="border:none;color:black;margin-left:50px;background-color:white" type="submit" class="nav-link">Logout</button>
+                                    </form>
+                                </li>
+                            }
+                            else
+                            {
+                                <a asp-controller="Account" asp-action="Login">Login</a>
+                                <div class="border"></div>
+                                <a asp-controller="Account" asp-action="Register">Register</a>
+                            }
+                        </ul>
+
                     </div>
                 </div>
             </div>

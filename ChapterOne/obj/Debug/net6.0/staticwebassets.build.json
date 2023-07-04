@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "x/Y8uhFe8Ypg60/vIbj762mEi0jhBefzatYn28AovQI=",
+  "Hash": "uYwcQV3s5U+v9FtobYK20yszOe5o1LiOfdhGyy+WvXk=",
   "Source": "ChapterOne",
   "BasePath": "_content/ChapterOne",
   "Mode": "Default",
@@ -18137,6 +18137,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets\\slick-1.8.1\\slick\\slick-theme.scss"
+    },
+    {
+      "Identity": "C:\\Users\\VICTUS\\Desktop\\ChapterOne\\ChapterOne\\wwwroot\\assets\\templates\\verify.html",
+      "SourceId": "ChapterOne",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\VICTUS\\Desktop\\ChapterOne\\ChapterOne\\wwwroot\\",
+      "BasePath": "_content/ChapterOne",
+      "RelativePath": "assets/templates/verify.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\templates\\verify.html"
     },
     {
       "Identity": "C:\\Users\\VICTUS\\Desktop\\ChapterOne\\ChapterOne\\wwwroot\\favicon.ico",

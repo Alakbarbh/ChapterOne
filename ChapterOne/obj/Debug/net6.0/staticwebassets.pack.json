@@ -4261,6 +4261,10 @@
       "PackagePath": "staticwebassets\\assets\\slick-1.8.1\\slick\\slick.scss"
     },
     {
+      "Id": "C:\\Users\\VICTUS\\Desktop\\ChapterOne\\ChapterOne\\wwwroot\\assets\\templates\\verify.html",
+      "PackagePath": "staticwebassets\\assets\\templates\\verify.html"
+    },
+    {
       "Id": "C:\\Users\\VICTUS\\Desktop\\ChapterOne\\ChapterOne\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
     },

@@ -75,32 +75,35 @@
                         <div class="border mt-5"></div>
 
                         <div class="author-comment">
-                            <div class="starts">
-                                <i class="fa-solid fa-star text-danger"></i>
-                                <i class="fa-solid fa-star text-danger"></i>
-                                <i class="fa-solid fa-star text-danger"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                            </div>
-
-                            <div class="comment">
-                                <p>
-                                    "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-                                    nostrud exercitation ullamco laboris nisi ut aliquip ex ea."
-                                </p>
-                            </div>
-
-                            <div class="logo-name">
-                                <div class="logo-image">
-                                    <img src="~/assets/images/product-detail/logo-1.png" alt="">
+                            @foreach (var productComment in Model.ProductComments)
+                            {
+                                <div class="starts">
+                                    <i class="fa-solid fa-star text-danger"></i>
+                                    <i class="fa-solid fa-star text-danger"></i>
+                                    <i class="fa-solid fa-star text-danger"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
                                 </div>
-                                <div class="names">
-                                    <p>Michael Lord - New York Times</p>
+
+                                <div class="comment">
+                                    <p>
+                                        @productComment.Message
+                                    </p>
                                 </div>
-                            </div>
+
+                                <div class="logo-name">
+                                    <div class="logo-image">
+                                        <img src="~/assets/images/product-detail/logo-1.png" alt="">
+                                    </div>
+                                    <div class="names">
+                                        <p>@(productComment.AppUser.FirstName + " " + productComment.AppUser.LastName)</p>
+                                        <span class="date">@productComment.CreateDate.ToString("dd MMMMM yyyy")</span>
+                                    </div>
+                                </div>
+                            }
+                            
                         </div>
-                        <div class="author-comment mt-3">
+                        @*<div class="author-comment mt-3">
                             <div class="starts">
                                 <i class="fa-solid fa-star text-danger"></i>
                                 <i class="fa-solid fa-star text-danger"></i>
@@ -151,7 +154,7 @@
                                     <p>Minnie Loyd - The Guardian</p>
                                 </div>
                             </div>
-                        </div>
+                        </div>*@
                     </div>
                 </div>
             </div>
@@ -195,20 +198,28 @@
             </div>
             <div class="user-comment filterDiv reviews d-none">
                 <p>Leave a comment</p>
-                <div class="stars">
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                </div>
-                <input class="mt-4" type="text" placeholder="Your Name">
-                <input type="email" placeholder="Your Email" class="mt-3">
-                <input type="text" placeholder="Subject" class="mt-3">
-                <textarea name="" id="" cols="30" rows="10" class="mt-3" placeholder="Your Review"></textarea>
-                <div class="submit-button">
-                    <button>Submit</button>
-                </div>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    AppUser user = userManager.Users.FirstOrDefault(u => u.UserName == User.Identity.Name);
+                    <form class="feedback-form" asp-controller="Shop" asp-action="PostComment" asp-route-userId="@user.Id" asp-route-productId="@Model.ProductDt.Id" method="post">
+                        <div class="stars">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <input value="@(user.FirstName + " " + user.LastName)" class="mt-4" type="text" placeholder="Your Name" asp-for="CommentVM.FullName">
+                        <input value="@user.Email asp-for="CommentVM.Email" type="email" placeholder="Your Email" class="mt-3" asp-for="CommentVM.Email">
+                        <input asp-for="CommentVM.Subject" type="text" placeholder="Subject" class="mt-3">
+                        <textarea asp-for="CommentVM.Message" name="" id="" cols="30" rows="10" class="mt-3" placeholder="Your Review"></textarea>
+                        <div class="submit-button">
+                            <button type="submit">Submit</button>
+                        </div>
+                    </form>
+
+                }
+
             </div>
         </div>
 
@@ -225,31 +236,30 @@
                 @foreach (var relatedProduct in Model.RelatedProducts)
                 {
                     <div class="col-lg-2 col-md-6 col-sm-12">
-                    <div class="related-products">
-                        <div class="image">
-                            <a asp-action="ProductDetail" asp-route-id="@relatedProduct.Id">
-                                <img src="~/assets/images/shop/@relatedProduct.Image" alt="">
-                            </a>
-                        </div>
-                        <div class="author-name">
-                            <p>@relatedProduct.ProductAuthors?.FirstOrDefault().Author.Name</p>
-                        </div>
-                        <div class="book-name">
-                            <span>@relatedProduct.Name</span>
-                        </div>
-                        <div class="book-price">
-                            <p>$@relatedProduct.Price</p>
+                        <div class="related-products">
+                            <div class="image">
+                                <a asp-action="ProductDetail" asp-route-id="@relatedProduct.Id">
+                                    <img src="~/assets/images/shop/@relatedProduct.Image" alt="">
+                                </a>
+                            </div>
+                            <div class="author-name">
+                                <p>@relatedProduct.ProductAuthors?.FirstOrDefault().Author.Name</p>
+                            </div>
+                            <div class="book-name">
+                                <span>@relatedProduct.Name</span>
+                            </div>
+                            <div class="book-price">
+                                <p>$@relatedProduct.Price</p>
+                            </div>
                         </div>
                     </div>
-                </div>
                 }
-                
-                
             </div>
         </div>
     </section>
 </main>
 <!-- Main Area -->
+
 @section Scripts{
     <script src="~/assets/js/productdetail.js"></script>
 }
