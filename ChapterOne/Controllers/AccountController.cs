@@ -65,7 +65,7 @@ namespace ChapterOne.Controllers
             }
 
 
-            await _userManager.AddToRoleAsync(newUser, Roles.SuperAdmin.ToString());
+            await _userManager.AddToRoleAsync(newUser, Roles.Member.ToString());
 
             string token = await _userManager.GenerateEmailConfirmationTokenAsync(newUser);
 
@@ -100,8 +100,7 @@ namespace ChapterOne.Controllers
 
             await _userManager.ConfirmEmailAsync(user, token);
 
-            await _signInManager.SignInAsync(user, user.IsRememberMe,null);
-            
+            await _signInManager.SignInAsync(user, false);
 
             return RedirectToAction("Index", "Home");
         }
@@ -210,6 +209,7 @@ namespace ChapterOne.Controllers
         {
             return View(new ResetPasswordVM { Token = token, UserId = userId });
         }
+
 
         [HttpPost]
         [ValidateAntiForgeryToken]

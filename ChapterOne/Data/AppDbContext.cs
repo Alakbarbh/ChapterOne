@@ -33,6 +33,9 @@ namespace ChapterOne.Data
         public DbSet<ProductGenre> ProductGenres { get; set; }
         public DbSet<ProductTag> ProductTags { get; set; }
         public DbSet<HeaderBackground> HeaderBackgrounds { get; set; }
+        public DbSet<Blog> Blogs { get; set; }
+        public DbSet<Compiler> Compilers { get; set; }
+        public DbSet<BlogComment> BlogComments { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

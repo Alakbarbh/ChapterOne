@@ -29,20 +29,30 @@
                             </select>
                         </div>
                     </div>
+
                     <div class="row product-list">
                         <partial name="_ProductsPartial" model="@Model.PaginateProduct.Datas" />
                     </div>
+
                     <div class="pagination">
-                        <div class="left-icon">
-                            <i class="fa-solid fa-angle-left"></i>
-                        </div>
-                        <div class="number">
-                            <p>1</p>
-                            <p>2</p>
-                        </div>
-                        <div class="right-icon">
-                            <i class="fa-solid fa-angle-right"></i>
-                        </div>
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination justify-content-center">
+
+                                <li class="page-item @(Model.PaginateProduct.HasPrevious ? "" : "disabled")">
+                                    <a class="page-link" asp-action="Index" asp-route-page="@(Model.PaginateProduct.CurrentPage - 1)" tabindex="-1" aria-label="Previous"><<</a>
+                                </li>
+
+                                @for (int i = 1; i <= Model.PaginateProduct.TotalPage; i++)
+                                {
+                                    <li class="page-item active @(Model.PaginateProduct.CurrentPage == i ? "disabled" : "")"><a class="page-link" asp-controller="Shop" asp-action="Index" asp-route-page="@i">@i</a></li>
+                                }
+
+                                <li class="page-item @(Model.PaginateProduct.HasNext ? "" : "disabled")">
+                                    <a class="page-link" asp-action="Index" asp-route-page="@(Model.PaginateProduct.CurrentPage + 1)" aria-label="Next">>></a>
+                                </li>
+
+                            </ul>
+                        </nav>
                     </div>
 
                 </div>

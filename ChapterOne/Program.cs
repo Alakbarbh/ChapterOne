@@ -60,6 +60,7 @@ builder.Services.AddScoped<IGenreService, GenreService>();
 builder.Services.AddScoped<IAuthorService, AuthorService>();
 builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<IEmailService, EmailService>();
+builder.Services.AddScoped<IBlogService, BlogService>();
 builder.Services.AddScoped<EmailSettings>();
 
 var app = builder.Build();
@@ -79,9 +80,10 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
+
 app.UseAuthorization();
 
-app.UseAuthentication();
 
 app.MapControllerRoute(
     name: "areas",

@@ -269,6 +269,89 @@ namespace ChapterOne.Migrations
                     b.ToTable("AutobiographyTwos");
                 });
 
+            modelBuilder.Entity("ChapterOne.Models.Blog", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("CompilerId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Image")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Message")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("SoftDelete")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("UpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CompilerId");
+
+                    b.ToTable("Blogs");
+                });
+
+            modelBuilder.Entity("ChapterOne.Models.BlogComment", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("AppUserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("BlogId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FullName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Message")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("SoftDelete")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Subject")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("UpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AppUserId");
+
+                    b.HasIndex("BlogId");
+
+                    b.ToTable("BlogComments");
+                });
+
             modelBuilder.Entity("ChapterOne.Models.Brand", b =>
                 {
                     b.Property<int>("Id")
@@ -317,6 +400,31 @@ namespace ChapterOne.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("BrandTwos");
+                });
+
+            modelBuilder.Entity("ChapterOne.Models.Compiler", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("SoftDelete")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("UpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Compilers");
                 });
 
             modelBuilder.Entity("ChapterOne.Models.Gallery", b =>
@@ -1016,6 +1124,34 @@ namespace ChapterOne.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("ChapterOne.Models.Blog", b =>
+                {
+                    b.HasOne("ChapterOne.Models.Compiler", "Compiler")
+                        .WithMany("BLogs")
+                        .HasForeignKey("CompilerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Compiler");
+                });
+
+            modelBuilder.Entity("ChapterOne.Models.BlogComment", b =>
+                {
+                    b.HasOne("ChapterOne.Models.AppUser", "AppUser")
+                        .WithMany("BlogComments")
+                        .HasForeignKey("AppUserId");
+
+                    b.HasOne("ChapterOne.Models.Blog", "Blog")
+                        .WithMany("BlogComments")
+                        .HasForeignKey("BlogId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("AppUser");
+
+                    b.Navigation("Blog");
+                });
+
             modelBuilder.Entity("ChapterOne.Models.ProductAuthor", b =>
                 {
                     b.HasOne("ChapterOne.Models.Author", "Author")
@@ -1038,7 +1174,7 @@ namespace ChapterOne.Migrations
             modelBuilder.Entity("ChapterOne.Models.ProductComment", b =>
                 {
                     b.HasOne("ChapterOne.Models.AppUser", "AppUser")
-                        .WithMany()
+                        .WithMany("ProductComments")
                         .HasForeignKey("AppUserId");
 
                     b.HasOne("ChapterOne.Models.Product", "Product")
@@ -1152,9 +1288,26 @@ namespace ChapterOne.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("ChapterOne.Models.AppUser", b =>
+                {
+                    b.Navigation("BlogComments");
+
+                    b.Navigation("ProductComments");
+                });
+
             modelBuilder.Entity("ChapterOne.Models.Author", b =>
                 {
                     b.Navigation("ProductAuthors");
+                });
+
+            modelBuilder.Entity("ChapterOne.Models.Blog", b =>
+                {
+                    b.Navigation("BlogComments");
+                });
+
+            modelBuilder.Entity("ChapterOne.Models.Compiler", b =>
+                {
+                    b.Navigation("BLogs");
                 });
 
             modelBuilder.Entity("ChapterOne.Models.Genre", b =>

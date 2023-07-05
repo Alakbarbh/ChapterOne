@@ -101,59 +101,59 @@
                                     </div>
                                 </div>
                             }
-                            
+
                         </div>
                         @*<div class="author-comment mt-3">
-                            <div class="starts">
-                                <i class="fa-solid fa-star text-danger"></i>
-                                <i class="fa-solid fa-star text-danger"></i>
-                                <i class="fa-solid fa-star text-danger"></i>
-                                <i class="fa-solid fa-star text-danger"></i>
-                                <i class="fa-solid fa-star text-danger"></i>
-                            </div>
+                        <div class="starts">
+                        <i class="fa-solid fa-star text-danger"></i>
+                        <i class="fa-solid fa-star text-danger"></i>
+                        <i class="fa-solid fa-star text-danger"></i>
+                        <i class="fa-solid fa-star text-danger"></i>
+                        <i class="fa-solid fa-star text-danger"></i>
+                        </div>
 
-                            <div class="comment">
-                                <p>
-                                    "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-                                    nostrud exercitation ullamco laboris nisi ut aliquip ex ea."
-                                </p>
-                            </div>
+                        <div class="comment">
+                        <p>
+                        "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+                        nostrud exercitation ullamco laboris nisi ut aliquip ex ea."
+                        </p>
+                        </div>
 
-                            <div class="logo-name">
-                                <div class="logo-image">
-                                    <img src="~/assets/images/product-detail/logo-2.png" alt="">
-                                </div>
-                                <div class="names">
-                                    <p>Joanne Smith - Huffington Post</p>
-                                </div>
-                            </div>
+                        <div class="logo-name">
+                        <div class="logo-image">
+                        <img src="~/assets/images/product-detail/logo-2.png" alt="">
+                        </div>
+                        <div class="names">
+                        <p>Joanne Smith - Huffington Post</p>
+                        </div>
+                        </div>
                         </div>
                         <div class="author-comment mt-3">
-                            <div class="starts">
-                                <i class="fa-solid fa-star text-danger"></i>
-                                <i class="fa-solid fa-star text-danger"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                            </div>
+                        <div class="starts">
+                        <i class="fa-solid fa-star text-danger"></i>
+                        <i class="fa-solid fa-star text-danger"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        </div>
 
-                            <div class="comment">
-                                <p>
-                                    "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-                                    nostrud exercitation ullamco laboris nisi ut aliquip ex ea."
-                                </p>
-                            </div>
+                        <div class="comment">
+                        <p>
+                        "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+                        nostrud exercitation ullamco laboris nisi ut aliquip ex ea."
+                        </p>
+                        </div>
 
-                            <div class="logo-name">
-                                <div class="logo-image">
-                                    <img src="~/assets/images/product-detail/logo-3.png" alt="">
-                                </div>
-                                <div class="names">
-                                    <p>Minnie Loyd - The Guardian</p>
-                                </div>
-                            </div>
+                        <div class="logo-name">
+                        <div class="logo-image">
+                        <img src="~/assets/images/product-detail/logo-3.png" alt="">
+                        </div>
+                        <div class="names">
+                        <p>Minnie Loyd - The Guardian</p>
+                        </div>
+                        </div>
                         </div>*@
                     </div>
                 </div>
@@ -176,7 +176,7 @@
                     <li onclick="filterSelection('reviews')" class="item3 btn-tab" data-id="reviews">
                         <a>
                             Reviews
-                            <span>(0)</span>
+                            <span>(@Model.ProductComments.Count())</span>
                         </a>
                     </li>
                 </ul>
@@ -197,11 +197,12 @@
                 <p>Type:Paperback, Hardcover, Audiobook, Audio CD, Kindle</p>
             </div>
             <div class="user-comment filterDiv reviews d-none">
-                <p>Leave a comment</p>
+
                 @if (User.Identity.IsAuthenticated)
                 {
                     AppUser user = userManager.Users.FirstOrDefault(u => u.UserName == User.Identity.Name);
                     <form class="feedback-form" asp-controller="Shop" asp-action="PostComment" asp-route-userId="@user.Id" asp-route-productId="@Model.ProductDt.Id" method="post">
+                        <p>Leave a comment</p>
                         <div class="stars">
                             <i class="fa-solid fa-star"></i>
                             <i class="fa-solid fa-star"></i>
@@ -210,7 +211,7 @@
                             <i class="fa-solid fa-star"></i>
                         </div>
                         <input value="@(user.FirstName + " " + user.LastName)" class="mt-4" type="text" placeholder="Your Name" asp-for="CommentVM.FullName">
-                        <input value="@user.Email asp-for="CommentVM.Email" type="email" placeholder="Your Email" class="mt-3" asp-for="CommentVM.Email">
+                        <input value="@user.Email "CommentVM.Email" type="email" placeholder="Your Email" class="mt-3" asp-for="CommentVM.Email">
                         <input asp-for="CommentVM.Subject" type="text" placeholder="Subject" class="mt-3">
                         <textarea asp-for="CommentVM.Message" name="" id="" cols="30" rows="10" class="mt-3" placeholder="Your Review"></textarea>
                         <div class="submit-button">
@@ -259,7 +260,6 @@
     </section>
 </main>
 <!-- Main Area -->
-
 @section Scripts{
     <script src="~/assets/js/productdetail.js"></script>
 }
