@@ -18,28 +18,22 @@
                     {
                         <div class="section-1" style="margin-top:20px;">
                             <div class="image-1">
-                                <a asp-controller="BLog" asp-action="BlogDetail" asp-route-id="@blog.Id"><img src="~/assets/images/blog/blog-image-1.jpg" alt=""></a>
+                                <a asp-controller="BLog" asp-action="BlogDetail" asp-route-id="@blog.Id"><img src="~/assets/images/blog/@blog.Image" alt=""></a>
                             </div>
                             <div class="name-date">
                                 <div class="name">
-                                    <p>JOHN STRASS /</p>
+                                    <p>@blog.Compiler.Name /</p>
                                 </div>
                                 <div class="date">
                                     <p> July 29, 2019 </p>
                                 </div>
                             </div>
                             <div class="title">
-                                <a asp-controller="BLog" asp-action="BlogDetail" asp-route-id="@blog.Id">Coffee and croissant with our favorite Erika</a>
+                                <a asp-controller="BLog" asp-action="BlogDetail" asp-route-id="@blog.Id">@blog.Title</a>
                             </div>
                             <div class="description">
                                 <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur molestie sed
-                                    tortor id
-                                    euismod. Phasellus mi odio, pulvinar vitae vestibulum fringilla, dapibus eu sem. Sed
-                                    consectetur sem ac tortor iaculis, sed sodales est faucibus. Integer nec feugiat
-                                    justo.
-                                    Suspendisse potenti. Vivamus sit amet congue magna, eget maximus nunc. Mauris mollis
-                                    magna elementum, varius orci a, blandit est. Vestibulum eget sodales...
+                                    @blog.Description
                                 </p>
                             </div>
                             <div class="read-more">
@@ -52,8 +46,7 @@
                             </div>
                             <div class="description">
                                 <p>
-                                    “The person, be it gentleman or lady, who has not pleasure in a good novel, must be
-                                    intolerably stupid.”
+                                    @blog.Message
                                 </p>
                             </div>
                             <div class="author-name">
@@ -106,16 +99,23 @@
 
                     <div class="section-5">
                         <div class="pagination">
-                            <div class="left-icon">
-                                <i class="fa-solid fa-angle-left"></i>
-                            </div>
-                            <div class="number">
-                                <p>1</p>
-                                <p>2</p>
-                            </div>
-                            <div class="right-icon">
-                                <i class="fa-solid fa-angle-right"></i>
-                            </div>
+                            <ul class="pagination justify-content-end">
+                                <li class="page-item @(Model.PaginateBlog.HasPrevious ? "" : "disabled")">
+
+                                    <a class="page-link" asp-action="Index" asp-route-page="@(Model.PaginateBlog.CurrentPage - 1)" tabindex="-1" aria-label="Previous"><<</a>
+                                </li>
+                                @for (int i = 1; i <= Model.PaginateBlog.TotalPage; i++)
+                                {
+
+                                    <li class="page-item active @(Model.PaginateBlog.CurrentPage == i ? "disabled" : "")"><a class="page-link" asp-controller="Blog" asp-action="Index" asp-route-page="@i">@i</a></li>
+
+                                }
+
+                                <li class="page-item @(Model.PaginateBlog.HasNext ? "" : "disabled")">
+                                    <a class="page-link" asp-action="Index" asp-route-page="@(Model.PaginateBlog.CurrentPage + 1)" aria-label="Next">>></a>
+                                </li>
+                            </ul>
+                            </nav>
                         </div>
                     </div>
                 </div>

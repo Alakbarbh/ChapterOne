@@ -1583,7 +1583,6 @@
 }
 #product-sidebar .pagination {
   justify-content: center;
-  margin-top: 100px;
 }
 #product-sidebar .pagination .left-icon i {
   color: gray;
@@ -2209,9 +2208,10 @@
 #login-form .remenber-login {
   display: flex;
 }
-#login-form .remenber-login .form-check {
-  margin-top: 33px;
-}
+    #login-form .remenber-login .form-check {
+        margin-top: 33px;
+        margin-left: -21px;
+    }
 #login-form .remenber-login .form-check input {
   cursor: pointer;
 }
@@ -3389,7 +3389,6 @@
   top: 91px;
 }
 #navbar .login-register a {
-  margin-left: 20px;
   font-size: 17px;
   padding-top: 7px;
   text-decoration: none;
@@ -3397,6 +3396,7 @@
 }
 #navbar .login-register .border {
   margin-top: 13px;
+  margin-left:-32px !important;
 }
 
 #footer {

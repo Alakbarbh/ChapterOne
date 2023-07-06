@@ -34,24 +34,27 @@
                             <a>All</a>
                         </li>
                         <li class="item btn-tab" onclick="filterSelection('bestsellers')" data-id="bestsellers">
-                            <a>Best Sellers</a>
+                            <a>Action</a>
                         </li>
                         <li class="item btn-tab" onclick="filterSelection('fantasy')" data-id="fantasy">
-                            <a class="btn-tab">Fantasy</a>
-                        </li>
-                        <li class="item btn-tab" onclick="filterSelection('history')" data-id="history">
-                            <a class="btn-tab">History</a>
-                        </li>
-                        <li class="item btn-tab" onclick="filterSelection('art')" data-id="art">
                             <a class="btn-tab">Art</a>
                         </li>
+                        <li class="item btn-tab" onclick="filterSelection('history')" data-id="history">
+                            <a class="btn-tab">Design</a>
+                        </li>
+                        <li class="item btn-tab" onclick="filterSelection('art')" data-id="art">
+                            <a class="btn-tab">Fantasy</a>
+                        </li>
                         <li class="item btn-tab" onclick="filterSelection('lovestories')" data-id="lovestories">
+                            <a class="btn-tab">History</a>
+                        </li>
+                        <li class="item btn-tab" onclick="filterSelection('love')" data-id="love">
                             <a class="btn-tab">Love Stories</a>
                         </li>
                     </ul>
                 </div>
 
-                <div class="col-lg-3 col-md-6 col-sm-12 filterDiv fantasy all product">
+                <div class="col-lg-3 col-md-6 col-sm-12 filterDiv bestsellers all product">
                     <div class="products" data-id="1">
                         <a asp-controller="ProductDetail" asp-action="Index"><img src="~/assets/images/home/product-1.jpg" alt=""></a>
                         <div class="name">
@@ -93,7 +96,7 @@
                     </div>
 
                 </div>
-                <div class="col-lg-3 col-md-6 col-sm-12 filterDiv bestsellers all product">
+                <div class="col-lg-3 col-md-6 col-sm-12 filterDiv history all product">
                     <div class="products" data-id="3">
                         <a asp-controller="ProductDetail" asp-action="Index"><img src="~/assets/images/home/product-3.jpg" alt=""></a>
                         <div class="name">
@@ -114,7 +117,7 @@
                     </div>
 
                 </div>
-                <div class="col-lg-3 col-md-6 col-sm-12 filterDiv history all product">
+                <div class="col-lg-3 col-md-6 col-sm-12 filterDiv bestsellers all product">
                     <div class="products" data-id="4">
                         <a asp-controller="ProductDetail" asp-action="Index"><img src="~/assets/images/home/product-4.jpg" alt=""></a>
                         <div class="name">
@@ -135,7 +138,7 @@
                     </div>
 
                 </div>
-                <div class="col-lg-3 col-md-6 col-sm-12 all-products filterDiv bestsellers history all product">
+                <div class="col-lg-3 col-md-6 col-sm-12 all-products filterDiv fantasy all product">
                     <div class="products" data-id="5">
                         <a asp-controller="ProductDetail" asp-action="Index"><img src="~/assets/images/home/product-5.jpg" alt=""></a>
                         <div class="name">
@@ -157,7 +160,7 @@
                     </div>
 
                 </div>
-                <div class="col-lg-3 col-md-6 col-sm-12  filterDiv art all product">
+                <div class="col-lg-3 col-md-6 col-sm-12  filterDiv history all product">
                     <div class="products" data-id="6">
                         <a asp-controller="ProductDetail" asp-action="Index"><img src="~/assets/images/home/product-6.jpg" alt=""></a>
                         <div class="name">
@@ -199,7 +202,7 @@
                     </div>
 
                 </div>
-                <div class="col-lg-3 col-md-6 col-sm-12 filterDiv bestsellers lovestories all product">
+                <div class="col-lg-3 col-md-6 col-sm-12 filterDiv all product">
                     <div class="products" data-id="8">
                         <a asp-controller="ProductDetail" asp-action="Index"><img src="~/assets/images/home/product-8.jpg" alt=""></a>
                         <div class="name">
@@ -220,7 +223,7 @@
                     </div>
 
                 </div>
-                <div class="col-lg-3 col-md-6 col-sm-12  filterDiv lovestories all product">
+                <div class="col-lg-3 col-md-6 col-sm-12  filterDiv love all product">
                     <div class="products" data-id="9">
                         <a asp-controller="ProductDetail" asp-action="Index"><img src="~/assets/images/home/product-9.jpg" alt=""></a>
                         <div class="name">
@@ -241,7 +244,7 @@
                     </div>
 
                 </div>
-                <div class="col-lg-3 col-md-6 col-sm-12 filterDiv all product">
+                <div class="col-lg-3 col-md-6 col-sm-12 filterDiv art all product">
                     <div class="products" data-id="10">
                         <a asp-controller="ProductDetail" asp-action="Index"><img src="~/assets/images/home/product-10.jpg" alt=""></a>
                         <div class="name">
@@ -262,7 +265,7 @@
                     </div>
 
                 </div>
-                <div class="col-lg-3 col-md-6 col-sm-12  filterDiv fantasy all product">
+                <div class="col-lg-3 col-md-6 col-sm-12  filterDiv lovestories all product">
                     <div class="products" data-id="11">
                         <a asp-controller="ProductDetail" asp-action="Index"><img src="~/assets/images/home/product-11.jpg" alt=""></a>
                         <div class="name">
@@ -283,7 +286,7 @@
                     </div>
 
                 </div>
-                <div class="col-lg-3 col-md-6 col-sm-12 filterDiv fantasy all product">
+                <div class="col-lg-3 col-md-6 col-sm-12 filterDiv love all product">
                     <div class="products" data-id="2">
                         <a asp-controller="ProductDetail" asp-action="Index"><img src="~/assets/images/home/product-12.jpg" alt=""></a>
                         <div class="name">
