@@ -3441,6 +3441,9 @@
 #footer .left2 .story p:nth-child(3) {
   margin-top: -15px;
 }
+#footer .left2 .icons a  {
+     text-decoration:none !important;
+}
 #footer .left2 .icons a i {
   color: rgb(153, 153, 153);
 }
