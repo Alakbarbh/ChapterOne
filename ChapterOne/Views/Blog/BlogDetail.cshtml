@@ -20,81 +20,77 @@
                 <div class="col-lg-8 col-sm-12">
                     <div class="details">
                         <div class="section-1">
-                            @foreach (var blog in Model.Blogs)
-                            {
-                                <div class="blog-image">
-                                    <img src="~/assets/images/blog/@blog.Image" alt="">
+                            <div class="blog-image">
+                                <img src="~/assets/images/blog/@Model.BlogDt.Image" alt="">
+                            </div>
+                            <div class="name-date">
+                                <div class="name">
+                                    <p>@Model.BlogDt.Compiler.Name /</p>
                                 </div>
-                                <div class="name-date">
-                                    <div class="name">
-                                        <p>@blog.Compiler.Name /</p>
-                                    </div>
-                                    <div class="date">
-                                        <p> July 29, 2019 </p>
-                                    </div>
+                                <div class="date">
+                                    <p> @Model.BlogDt.CreateDate.ToString("dd MMMMM yyyy") </p>
                                 </div>
-                                <div class="title">
-                                    <h1>@blog.Title</h1>
-                                </div>
-                                <div class="description-1">
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-                                        nostrud
-                                        exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                                        irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                                        nulla
-                                        pariatur. Excepteur sint occaecat cupidatat non proident… sunt in culpa qui
-                                        officia
-                                        deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus
-                                        error
-                                        sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-                                        quae
-                                        ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt
-                                        explicabo.
-                                        Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed
-                                        quia
-                                        consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Lorem
-                                        ipsum
-                                        dolor sit amet, consectetur.
-                                    </p>
-                                </div>
-                                <div class="description-2">
-                                    <p>
-                                        ’’Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                        ut
-                                        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                                        exercitation
-                                        ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                                        in
-                                        reprehenderit.’’
-                                    </p>
-                                </div>
-                                <div class="description-3">
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-                                        nostrud
-                                        exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                                        irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                                        nulla
-                                        pariatur. Excepteur sint occaecat cupidatat non proident… sunt in culpa qui
-                                        officia
-                                        deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus
-                                        error
-                                        sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-                                        quae
-                                        ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt
-                                        explicabo.
-                                        Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed
-                                        quia
-                                        consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Lorem
-                                        ipsum
-                                        dolor sit amet, consectetur.
-                                    </p>
-                                </div>
-                            }
-                            
+                            </div>
+                            <div class="title">
+                                <h1>@Model.BlogDt.Title</h1>
+                            </div>
+                            <div class="description-1">
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+                                    nostrud
+                                    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                                    irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+                                    nulla
+                                    pariatur. Excepteur sint occaecat cupidatat non proident… sunt in culpa qui
+                                    officia
+                                    deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus
+                                    error
+                                    sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
+                                    quae
+                                    ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt
+                                    explicabo.
+                                    Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed
+                                    quia
+                                    consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Lorem
+                                    ipsum
+                                    dolor sit amet, consectetur.
+                                </p>
+                            </div>
+                            <div class="description-2">
+                                <p>
+                                    ’’Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                                    ut
+                                    labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                                    exercitation
+                                    ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+                                    in
+                                    reprehenderit.’’
+                                </p>
+                            </div>
+                            <div class="description-3">
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+                                    nostrud
+                                    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                                    irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+                                    nulla
+                                    pariatur. Excepteur sint occaecat cupidatat non proident… sunt in culpa qui
+                                    officia
+                                    deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus
+                                    error
+                                    sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
+                                    quae
+                                    ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt
+                                    explicabo.
+                                    Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed
+                                    quia
+                                    consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Lorem
+                                    ipsum
+                                    dolor sit amet, consectetur.
+                                </p>
+                            </div>
 
                             <div class="border mt-5"></div>
                             <div class="icons">
@@ -122,7 +118,7 @@
                             </div>
                             <div class="border mt-5"></div>
                         </div>
-                        
+
 
 
                         <div class="section-3">
@@ -136,7 +132,7 @@
                                     <div class="image-names">
                                         <div class="image-name">
                                             <div class="image">
-                                                <img src="~/assets/images/blog-detail/author-2.png" alt="">
+                                                <img src="~/assets/images/blog-detail/profil-image.jpg" alt="">
                                             </div>
                                             <div class="name">
                                                 <p>@(blogComment.AppUser.FirstName + " " + blogComment.AppUser.LastName)</p>
@@ -150,11 +146,11 @@
                                         </div>
                                     </div>
                                 }
-                                
+
 
                                 <div class="border mt-5"></div>
 
-                               
+
                             </div>
 
                         </div>
@@ -162,13 +158,13 @@
                             @if (User.Identity.IsAuthenticated)
                             {
                                 AppUser user = userManager.Users.FirstOrDefault(u => u.UserName == User.Identity.Name);
-                                <form class="feedback-form" asp-controller="Blog" asp-action="PostComment" asp-route-userId="@user.Id" asp-route-productId="@Model.BlogDt.Id" method="post">
+                                <form class="feedback-form" asp-controller="Blog" asp-action="PostComment" asp-route-userId="@user.Id" asp-route-blogId="@Model.BlogDt.Id" method="post">
                                     <div class="post-comment">
                                         <h4>Post a Comment</h4>
                                     </div>
                                     <div class="user-comment">
                                         <input value="@(user.FirstName + " " + user.LastName)" class="mt-4" type="text" placeholder="Your Name" asp-for="CommentVM.FullName">
-                                        <input value="@user.Email "CommentVM.Email" type="email" placeholder="Your Email" class="mt-3" asp-for="CommentVM.Email">
+                                        <input value="@user.Email " CommentVM.Email" type="email" placeholder="Your Email" class="mt-3" asp-for="CommentVM.Email">
                                         <input asp-for="CommentVM.Subject" type="text" placeholder="Subject" class="mt-3">
                                         <textarea asp-for="CommentVM.Message" cols="30" rows="10" class="mt-3" placeholder="Your Review"></textarea>
                                         <div class="submit-button">
@@ -207,7 +203,7 @@
                         </div>
 
                     </div>
-                    
+
                     <div class="section-7">
                         <div class="image">
                             <img src="~/assets/images/blog/blog-sidebar-image.jpg" alt="">
@@ -222,7 +218,7 @@
                             <span>❦</span>
                         </div>
                     </div>
-                    
+
                     <div class="section-9">
                         <div class="socials">
                             <h5>Social</h5>

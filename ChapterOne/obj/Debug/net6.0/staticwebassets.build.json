@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "kBuKcy0giFbYN/0OpAD27eNUOwAZ7sWV3m3VPqcFBAI=",
+  "Hash": "agcpXLJCyPG9rOh+WbttplL3tErMEGR2hPzJaRIinvM=",
   "Source": "ChapterOne",
   "BasePath": "_content/ChapterOne",
   "Mode": "Default",
@@ -15589,6 +15589,23 @@
       "OriginalItemSpec": "wwwroot\\assets\\images\\blog-detail\\blog-detail-image-1.jpg"
     },
     {
+      "Identity": "C:\\Users\\VICTUS\\Desktop\\ChapterOne\\ChapterOne\\wwwroot\\assets\\images\\blog-detail\\profil-image.jpg",
+      "SourceId": "ChapterOne",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\VICTUS\\Desktop\\ChapterOne\\ChapterOne\\wwwroot\\",
+      "BasePath": "_content/ChapterOne",
+      "RelativePath": "assets/images/blog-detail/profil-image.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\images\\blog-detail\\profil-image.jpg"
+    },
+    {
       "Identity": "C:\\Users\\VICTUS\\Desktop\\ChapterOne\\ChapterOne\\wwwroot\\assets\\images\\cart\\cart-backgorund-image.jpg",
       "SourceId": "ChapterOne",
       "SourceType": "Discovered",
@@ -16828,6 +16845,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets\\images\\product-detail\\product-image.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\VICTUS\\Desktop\\ChapterOne\\ChapterOne\\wwwroot\\assets\\images\\product-detail\\profil-image.jpg",
+      "SourceId": "ChapterOne",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\VICTUS\\Desktop\\ChapterOne\\ChapterOne\\wwwroot\\",
+      "BasePath": "_content/ChapterOne",
+      "RelativePath": "assets/images/product-detail/profil-image.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\images\\product-detail\\profil-image.jpg"
     },
     {
       "Identity": "C:\\Users\\VICTUS\\Desktop\\ChapterOne\\ChapterOne\\wwwroot\\assets\\images\\product-detail\\related-product-1.jpg",

@@ -3577,6 +3577,10 @@
       "PackagePath": "staticwebassets\\assets\\images\\blog-detail\\blog-detail-image-1.jpg"
     },
     {
+      "Id": "C:\\Users\\VICTUS\\Desktop\\ChapterOne\\ChapterOne\\wwwroot\\assets\\images\\blog-detail\\profil-image.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\blog-detail\\profil-image.jpg"
+    },
+    {
       "Id": "C:\\Users\\VICTUS\\Desktop\\ChapterOne\\ChapterOne\\wwwroot\\assets\\images\\blog\\4c7b9a7d-581b-49b9-861e-804d436a71cb_headphone1 (1).png",
       "PackagePath": "staticwebassets\\assets\\images\\blog\\4c7b9a7d-581b-49b9-861e-804d436a71cb_headphone1 (1).png"
     },
@@ -3951,6 +3955,10 @@
     {
       "Id": "C:\\Users\\VICTUS\\Desktop\\ChapterOne\\ChapterOne\\wwwroot\\assets\\images\\product-detail\\product-image.jpg",
       "PackagePath": "staticwebassets\\assets\\images\\product-detail\\product-image.jpg"
+    },
+    {
+      "Id": "C:\\Users\\VICTUS\\Desktop\\ChapterOne\\ChapterOne\\wwwroot\\assets\\images\\product-detail\\profil-image.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\product-detail\\profil-image.jpg"
     },
     {
       "Id": "C:\\Users\\VICTUS\\Desktop\\ChapterOne\\ChapterOne\\wwwroot\\assets\\images\\product-detail\\related-product-1.jpg",
