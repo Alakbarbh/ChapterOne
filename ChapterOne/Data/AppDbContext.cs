@@ -36,6 +36,8 @@ namespace ChapterOne.Data
         public DbSet<Blog> Blogs { get; set; }
         public DbSet<Compiler> Compilers { get; set; }
         public DbSet<BlogComment> BlogComments { get; set; }
+        public DbSet<Cart> Carts { get; set; }
+        public DbSet<CartProduct> CartProducts { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

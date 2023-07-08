@@ -402,6 +402,68 @@ namespace ChapterOne.Migrations
                     b.ToTable("BrandTwos");
                 });
 
+            modelBuilder.Entity("ChapterOne.Models.Cart", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("AppUserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("SoftDelete")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("UpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AppUserId");
+
+                    b.ToTable("Carts");
+                });
+
+            modelBuilder.Entity("ChapterOne.Models.CartProduct", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("CartId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Count")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("SoftDelete")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("UpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CartId");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("CartProducts");
+                });
+
             modelBuilder.Entity("ChapterOne.Models.Compiler", b =>
                 {
                     b.Property<int>("Id")
@@ -1152,6 +1214,34 @@ namespace ChapterOne.Migrations
                     b.Navigation("Blog");
                 });
 
+            modelBuilder.Entity("ChapterOne.Models.Cart", b =>
+                {
+                    b.HasOne("ChapterOne.Models.AppUser", "AppUser")
+                        .WithMany()
+                        .HasForeignKey("AppUserId");
+
+                    b.Navigation("AppUser");
+                });
+
+            modelBuilder.Entity("ChapterOne.Models.CartProduct", b =>
+                {
+                    b.HasOne("ChapterOne.Models.Cart", "Cart")
+                        .WithMany("CartProducts")
+                        .HasForeignKey("CartId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ChapterOne.Models.Product", "Product")
+                        .WithMany("CartProducts")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Cart");
+
+                    b.Navigation("Product");
+                });
+
             modelBuilder.Entity("ChapterOne.Models.ProductAuthor", b =>
                 {
                     b.HasOne("ChapterOne.Models.Author", "Author")
@@ -1305,6 +1395,11 @@ namespace ChapterOne.Migrations
                     b.Navigation("BlogComments");
                 });
 
+            modelBuilder.Entity("ChapterOne.Models.Cart", b =>
+                {
+                    b.Navigation("CartProducts");
+                });
+
             modelBuilder.Entity("ChapterOne.Models.Compiler", b =>
                 {
                     b.Navigation("BLogs");
@@ -1322,6 +1417,8 @@ namespace ChapterOne.Migrations
 
             modelBuilder.Entity("ChapterOne.Models.Product", b =>
                 {
+                    b.Navigation("CartProducts");
+
                     b.Navigation("ProductAuthors");
 
                     b.Navigation("ProductComments");

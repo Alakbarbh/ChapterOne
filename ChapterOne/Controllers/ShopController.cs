@@ -19,12 +19,14 @@ namespace ChapterOne.Controllers
         private readonly IProductService _productService;
         private readonly ITagService _tagService;
         private readonly IAuthorService _authorService;
+        private readonly ICartService _cartService;
 
         public ShopController(AppDbContext context,
                               IGenreService genreService,
                               IProductService productService,
                               IAuthorService authorService,
-                              ITagService tagService)
+                              ITagService tagService,
+                              ICartService cartService)
 
         {
             _context = context;
@@ -32,6 +34,7 @@ namespace ChapterOne.Controllers
             _productService = productService;
             _authorService = authorService;
             _tagService = tagService;
+            _cartService = cartService;
         }
 
 
@@ -190,6 +193,27 @@ namespace ChapterOne.Controllers
 
             return RedirectToAction(nameof(ProductDetail), new { id = productId });
 
+        }
+
+
+        [HttpPost]
+        public async Task<IActionResult> AddToCart(int? id)
+        {
+            if (id is null) return BadRequest();
+
+            Product dbProduct = await _productService.GetById((int)id);
+
+            if (dbProduct == null) return NotFound();
+
+            List<CartVM> carts = _cartService.GetDatasFromCookie();
+
+            CartVM existProduct = carts.FirstOrDefault(p => p.ProductId == id);
+
+            _cartService.SetDatasToCookie(carts, dbProduct, existProduct);
+
+            int cartCount = carts.Count;
+
+            return Ok(cartCount);
         }
 
 

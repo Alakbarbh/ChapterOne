@@ -15,8 +15,8 @@ $(document).ready(function () {
                 'z-index': '99999',
                 'background-color': 'white',
                 'box-shadow': 'rgba(149, 157, 165, 0.2) 0px 8px 24px',
-                'backdrop-filter':'blur(10px)',
-                'background':'transparent'
+                'backdrop-filter': 'blur(10px)',
+                'background': 'transparent'
             });
             logoImg.css({
                 'margin-top': '26px'
@@ -81,11 +81,11 @@ $(document).ready(function () {
 
     menuItems.forEach(function (item) {
         item.addEventListener("click", function (event) {
-            
+
             menuItems.forEach(function (item) {
                 item.classList.remove("active-menu");
             });
-            
+
             event.target.classList.add("active-menu");
         });
     });
@@ -104,49 +104,65 @@ $(document).ready(function () {
 
 
 
-    // $('#navbar .logo-pages .pages li').each(function(i, elem) {
-    //     debugger
-    //      let page = $(this).children(0).attr("href");
-    //      let url = location.href.split("/");
-    //      let urlStr = url[url.length - 1];
-    //      if(page == urlStr){
-    //          $("#navbar .logo-pages .pages li").removeClass("active-navbar");
-    //          $(elem).addClass("active-navbar");
-    //      }
+    $(function () {
 
-    //  });
+        //add cart
 
-    // $('#navbar .logo-pages .pages li').click(function (e) {
-    //     e.preventDefault()
-    //     $("#navbar .logo-pages .pages li").removeClass("active-navbar");
-    //     // $(".tab").addClass("active"); // instead of this do the below 
-    //     let page = $(this).children(0).attr("href");
-    //     let url = location.href.split("/");
-    //     let urlStr = url[url.length - 1];
-    //     let resultUrl = url.toString().replace(urlStr,page);
-    //     let end = resultUrl.replaceAll(",","/")
-    //     document.location = end;
-    //     $(this).addClass("active-navbar");
-
-    // });
+        $(document).on("click", ".cart-add", function (e) {
+            let id = $(this).attr("data-id");
+            let data = { id: id };
+            let count = (".basket-count");
+            $.ajax({
+                type: "Post",
+                url: "/Shop/AddToCart",
+                data: data,
+                success: function (res) {
+                    $(count).text(res);
+                }
+            })
+            return false;
+        })
 
 
+        //delete product from basket
+        $(document).on("click", ".delete-cart", function () {
+            let id = $(this).parent().parent().attr("data-id");
+            let prod = $(this).parent().parent();
+            let tbody = $(".table-body").children();
+            let data = { id: id };
 
-    // $(document).ready(function () {
+            $.ajax({
+                type: "Post",
+                url: `Cart/DeleteDataFromBasket`,
+                data: data,
+                success: function (res) {
+                    if ($(tbody).length == 1) {
+                        $(".basket-products").addClass("d-none");
+                        $(".show-alert").removeClass("d-none")
+                    }
+                    $(prod).remove();
+                    res--;
+                    $(".basket-count").text(res)
+                    grandTotal();
+                    //$(".show-alert").removeClass("d-none")
 
-    //     $('#navbar .logo-pages .pages li')
-    //             .click(function (e) {
-    //         $('#navbar .logo-pages .pages li')
-    //             .removeClass('.active');
-    //         $(this).addClass('.active');
-    //     });
-    // });
+                }
 
-    // $('#navbar .logo-pages .pages li a').click(function (e) {
-    //     $('#navbar .logo-pages .pages li a').css("color","");
-    //     $(this).css("color","red")
-    // });
+            })
+            return false;
+        })
 
+        function grandTotal() {
+            let tbody = $(".table-body").children()
 
-    
+            let sum = 0;
+            for (var prod of tbody) {
+                let price = parseFloat($(prod).children().eq(4).children().eq(1).text())
+                console.log(price)
+                sum += price
+            }
+            $(".grand-total").text(sum + ".00");
+        }
+
+    })
 })

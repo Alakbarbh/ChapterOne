@@ -1,52 +1,106 @@
-﻿<!-- Main Area -->
+﻿@model List<CartDetailVM>
+@inject ILayoutService headerBackground
+
+@{
+    ViewData["Title"] = "Cart";
+    decimal grandTotal = 0;
+}
+
+<!-- Main Area -->
 <main>
-    <section id="background">
+    <section id="cart-header-img">
         <div class="background-images" style="background-image:url(/assets/images/cart/cart-backgorund-image.jpg)">
-            <h2>Cart</h2>
+            <h1>CART</h1>
+            <img src="~/assets/images/shop/product-1.jpg" alt="">
         </div>
     </section>
-    <section id="cart-products">
+    <section id="cart-products" @*style="position: relative"*@>
         <div class="container">
-            <div class="basket-products">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th scope="col">Product</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Price</th>
-                            <th scope="col">Quantity</th>
-                            <th scope="col">Total</th>
-                            <th scope="col">Action</th>
-                        </tr>
+            @if (Model.Count > 0)
+            {
+                <div class="basket-products">
+                    <table class="table product-table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Image</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Price</th>
+                                <th scope="col">Count</th>
+                                <th scope="col">Total</th>
+                                <th class="product_remove" scope="col">Setting</th>
+                            </tr>
 
-                    </thead>
-                    <tbody>
-                    </tbody>
-                    <tr>
-                        <td>
-                            <button class="btn btn-primary shop"><a href="Shop.html">Continue shopping</a></button>
-                        </td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td><span>Grand total:</span></td>
-                    </tr>
-                </table>
-            </div>
+                        </thead>
+                        <tbody class="table-body">
+                            @foreach (var item in Model)
+                            {
+                                <tr data-id="@item.Id">
+
+                                    <td>
+                                        <img src="~/assets/images/shop/product-1.jpg" alt="">
+                                    </td>
+                                    <td>
+                                        <span> <a asp-controller="Shop" asp-action="ProductDetail" asp-route-id="@item.Id" style="color: currentColor;">@item.Name</a></span>
+                                    </td>
+                                    <td>
+                                        <span>£ </span><span>@item.Price.ToString("0.00")</span>
+                                    </td>
+                                    <td>
+                                        <button><i class="fa-solid fa-minus dec"></i></button>
+                                        <span><input type="text" value="@item.Count"></span>
+                                        <button><i class="fa-solid fa-plus inc"></i></button>
+                                    </td>
+                                    <td>
+                                        <span>£ </span><span> @item.Total.ToString("0.00")</span>
+                                        @*@item.Total.ToString("0.00")*@
+                                    </td>
+                                    <td class="product_remove">
+                                        <i class="fa-solid fa-trash-can delete-cart" style="cursor: pointer;"></i>
+                                    </td>
+
+                                </tr>
+                            }
+
+
+                        </tbody>
+
+                    </table>
+                    <div class="buttons d-flex justify-content-between" style=" margin-top: 30px;">
+                        <a asp-controller="Shop" asp-action="Index" style="padding: 12px; background-color: #b97a56; border: none;" class="btn btn-primary shop">Continue shopping</a>
+                        <div class="btn btn-primary grandTotal" style=" padding-top: 12px;  background-color: #b97a56; border: none;">
+
+                            <div class="total-price" style="display: flex; /*justify-content: space-between;*/">
+                                <span>Grand total: £ </span>
+                                @foreach (var item in Model)
+                                {
+                                    grandTotal += item.Total;
+                                }
+                                <span class="grand-total">@grandTotal.ToString("0.00")</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                @*<a asp-controller="Shop" asp-action="Index" style="padding: 12px; background-color: #b97a56; border: none; position: absolute; right: 92px; top: 515px;" class="btn btn-primary shop">Prosses to checkout</a>*@
+            }
 
             <div class="show-alert d-none">
                 <div class="alert">
                     <button class="btn btn-danger btn-red">YOU HAVE NO ITEMS IN YOUR SHOPPING CART.</button>
 
                 </div>
+
                 <div class="button-shop">
-                    <button class="btn btn-primary btn-orange">Continue shopping</button>
+                    <a asp-controller="Shop" asp-action="Index" style="background-color: #b97a56; border: none; padding: 12px;" class="btn btn-primary btn-orange">Continue shopping</a>
                 </div>
+
             </div>
 
 
         </div>
     </section>
+
 </main>
 <!-- Main Area -->
 
