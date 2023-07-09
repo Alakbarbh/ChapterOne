@@ -1,9 +1,12 @@
 ﻿using ChapterOne.Helpers.Enums;
 using ChapterOne.Models;
+using ChapterOne.Services;
 using ChapterOne.Services.Interfaces;
+using ChapterOne.ViewModels;
 using ChapterOne.ViewModels.Account;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using System.Data;
 
 namespace ChapterOne.Controllers
@@ -14,15 +17,21 @@ namespace ChapterOne.Controllers
         private readonly SignInManager<AppUser> _signInManager;
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly IEmailService _emailService;
+        private readonly ICartService _cartService;
+        private readonly IWishlistService _wishlistService;
         public AccountController(UserManager<AppUser> userManager,
                                  SignInManager<AppUser> signInManager,
                                  RoleManager<IdentityRole> roleManager,
-                                 IEmailService emailService)
+                                 IEmailService emailService,
+                                 ICartService cartService,
+                                 IWishlistService wishlistService)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _emailService = emailService;
             _roleManager = roleManager;
+            _cartService = cartService;
+            _wishlistService = wishlistService;
         }
 
 
@@ -122,33 +131,73 @@ namespace ChapterOne.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(LoginVM model)
         {
-            if (!ModelState.IsValid)
+            try
             {
-                return View(model);
+                if (!ModelState.IsValid) return View(model);
+
+                AppUser user = await _userManager.FindByEmailAsync(model.EmailOrUsername);
+                if (user == null)
+                {
+                    user = await _userManager.FindByNameAsync(model.EmailOrUsername);
+                }
+
+                if (user == null)
+                {
+                    ModelState.AddModelError(string.Empty, "Email or password is wrong");
+                    if (!ModelState.IsValid) return View(model);
+
+                }
+
+                var res = await _signInManager.PasswordSignInAsync(user, model.Password, model.IsRememberMe, false);
+
+                if (!res.Succeeded)
+                {
+                    ModelState.AddModelError(string.Empty, "Email or password is wrong");
+                    return View(model);
+                }
+
+                List<CartVM> cartVMs = new();
+                List<WishlistVM> wishlistVMs = new();
+
+                Cart dbCart = await _cartService.GetByUserIdAsync(user.Id);
+                Wishlist dbWishlist = await _wishlistService.GetByUserIdAsync(user.Id);
+
+                if (dbCart is not null)
+                {
+                    List<CartProduct> cartProducts = await _cartService.GetAllByCartIdAsync(dbCart.Id);
+
+                    foreach (var cartProduct in cartProducts)
+                    {
+                        cartVMs.Add(new CartVM
+                        {
+                            ProductId = cartProduct.ProductId,
+                            Count = cartProduct.Count
+                        });
+                    }
+
+                    Response.Cookies.Append("basket", JsonConvert.SerializeObject(cartVMs));
+                }
+                if (dbWishlist is not null)
+                {
+                    List<WishlistProduct> wishlistProducts = await _wishlistService.GetAllByWishlistIdAsync(dbWishlist.Id);
+                    foreach (var wishlistProduct in wishlistProducts)
+                    {
+                        wishlistVMs.Add(new WishlistVM
+                        {
+                            ProductId = wishlistProduct.ProductId,
+                        });
+                    }
+
+                    Response.Cookies.Append("wishlist", JsonConvert.SerializeObject(wishlistVMs));
+                }
+
+                return RedirectToAction("Index", "Home");
             }
-
-
-            AppUser user = await _userManager.FindByEmailAsync(model.EmailOrUsername);
-
-            if (user is null)
+            catch (Exception ex)
             {
-                user = await _userManager.FindByNameAsync(model.EmailOrUsername);
+                ViewBag.error = ex.Message;
+                return View();
             }
-
-            if (user is null)
-            {
-                ModelState.AddModelError(string.Empty, "Email or password is wrong");
-                return View(model);
-            }
-            var result = await _signInManager.PasswordSignInAsync(user, model.Password, model.IsRememberMe, false);
-
-            if (!result.Succeeded)
-            {
-                ModelState.AddModelError(string.Empty, "Email or password is wrong");
-                return View(model);
-            }
-
-            return RedirectToAction("Index", "Home");
         }
 
 

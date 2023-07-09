@@ -15,5 +15,6 @@
         public ICollection<ProductGenre> ProductGenres { get; set; }
         public ICollection<ProductComment> ProductComments { get; set; }
         public ICollection<CartProduct> CartProducts { get; set; }
+        public ICollection<WishlistProduct> WishlistProducts { get; set; }
     }
 }

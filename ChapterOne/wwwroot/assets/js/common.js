@@ -109,7 +109,8 @@ $(document).ready(function () {
         //add cart
 
         $(document).on("click", ".cart-add", function (e) {
-            let id = $(this).attr("data-id");
+            console.log(this)
+            let id = $(this).parent().attr("data-id");
             let data = { id: id };
             let count = (".basket-count");
             $.ajax({
@@ -163,6 +164,113 @@ $(document).ready(function () {
             }
             $(".grand-total").text(sum + ".00");
         }
+
+    })
+
+
+    //change product count
+    $(document).on("click", ".inc", function () {
+        let id = $(this).parent().parent().parent().attr("data-id");
+        let nativePrice = parseFloat($(this).parent().parent().prev().children().eq(1).text());
+        let total = $(this).parent().parent().next().children().eq(1);
+        let count = $(this).parent().prev().children().eq(0);
+
+        $.ajax({
+            type: "Post",
+            url: `Cart/IncrementProductCount?id=${id}`,
+            success: function (res) {
+                res++;
+                subTotal(res, nativePrice, total, count)
+                grandTotal();
+            }
+        })
+    })
+
+    $(document).on("click", ".dec", function () {
+        let id = $(this).parent().parent().parent().attr("data-id");
+        let nativePrice = parseFloat($(this).parent().parent().prev().children().eq(1).text());
+        let total = $(this).parent().parent().next().children().eq(1);
+        let count = $(this).parent().next().children().eq(0);
+
+        $.ajax({
+            type: "Post",
+            url: `Cart/DecrementProductCount?id=${id}`,
+            success: function (res) {
+                if ($(count).val() == 1) {
+                    return;
+                }
+                res--;
+                subTotal(res, nativePrice, total, count)
+                grandTotal();
+            }
+        })
+    })
+
+
+    function grandTotal() {
+        let tbody = $(".table-body").children()
+
+        let sum = 0;
+        for (var prod of tbody) {
+            let price = parseFloat($(prod).children().eq(4).children().eq(1).text())
+            console.log(price)
+            sum += price
+        }
+        $(".grand-total").text(sum + ".00");
+    }
+
+    function subTotal(res, nativePrice, total, count) {
+        $(count).val(res);
+        let subtotal = parseFloat(nativePrice * $(count).val());
+        $(total).text(subtotal + ".00");
+    }
+
+
+
+    $(function () {
+
+        //add wishlist
+
+        $(document).on("click", ".add-to-wishlist", function (e) {
+
+            let id = $(this).attr("data-id");
+            let data = { id: id };
+            let count = (".wishlist-count");
+            $.ajax({
+                type: "Post",
+                url: "/Shop/AddToWishlist",
+                data: data,
+                success: function (res) {
+                    $(count).text(res);
+                }
+            })
+            return false;
+        })
+
+        //delete product from wishlist
+        $(document).on("click", ".delete-wishlist", function () {
+
+            let id = $(this).parent().parent().attr("data-id");
+
+            let product = $(this).parent().parent();
+            let tablebody = $(".wishlist-table-body").children();
+            let data = { id: id };
+            $.ajax({
+                type: "Post",
+                url: `wishlist/DeleteDataFromWishlist`,
+                data: data,
+                success: function (res) {
+                    if ($(tablebody).length == 1) {
+                        $(".wishlist-products").addClass("d-none");
+                        $(".show-alert").removeClass("d-none")
+                    }
+                    $(product).remove();
+                    res--;
+                    $(".wishlist-count").text(res)
+                }
+            })
+            return false;
+        })
 
     })
 })

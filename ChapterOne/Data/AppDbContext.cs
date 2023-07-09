@@ -38,6 +38,8 @@ namespace ChapterOne.Data
         public DbSet<BlogComment> BlogComments { get; set; }
         public DbSet<Cart> Carts { get; set; }
         public DbSet<CartProduct> CartProducts { get; set; }
+        public DbSet<Wishlist> Wishlists { get; set; }
+        public DbSet<WishlistProduct> WishlistProducts { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

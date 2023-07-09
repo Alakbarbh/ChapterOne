@@ -24,12 +24,30 @@
                 <p>$@product.Price</p>
             </div>
         </div>
-        <div class="wishlist-cart">
-            <i class="fa-solid fa-heart" data-toggle="tooltip" data-placement="top"
+        @if (User.Identity.IsAuthenticated)
+        {
+            <div data-id="@product.Id" class="wishlist-cart">
+                <i class="fa-solid fa-heart" data-toggle="tooltip" data-placement="top"
            title="Add To Wishlist"></i>
-            <i class="fa-solid fa-cart-shopping" data-toggle="tooltip" data-placement="top"
+                <i class="fa-solid fa-cart-shopping cart-add" data-toggle="tooltip" data-placement="top"
            title="Add To Cart"></i>
-        </div>
+            </div>
+        }
+        else
+        {
+            <div class="wishlist-cart">
+                <a asp-controller="Account" asp-action="Login" class="text-decoration-none"> 
+                    <i class="fa-solid fa-heart" data-toggle="tooltip" data-placement="top"
+               title="Add To Wishlist"></i>
+                </a>
+                <a asp-controller="Account" asp-action="Login">
+                    <i class="fa-solid fa-cart-shopping cart-add" data-toggle="tooltip" data-placement="top"
+               title="Add To Cart" style="color:black"></i>
+                </a>
+                
+            </div>
+        }
+
     </div>
 }
 

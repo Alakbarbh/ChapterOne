@@ -1022,6 +1022,65 @@ namespace ChapterOne.Migrations
                     b.ToTable("Teams");
                 });
 
+            modelBuilder.Entity("ChapterOne.Models.Wishlist", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("AppUserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("SoftDelete")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("UpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AppUserId");
+
+                    b.ToTable("Wishlists");
+                });
+
+            modelBuilder.Entity("ChapterOne.Models.WishlistProduct", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("SoftDelete")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("UpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("WishlistId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductId");
+
+                    b.HasIndex("WishlistId");
+
+                    b.ToTable("WishlistProducts");
+                });
+
             modelBuilder.Entity("ChapterOne.Models.Wrapper", b =>
                 {
                     b.Property<int>("Id")
@@ -1327,6 +1386,34 @@ namespace ChapterOne.Migrations
                     b.Navigation("Position");
                 });
 
+            modelBuilder.Entity("ChapterOne.Models.Wishlist", b =>
+                {
+                    b.HasOne("ChapterOne.Models.AppUser", "AppUser")
+                        .WithMany()
+                        .HasForeignKey("AppUserId");
+
+                    b.Navigation("AppUser");
+                });
+
+            modelBuilder.Entity("ChapterOne.Models.WishlistProduct", b =>
+                {
+                    b.HasOne("ChapterOne.Models.Product", "Product")
+                        .WithMany("WishlistProducts")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ChapterOne.Models.Wishlist", "Wishlist")
+                        .WithMany("WishlistProducts")
+                        .HasForeignKey("WishlistId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Product");
+
+                    b.Navigation("Wishlist");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -1426,11 +1513,18 @@ namespace ChapterOne.Migrations
                     b.Navigation("ProductGenres");
 
                     b.Navigation("ProductTags");
+
+                    b.Navigation("WishlistProducts");
                 });
 
             modelBuilder.Entity("ChapterOne.Models.Tag", b =>
                 {
                     b.Navigation("ProductTags");
+                });
+
+            modelBuilder.Entity("ChapterOne.Models.Wishlist", b =>
+                {
+                    b.Navigation("WishlistProducts");
                 });
 #pragma warning restore 612, 618
         }
