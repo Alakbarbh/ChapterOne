@@ -103,7 +103,7 @@
 
 
                         a {
-                            color: rgba(0, 0, 0, .87);
+                            color: rgb(172, 2, 2);
                             font-size: 1rem;
                             text-decoration: none;
                             font-weight: 500;
@@ -147,7 +147,7 @@
 
                 a {
                     text-decoration: none;
-                    color: #fff;
+                    color: rgb(172, 2, 2);
                 }
             }
 
@@ -195,6 +195,8 @@
             display: flex;
             justify-content: center;
             align-items: center;
+
+            
 
             button {
                 background-color: #b97a56;

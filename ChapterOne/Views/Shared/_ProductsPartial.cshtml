@@ -27,7 +27,7 @@
         @if (User.Identity.IsAuthenticated)
         {
             <div data-id="@product.Id" class="wishlist-cart">
-                <i class="fa-solid fa-heart" data-toggle="tooltip" data-placement="top"
+                <i class="fa-solid fa-heart wishlist-add" data-toggle="tooltip" data-placement="top"
            title="Add To Wishlist"></i>
                 <i class="fa-solid fa-cart-shopping cart-add" data-toggle="tooltip" data-placement="top"
            title="Add To Cart"></i>
@@ -36,7 +36,7 @@
         else
         {
             <div class="wishlist-cart">
-                <a asp-controller="Account" asp-action="Login" class="text-decoration-none"> 
+                <a asp-controller="Account" asp-action="Login" class="text-decoration-none">
                     <i class="fa-solid fa-heart" data-toggle="tooltip" data-placement="top"
                title="Add To Wishlist"></i>
                 </a>
@@ -44,7 +44,7 @@
                     <i class="fa-solid fa-cart-shopping cart-add" data-toggle="tooltip" data-placement="top"
                title="Add To Cart" style="color:black"></i>
                 </a>
-                
+
             </div>
         }
 

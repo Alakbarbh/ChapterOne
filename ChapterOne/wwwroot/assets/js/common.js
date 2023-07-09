@@ -231,9 +231,9 @@ $(document).ready(function () {
 
         //add wishlist
 
-        $(document).on("click", ".add-to-wishlist", function (e) {
+        $(document).on("click", ".wishlist-add", function (e) {
 
-            let id = $(this).attr("data-id");
+            let id = $(this).parent().attr("data-id");
             let data = { id: id };
             let count = (".wishlist-count");
             $.ajax({

@@ -2,6 +2,7 @@
 using ChapterOne.Data;
 using ChapterOne.Helpers;
 using ChapterOne.Models;
+using ChapterOne.Services;
 using ChapterOne.Services.Interfaces;
 using ChapterOne.ViewModels;
 using Microsoft.AspNetCore.Authorization;
@@ -20,13 +21,15 @@ namespace ChapterOne.Controllers
         private readonly ITagService _tagService;
         private readonly IAuthorService _authorService;
         private readonly ICartService _cartService;
+        private readonly IWishlistService _wishlistService;
 
         public ShopController(AppDbContext context,
                               IGenreService genreService,
                               IProductService productService,
                               IAuthorService authorService,
                               ITagService tagService,
-                              ICartService cartService)
+                              ICartService cartService,
+                              IWishlistService wishlistService)
 
         {
             _context = context;
@@ -35,6 +38,7 @@ namespace ChapterOne.Controllers
             _authorService = authorService;
             _tagService = tagService;
             _cartService = cartService;
+            _wishlistService = wishlistService;
         }
 
 
@@ -217,5 +221,24 @@ namespace ChapterOne.Controllers
         }
 
 
+        [HttpPost]
+        public async Task<IActionResult> AddToWishlist(int? id)
+        {
+            if (id is null) return BadRequest();
+
+            Product dbProduct = await _productService.GetById((int)id);
+
+            if (dbProduct == null) return NotFound();
+
+            List<WishlistVM> wishlists = _wishlistService.GetDatasFromCookie();
+
+            WishlistVM existProduct = wishlists.FirstOrDefault(p => p.ProductId == id);
+
+            _wishlistService.SetDatasToCookie(wishlists, dbProduct, existProduct);
+
+            int wishlistCount = wishlists.Count;
+
+            return Ok(wishlistCount);
+        }
     }
 }

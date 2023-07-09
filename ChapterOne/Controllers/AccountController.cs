@@ -1,4 +1,5 @@
-﻿using ChapterOne.Helpers.Enums;
+﻿using ChapterOne.Data;
+using ChapterOne.Helpers.Enums;
 using ChapterOne.Models;
 using ChapterOne.Services;
 using ChapterOne.Services.Interfaces;
@@ -6,6 +7,7 @@ using ChapterOne.ViewModels;
 using ChapterOne.ViewModels.Account;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using System.Data;
 
@@ -19,12 +21,14 @@ namespace ChapterOne.Controllers
         private readonly IEmailService _emailService;
         private readonly ICartService _cartService;
         private readonly IWishlistService _wishlistService;
+        private readonly AppDbContext _context;
         public AccountController(UserManager<AppUser> userManager,
                                  SignInManager<AppUser> signInManager,
                                  RoleManager<IdentityRole> roleManager,
                                  IEmailService emailService,
                                  ICartService cartService,
-                                 IWishlistService wishlistService)
+                                 IWishlistService wishlistService,
+                                 AppDbContext context)
         {
             _userManager = userManager;
             _signInManager = signInManager;
@@ -32,6 +36,7 @@ namespace ChapterOne.Controllers
             _roleManager = roleManager;
             _cartService = cartService;
             _wishlistService = wishlistService;
+            _context = context;
         }
 
 
@@ -203,9 +208,103 @@ namespace ChapterOne.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Logout()
+        public async Task<IActionResult> Logout(string userId)
         {
             await _signInManager.SignOutAsync();
+
+            List<CartVM> carts = _cartService.GetDatasFromCookie();
+            List<WishlistVM> wishlists = _wishlistService.GetDatasFromCookie();
+
+            Cart dbCart = await _cartService.GetByUserIdAsync(userId);
+            Wishlist dbWishlist = await _wishlistService.GetByUserIdAsync(userId);
+
+            if (carts.Count != null)
+            {
+                if (dbCart == null)
+                {
+                    dbCart = new()
+                    {
+                        AppUserId = userId,
+                        CartProducts = new List<CartProduct>()
+                    };
+                    foreach (var cart in carts)
+                    {
+                        dbCart.CartProducts.Add(new CartProduct()
+                        {
+                            ProductId = cart.ProductId,
+                            CartId = dbCart.Id,
+                            Count = cart.Count
+                        });
+                    }
+                    await _context.Carts.AddAsync(dbCart);
+                    await _context.SaveChangesAsync();
+                }
+                else
+                {
+                    List<CartProduct> cartProducts = new List<CartProduct>();
+                    foreach (var cart in carts)
+                    {
+                        cartProducts.Add(new CartProduct()
+                        {
+                            ProductId = cart.ProductId,
+                            CartId = dbCart.Id,
+                            Count = cart.Count
+                        });
+                    }
+                    dbCart.CartProducts = cartProducts;
+                    _context.SaveChanges();
+                }
+                Response.Cookies.Delete("basket");
+            }
+            else
+            {
+                _context.Carts.Remove(dbCart);
+            }
+
+
+            if (wishlists.Count != null)
+            {
+                if (dbWishlist == null)
+                {
+                    dbWishlist = new()
+                    {
+                        AppUserId = userId,
+                        WishlistProducts = new List<WishlistProduct>()
+                    };
+                    foreach (var wishlist in wishlists)
+                    {
+                        dbWishlist.WishlistProducts.Add(new WishlistProduct()
+                        {
+                            ProductId = wishlist.ProductId,
+                            WishlistId = dbWishlist.Id,
+                        });
+                    }
+                    await _context.Wishlists.AddAsync(dbWishlist);
+                    await _context.SaveChangesAsync();
+                }
+                else
+                {
+                    List<WishlistProduct> wishlistProducts = new List<WishlistProduct>();
+                    foreach (var wishlist in wishlists)
+                    {
+                        wishlistProducts.Add(new WishlistProduct()
+                        {
+                            ProductId = wishlist.ProductId,
+                            WishlistId = dbWishlist.Id,
+                        });
+                    }
+                    dbWishlist.WishlistProducts = wishlistProducts;
+                    _context.SaveChanges();
+
+                }
+                Response.Cookies.Delete("wishlist");
+            }
+            else
+            {
+                _context.Wishlists.Remove(dbWishlist);
+            }
+
+
             return RedirectToAction("Index", "Home");
         }
 
