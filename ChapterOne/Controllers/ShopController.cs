@@ -131,7 +131,7 @@ namespace ChapterOne.Controllers
 
         public async Task<IActionResult> Search(string searchText)
         {
-            List<Product> products = await _context.Products.Include(m => m.Image)
+            List<Product> products = await _context.Products
                                             .Include(m => m.ProductGenres)
                                             .Include(m => m.ProductAuthors)
                                             .Include(m => m.ProductTags)

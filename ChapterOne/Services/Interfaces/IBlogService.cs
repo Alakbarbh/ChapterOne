@@ -9,5 +9,8 @@ namespace ChapterOne.Services.Interfaces
         Task<int> GetCountAsync();
         Task<Blog> GetById(int? id);
         Task<IEnumerable<Compiler>> GetCompilersAsync();
+        Task<List<BlogComment>> GetComments();
+        Task<BlogComment> GetCommentByIdWithBlog(int? id);
+        Task<BlogComment> GetCommentById(int? id);
     }
 }

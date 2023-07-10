@@ -66,10 +66,10 @@
 
                     </table>
                     <div class="buttons d-flex justify-content-between" style=" margin-top: 30px;">
-                    <a asp-controller="Shop" asp-action="Index" style="padding: 12px; background-color: rgb(172, 2, 2); border: none;" class="btn btn-primary shop">Continue shopping</a>
+                    <a asp-controller="Shop" asp-action="Index" style="padding: 12px; background-color: rgb(172, 2, 2); border: none;border-radius:0;" class="btn btn-primary shop">Continue shopping</a>
                     <div class="btn btn-primary grandTotal" style=" padding-top: 12px;  background-color: rgb(172, 2, 2); border: none;">
 
-                            <div class="total-price" style="display: flex; /*justify-content: space-between;*/">
+                        <div class="total-price" style="display:flex;border-radius:0;"/>
                                 <span>Grand total: $ </span>
                                 @foreach (var item in Model)
                                 {

@@ -1,0 +1,3 @@
+SuperAdmin:
+Mail:alakbarbh@code.edu.az
+Password:Cavid123_

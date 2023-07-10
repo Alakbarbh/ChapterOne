@@ -1,5 +1,6 @@
 ﻿using ChapterOne.Data;
 using ChapterOne.Models;
+using ChapterOne.Services;
 using ChapterOne.Services.Interfaces;
 using ChapterOne.ViewModels;
 using Microsoft.AspNetCore.Mvc;
@@ -18,6 +19,7 @@ namespace ChapterOne.Controllers
         private readonly IBrandService _brandService;
         private readonly IGalleryService _galleryService;
         private readonly ITeamService _teamService;
+        private readonly IProductService _produtcService;
 
         public HomeController(AppDbContext context,
                               ISliderService sliderService,
@@ -26,7 +28,8 @@ namespace ChapterOne.Controllers
                               IAutobiographyTwoService autobiographyTwoService,
                               IBrandService brandService,
                               IGalleryService galleryService,
-                              ITeamService teamService)
+                              ITeamService teamService,
+                              IProductService productService)
         {
             _context = context;
             _sliderService = sliderService;
@@ -36,6 +39,7 @@ namespace ChapterOne.Controllers
             _brandService = brandService;
             _galleryService = galleryService;
             _teamService = teamService;
+            _produtcService = productService;
         }
 
         public async Task<IActionResult> Index()
@@ -47,8 +51,9 @@ namespace ChapterOne.Controllers
             List<Brand> brands = await _brandService.GetAllAsync();
             List<Gallery> galleries = await _galleryService.GetAllAsync();
             List<Team> teams = await _teamService.GetAllAsync();
+            List<Product> products = await _produtcService.GetAll();
             Dictionary<string, string> headerBackground = _context.HeaderBackgrounds.AsEnumerable().ToDictionary(m => m.Key, m => m.Value);
-
+            //List<Product> actions = await _produtcService.GetActionGenresProducts();
             HomeVM model = new()
             {
                 Sliders = sliders,
@@ -58,7 +63,9 @@ namespace ChapterOne.Controllers
                 Brands = brands,
                 Galleries = galleries,
                 Teams = teams,
-                HeaderBackgrounds = headerBackground
+                HeaderBackgrounds = headerBackground,
+                Products = products,
+                
             };
 
             return View(model);

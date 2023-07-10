@@ -33,7 +33,7 @@
                         <li class="item active btn-tab" onclick="filterSelection('all')" data-id="all">
                             <a>All</a>
                         </li>
-                        <li class="item btn-tab" onclick="filterSelection('bestsellers')" data-id="bestsellers">
+                        <li class="item btn-tab" onclick="filterSelection('action')" data-id="action">
                             <a>Action</a>
                         </li>
                         <li class="item btn-tab" onclick="filterSelection('fantasy')" data-id="fantasy">
@@ -54,7 +54,7 @@
                     </ul>
                 </div>
 
-                <div class="col-lg-3 col-md-6 col-sm-12 filterDiv bestsellers all product">
+                <div class="col-lg-3 col-md-6 col-sm-12 filterDiv action all product">
                     <div class="products" data-id="1">
                         <a asp-controller="ProductDetail" asp-action="Index"><img src="~/assets/images/home/product-1.jpg" alt=""></a>
                         <div class="name">
@@ -75,6 +75,7 @@
                     </div>
 
                 </div>
+
                 <div class="col-lg-3 col-md-6 col-sm-12 filterDiv fantasy all product">
                     <div class="products" data-id="2">
                         <a asp-controller="ProductDetail" asp-action="Index"><img src="~/assets/images/home/product-2.jpg" alt=""></a>
@@ -117,7 +118,7 @@
                     </div>
 
                 </div>
-                <div class="col-lg-3 col-md-6 col-sm-12 filterDiv bestsellers all product">
+                <div class="col-lg-3 col-md-6 col-sm-12 filterDiv action all product">
                     <div class="products" data-id="4">
                         <a asp-controller="ProductDetail" asp-action="Index"><img src="~/assets/images/home/product-4.jpg" alt=""></a>
                         <div class="name">
@@ -375,8 +376,8 @@
                             </div>
                         </div>
                     }
-                    
-                    
+
+
                 </div>
             </div>
         </div>
@@ -468,7 +469,7 @@
 
                 </div>
             }
-            
+
         </div>
     </section>
     <section id="gallery">
@@ -542,7 +543,7 @@
                         <img src="~/assets/images/home/@brand.Image" alt="">
                     </div>
                 }
-                
+
             </div>
 
         </div>

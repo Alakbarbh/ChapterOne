@@ -14,5 +14,9 @@ namespace ChapterOne.Services.Interfaces
         Task<Product> GetFullDataById(int id);
         Task<Product> GettFullDataById(int id);
         Task<List<Product>> GetPaginateDatas(int page, int take, int? cateId);
+        Task<List<ProductComment>> GetComments();
+        Task<ProductComment> GetCommentByIdWithProduct(int? id);
+        Task<ProductComment> GetCommentById(int? id);
+        //Task<List<Product>> GetActionGenresProducts();
     }
 }
