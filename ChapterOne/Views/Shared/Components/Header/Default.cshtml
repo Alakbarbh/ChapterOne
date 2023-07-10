@@ -60,7 +60,7 @@
                                 </li>
                                 <div class="border"></div>
                                 <li class="nav-item">
-                                    <form asp-controller="Account" asp-action="Logout" method="post">
+                                    <form asp-controller="Account" asp-action="Logout" asp-route-userId="@usermanager.Users.Where(u=>u.UserName==User.Identity.Name).FirstOrDefault().Id" method="post">
                                         <button style="border:none;color:black;margin-left:50px;background-color:white" type="submit" class="nav-link">Logout</button>
                                     </form>
                                 </li>

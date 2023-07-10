@@ -57,23 +57,7 @@
 
                     <div class="section-5">
                         <div class="pagination">
-                            <ul class="pagination justify-content-end">
-                                <li class="page-item @(Model.PaginateBlog.HasPrevious ? "" : "disabled")">
-
-                                    <a class="page-link" asp-action="Index" asp-route-page="@(Model.PaginateBlog.CurrentPage - 1)" tabindex="-1" aria-label="Previous"><<</a>
-                                </li>
-                                @for (int i = 1; i <= Model.PaginateBlog.TotalPage; i++)
-                                {
-
-                                    <li class="page-item active @(Model.PaginateBlog.CurrentPage == i ? "disabled" : "")"><a class="page-link" asp-controller="Blog" asp-action="Index" asp-route-page="@i">@i</a></li>
-
-                                }
-
-                                <li class="page-item @(Model.PaginateBlog.HasNext ? "" : "disabled")">
-                                    <a class="page-link" asp-action="Index" asp-route-page="@(Model.PaginateBlog.CurrentPage + 1)" aria-label="Next">>></a>
-                                </li>
-                            </ul>
-                            </nav>
+                            
                         </div>
                     </div>
                 </div>

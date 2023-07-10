@@ -37,3 +37,22 @@ $(document).ready(function(){
             e.preventDefault();
         });
 })
+
+$(document).ready(function () {
+    //show-password
+    const togglePassword2 = document.querySelector(".confirm-password-input .eyes");
+    console.log(togglePassword2);
+    const password2 = document.querySelector(".confirm-password-input input");
+
+    togglePassword2.addEventListener("click", function () {
+        const type = password2.getAttribute("type") === "password" ? "text" : "password";
+        password2.setAttribute("type", type);
+
+        this.classList.toggle("bi-eye");
+    });
+
+    const form2 = document.querySelector("form");
+    form2.addEventListener('submit', function (e) {
+        e.preventDefault();
+    });
+})

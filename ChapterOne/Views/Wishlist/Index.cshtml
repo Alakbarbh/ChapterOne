@@ -1,4 +1,14 @@
-﻿<!-- Main Area -->
+﻿@model List<WishlistDetailVM>
+@inject ILayoutService headerBackground
+@{
+    ViewData["Title"] = "Wishlist";
+}
+
+@section Css{
+    <link href="~/admin/css/style.css" rel="stylesheet" />
+}
+
+<!-- Main Area -->
 <main>
     <section id="background">
         <div class="background-images" style="background-image:url(/assets/images/cart/cart-backgorund-image.jpg)">
@@ -26,7 +36,7 @@
                                 <tr data-id="@item.Id">
 
                                     <td>
-                                        <img src="~/assets/images/shop/" alt="">
+                                        <img src="~/assets/images/shop/@item.Image" alt="">
                                     </td>
                                     <td>
                                         <span> <a asp-controller="Shop" asp-action="ProductDetail" asp-route-id="@item.Id" style="color: currentColor;">@item.Name</a></span>
