@@ -273,19 +273,19 @@ namespace ChapterOne.Controllers
             };
             if (sortValue == "5")
             {
-                products = await _context.Products.OrderByDescending(p => p.Price).ToListAsync();
+                products = await _context.Products.OrderBy(p => p.Price).ToListAsync();
 
             };
             if (sortValue == "6")
             {
-                products = await _context.Products.OrderBy(p => p.Price).ToListAsync();
+                products = await _context.Products.OrderByDescending(p => p.Price).ToListAsync();
 
             };
-            int pageCount = products.Count();
+            int pageCount = await GetPageCountAsync(take,sortValue,null,null,null,null,null,null);
             List<ProductVM> mappedDatas = GetMappedDatas(products);
             Paginate<ProductVM> model = new(mappedDatas, page, pageCount);
 
-            return PartialView("_ProductListPartial", model);
+            return PartialView("_ProductsPartial", model);
         }
 
 
