@@ -9,5 +9,6 @@ namespace ChapterOne.ViewModels
         public List<Product> RelatedProducts { get; set; }
         public CommentVM CommentVM { get; set; }
         public List<ProductComment> ProductComments { get; set; }
+        public int Id { get; set; }
     }
 }

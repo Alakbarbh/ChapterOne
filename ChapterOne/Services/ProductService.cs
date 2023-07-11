@@ -37,9 +37,6 @@ namespace ChapterOne.Services
         }
         public async Task<Product> GetById(int id) => await _context.Products.FindAsync(id);
         public async Task<int> GetCountAsync() => await _context.Products.CountAsync();
-
-        //public async Task<List<Product>> GetActionGenresProducts() => await _context.Products.Include(m=>m.ProductGenres).ThenInclude(m=>m.Product).Where(m => m.ProductGenres.FirstOrDefault().GenreId == 2).Select(m=>m.ProductGenres.Select(m=>m.Product).ToList());
-
         public async Task<List<Product>> GetFeaturedProducts() => await _context.Products.Where(m => !m.SoftDelete).OrderByDescending(m => m.Rate).ToListAsync();
         public async Task<List<Product>> GetBestsellerProducts() => await _context.Products.Where(m => !m.SoftDelete).OrderByDescending(m => m.SaleCount).ToListAsync();
         public async Task<List<Product>> GetLatestProducts() => await _context.Products.Where(m => !m.SoftDelete).OrderByDescending(m => m.CreateDate).ToListAsync();
@@ -83,7 +80,6 @@ namespace ChapterOne.Services
         {
             return await _context.ProductComments.FirstOrDefaultAsync(pc => pc.Id == id);
         }
-
         public async Task<List<Product>> GetPaginatedDatasAsync(int page, int take, string sortValue, string searchText, int? genreId, int? tagId, int? authorId, int? value1, int? value2)
         {
             List<Product> products = products = await _context.Products
@@ -97,47 +93,7 @@ namespace ChapterOne.Services
                                                             .Take(take)
                                                             .ToListAsync();
 
-            //if (sortValue != null)
-            //{
-
-            //    if(sortValue == "Sort by Latest")
-            //    {
-            //        return  await _context.Products
-            //                                .OrderBy(p => p.CreateDate).
-            //                                 Skip((page * take) - take)
-            //                                .Take(take).ToListAsync();
-            //    }
-
-            //    if (sortValue == "Sort by Popularity")
-            //    {
-            //        return await _context.Products
-            //                                .OrderByDescending(p => p.SaleCount).
-            //                                 Skip((page * take) - take)
-            //                                .Take(take).ToListAsync();
-            //    }
-
-            //    if (sortValue == "Sort by Rated")
-            //    {
-            //        return await _context.Products
-            //                                .OrderByDescending(p => p.Rate).
-            //                                 Skip((page * take) - take)
-            //                                .Take(take).ToListAsync();
-            //    }
-            //    if (sortValue == "Sort by High Price")
-            //    {
-            //        return await _context.Products
-            //                                .OrderByDescending(p => p.Price).
-            //                                 Skip((page * take) - take)
-            //                                .Take(take).ToListAsync();
-            //    }
-            //    if (sortValue == "Sort by Low Price")
-            //    {
-            //        return await _context.Products
-            //                                .OrderBy(p => p.Price).
-            //                                 Skip((page * take) - take)
-            //                                .Take(take).ToListAsync();
-            //    }
-            //}
+            
             if (searchText != null)
             {
                 products = await _context.Products
@@ -192,7 +148,6 @@ namespace ChapterOne.Services
 
             return products;
         }
-
         public async Task<int> GetProductsCountByRangeAsync(int? value1, int? value2)
         {
             return await _context.Products.Where(p => p.Price >= value1 && p.Price <= value2)
@@ -234,7 +189,6 @@ namespace ChapterOne.Services
 
             return count;
         }
-
         public async Task<int> GetProductsCountByGenreAsync(int? genreId)
         {
             return await _context.ProductGenres
@@ -259,8 +213,6 @@ namespace ChapterOne.Services
                   .Select(p => p.Product)
                   .CountAsync();
         }
-
-
         public async Task<List<ProductVM>> GetProductsByGenreIdAsync(int? id, int page = 1, int take = 9)
         {
             List<ProductVM> model = new();
@@ -285,7 +237,6 @@ namespace ChapterOne.Services
             }
             return model;
         }
-
         public async Task<List<ProductVM>> GetProductsByAuthorIdAsync(int? id, int page = 1, int take = 9)
         {
             List<ProductVM> model = new();
@@ -309,7 +260,6 @@ namespace ChapterOne.Services
             }
             return model;
         }
-
         public async Task<List<ProductVM>> GetProductsByTagIdAsync(int? id, int page = 1, int take = 9)
         {
             List<ProductVM> model = new();
@@ -334,9 +284,6 @@ namespace ChapterOne.Services
             }
             return model;
         }
-
-
-
         
     }
 }

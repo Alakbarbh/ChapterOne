@@ -144,6 +144,7 @@ namespace ChapterOne.Controllers
             return (int)Math.Ceiling((decimal)prodCount / take);
         }
 
+
         private List<ProductVM> GetMappedDatas(List<Product> products)
         {
             List<ProductVM> mappedDatas = new();
@@ -160,21 +161,6 @@ namespace ChapterOne.Controllers
             }
             return mappedDatas;
         }
-
-
-        //private async Task<int> GetPageCountAsync(int take)
-        //{
-        //    var productCount = await _productService.GetCountAsync();
-        //    return (int)Math.Ceiling((decimal)productCount / take);
-        //}
-
-
-        //public async Task<IActionResult> GetAllProduct(int? id)
-        //{
-        //    List<Product> products = await _productService.GetAll();
-
-        //    return PartialView("_ProductsPartial", products);
-        //}
 
 
         [HttpGet]
@@ -287,38 +273,6 @@ namespace ChapterOne.Controllers
 
             return PartialView("_ProductsPartial", model);
         }
-
-
-        //public async Task<IActionResult> GetProductByAuthor(int? id)
-        //{
-        //    List<Product> products = await _context.ProductAuthors.Include(m => m.Author).Include(m => m.Product).Where(m => m.AuthorId == id).Select(m => m.Product).ToListAsync();
-
-        //    return PartialView("_ProductsPartial", products);
-        //}
-
-
-        //public async Task<IActionResult> GetProductByGenre(int? id)
-        //{
-        //    List<Product> products = await _context.ProductGenres.Include(m => m.Product).ThenInclude(m => m.ProductGenres).Where(m => m.GenreId == id).Select(m => m.Product).ToListAsync();
-
-        //    return PartialView("_ProductsPartial", products);
-        //}
-
-
-        //public async Task<IActionResult> GetProductsByTag(int? id)
-        //{
-        //    List<Product> products = await _context.ProductTags.Where(m => m.Tag.Id == id).Select(m => m.Product).ToListAsync();
-
-        //    return PartialView("_ProductsPartial", products);
-        //}
-
-
-        //public async Task<IActionResult> GetProductFilteredByPrice(string icon)
-        //{
-        //    List<Product> products = await _context.Products.OrderByDescending(m => m.Price).ToListAsync();
-
-        //    return PartialView("_ProductsPartial", products);
-        //}
 
 
         public async Task<IActionResult> MainSearch(string searchText)

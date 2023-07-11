@@ -28,6 +28,5 @@ namespace ChapterOne.Services.Interfaces
         Task<List<ProductVM>> GetProductsByGenreIdAsync(int? id, int page = 1, int take = 9);
         Task<List<ProductVM>> GetProductsByAuthorIdAsync(int? id, int page = 1, int take = 9);
         Task<List<ProductVM>> GetProductsByTagIdAsync(int? id, int page = 1, int take = 9);
-        //Task<List<Product>> GetActionGenresProducts();
     }
 }

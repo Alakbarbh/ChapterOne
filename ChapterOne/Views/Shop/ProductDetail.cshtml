@@ -33,10 +33,29 @@
                                 @Model.ProductDt.Description
                             </p>
                         </div>
-                        <div class="add-basket-button d-flex">
-                            <button>ADD TO BASKET</button>
-                            <button>ADD TO WISHLIST</button>
-                        </div>
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <div class="add-basket-button d-flex">
+                                <div data-id="@Model.Id" class="add-btn-first addCart">
+                                    <button>ADD TO BASKET</button>
+                                </div>
+                                <div data-id="@Model.Id" class="add-btn-first add-to-wishlist-detail">
+                                    <button style="background-color:green">Add to Wishlist</button>
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="add-basket-button d-flex">
+                                <div>
+                                    <a asp-controller="Account" asp-action="Login" style="background-color: #d14031;text-decoration:none;color:white;">Add to Cart</a>
+                                </div>
+                                <div>
+                                    <a asp-controller="Account" asp-action="Login" style="background-color:green;text-decoration:none;color:white;">Add to Cart</a>
+                                </div>
+                            </div>
+                        }
+
                         <div class="sku-code">
                             <p>SKU:</p>
                             <span>@Model.ProductDt.SKU</span>
@@ -74,7 +93,7 @@
 
                         <div class="border mt-5"></div>
 
-                        
+
                         <div class="author-comment">
                             @foreach (var productComment in Model.ProductComments)
                             {
@@ -104,58 +123,7 @@
                             }
 
                         </div>
-                        @*<div class="author-comment mt-3">
-                        <div class="starts">
-                        <i class="fa-solid fa-star text-danger"></i>
-                        <i class="fa-solid fa-star text-danger"></i>
-                        <i class="fa-solid fa-star text-danger"></i>
-                        <i class="fa-solid fa-star text-danger"></i>
-                        <i class="fa-solid fa-star text-danger"></i>
-                        </div>
-
-                        <div class="comment">
-                        <p>
-                        "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-                        nostrud exercitation ullamco laboris nisi ut aliquip ex ea."
-                        </p>
-                        </div>
-
-                        <div class="logo-name">
-                        <div class="logo-image">
-                        <img src="~/assets/images/product-detail/logo-2.png" alt="">
-                        </div>
-                        <div class="names">
-                        <p>Joanne Smith - Huffington Post</p>
-                        </div>
-                        </div>
-                        </div>
-                        <div class="author-comment mt-3">
-                        <div class="starts">
-                        <i class="fa-solid fa-star text-danger"></i>
-                        <i class="fa-solid fa-star text-danger"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        </div>
-
-                        <div class="comment">
-                        <p>
-                        "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-                        nostrud exercitation ullamco laboris nisi ut aliquip ex ea."
-                        </p>
-                        </div>
-
-                        <div class="logo-name">
-                        <div class="logo-image">
-                        <img src="~/assets/images/product-detail/logo-3.png" alt="">
-                        </div>
-                        <div class="names">
-                        <p>Minnie Loyd - The Guardian</p>
-                        </div>
-                        </div>
-                        </div>*@
+                       
                     </div>
                 </div>
             </div>
@@ -212,9 +180,9 @@
                             <i class="fa-solid fa-star"></i>
                         </div>
                         <input value="@(user.FirstName + " " + user.LastName)" class="mt-4" type="text" placeholder="Your Name" asp-for="CommentVM.FullName">
-                        <input value="@user.Email "CommentVM.Email" type="email" placeholder="Your Email" class="mt-3" asp-for="CommentVM.Email">
+                        <input value="@user.Email " CommentVM.Email" type="email" placeholder="Your Email" class="mt-3" asp-for="CommentVM.Email">
                         <input asp-for="CommentVM.Subject" type="text" placeholder="Subject" class="mt-3">
-                        <textarea asp-for="CommentVM.Message"  cols="30" rows="10" class="mt-3" placeholder="Your Review"></textarea>
+                        <textarea asp-for="CommentVM.Message" cols="30" rows="10" class="mt-3" placeholder="Your Review"></textarea>
                         <div class="submit-button">
                             <button type="submit">Submit</button>
                         </div>
