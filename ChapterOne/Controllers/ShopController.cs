@@ -191,7 +191,7 @@ namespace ChapterOne.Controllers
         [HttpGet]
         public async Task<IActionResult> GetRangeProducts(int value1, int value2, int page = 1, int take = 6)
         {
-            List<Product> products = await _context.Products.Where(x => x.Price >= value1 && x.Price <= value2).Include(p => p.Image).ToListAsync();
+            List<Product> products = await _context.Products.Where(x => x.Price >= value1 && x.Price <= value2).ToListAsync();
             ViewBag.value1 = value1;
             ViewBag.value2 = value2;
             var productCount = products.Count();
@@ -245,6 +245,47 @@ namespace ChapterOne.Controllers
             Paginate<ProductVM> model = new(products, page, pageCount);
 
             return PartialView("_ProductsPartial", model);
+        }
+
+
+        public async Task<IActionResult> Sort(string? sortValue, int page = 1, int take = 6)
+        {
+            List<Product> products = new();
+
+            if (sortValue == "1")
+            {
+                products = await _context.Products.ToListAsync();
+            };
+            if (sortValue == "2")
+            {
+                products = await _context.Products.OrderByDescending(p => p.SaleCount).ToListAsync();
+
+            };
+            if (sortValue == "3")
+            {
+                products = await _context.Products.OrderByDescending(p => p.Rate).ToListAsync();
+
+            };
+            if (sortValue == "4")
+            {
+                products = await _context.Products.OrderByDescending(p => p.CreateDate).ToListAsync();
+
+            };
+            if (sortValue == "5")
+            {
+                products = await _context.Products.OrderByDescending(p => p.Price).ToListAsync();
+
+            };
+            if (sortValue == "6")
+            {
+                products = await _context.Products.OrderBy(p => p.Price).ToListAsync();
+
+            };
+            int pageCount = products.Count();
+            List<ProductVM> mappedDatas = GetMappedDatas(products);
+            Paginate<ProductVM> model = new(mappedDatas, page, pageCount);
+
+            return PartialView("_ProductListPartial", model);
         }
 
 

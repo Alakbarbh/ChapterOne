@@ -204,9 +204,7 @@ $(document).ready(function () {
                 data: data,
                 success: function (res) {
                     $(parent).html(res);
-                    if (value1 == "10" && value2 == "500") {
-                        $(".pagination").addClass("d-none")
-                    }
+                 
                 }
             })
         })

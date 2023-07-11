@@ -65,7 +65,7 @@
                 @for (int i = 1; i <= Model.TotalPage; i++)
                 {
                     <li class="page-item  @(Model.CurrentPage == i ? "disabled" : "") ">
-                        <a class="page-link" asp-action="Index" asp-route-genreId="@ViewBag.genreId" asp-route-colorId="@ViewBag.authorId" asp-route-tagId="@ViewBag.tagId" asp-route-value1="@ViewBag.value1" asp-route-value2="@ViewBag.value2" asp-route-page="@i">@i</a>
+                        <a class="page-link" asp-action="Index" asp-route-genreId="@ViewBag.genreId" asp-route-colorId="@ViewBag.authorId" asp-route-tagId="@ViewBag.tagId" asp-route-value1="@ViewBag.value1" asp-route-value2="@ViewBag.value2" asp-route-sortValue="@ViewBag.sortValue" asp-route-page="@i">@i</a>
                     </li>
                 }
 

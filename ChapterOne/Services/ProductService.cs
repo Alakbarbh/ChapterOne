@@ -196,7 +196,6 @@ namespace ChapterOne.Services
         public async Task<int> GetProductsCountByRangeAsync(int? value1, int? value2)
         {
             return await _context.Products.Where(p => p.Price >= value1 && p.Price <= value2)
-                                 .Include(p => p.Image)
                                  .CountAsync();
         }
         public async Task<int> GetProductsCountBySearchTextAsync(string searchText)
@@ -214,23 +213,23 @@ namespace ChapterOne.Services
             };
             if (sortValue == "2")
             {
-                count = await _context.Products.Include(m => m.Image).OrderByDescending(p => p.SaleCount).CountAsync();
+                count = await _context.Products.OrderByDescending(p => p.SaleCount).CountAsync();
             };
             if (sortValue == "3")
             {
-                count = await _context.Products.Include(m => m.Image).OrderByDescending(p => p.Rate).CountAsync();
+                count = await _context.Products.OrderByDescending(p => p.Rate).CountAsync();
             };
             if (sortValue == "4")
             {
-                count = await _context.Products.Include(m => m.Image).OrderByDescending(p => p.CreateDate).CountAsync();
+                count = await _context.Products.OrderByDescending(p => p.CreateDate).CountAsync();
             };
             if (sortValue == "5")
             {
-                count = await _context.Products.Include(m => m.Image).OrderByDescending(p => p.Price).CountAsync();
+                count = await _context.Products.OrderByDescending(p => p.Price).CountAsync();
             };
             if (sortValue == "6")
             {
-                count = await _context.Products.Include(m => m.Image).OrderBy(p => p.Price).CountAsync();
+                count = await _context.Products.OrderBy(p => p.Price).CountAsync();
             };
 
             return count;
