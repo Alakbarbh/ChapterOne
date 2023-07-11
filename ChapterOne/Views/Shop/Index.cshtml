@@ -1,4 +1,5 @@
 ﻿@model ShopVM
+
 @{
     ViewData["Title"] = "Index";
     int sumCategoryProducts = 0;
@@ -20,40 +21,24 @@
                             <p>Showing 1–12 of 12 results</p>
                         </div>
                         <div class="sort">
-                            <select class="form-select" aria-label="Default select example">
-                                <option selected>Sort By Latest</option>
-                                <option value="1">Sort By Popularity</option>
-                                <option value="2">Sort By Avarage Rating</option>
-                                <option value="3">Sort By Price:Low To High</option>
-                                <option value="4">Sort By Price:High to Low</option>
-                            </select>
+                            <form name="sortProducts" id="sortProducts">
+                                    <select id="sort" name="sort" class="form-select" aria-label="Default select example">
+                                        <option value="1" selected disabled>Choose option</option>
+                                        <option value="2">Sort By Latest</option>
+                                        <option value="3">Sort By Popularity</option>
+                                        <option value="4">Sort By Avarage Rating</option>
+                                        <option value="5">Sort By Price:Low To High</option>
+                                        <option value="6">Sort By Price:High to Low</option>
+                                    </select>
+                                </form>
                         </div>
                     </div>
 
                     <div class="row product-list">
-                        <partial name="_ProductsPartial" model="@Model.PaginateProduct.Datas" />
+                        <partial name="_ProductsPartial" model="@Model.PaginateDatas" />
                     </div>
 
-                    <div class="pagination">
-                        <nav aria-label="Page navigation example">
-                            <ul class="pagination justify-content-center">
-
-                                <li class="page-item @(Model.PaginateProduct.HasPrevious ? "" : "disabled")">
-                                    <a class="page-link" asp-action="Index" asp-route-page="@(Model.PaginateProduct.CurrentPage - 1)" tabindex="-1" aria-label="Previous"><<</a>
-                                </li>
-
-                                @for (int i = 1; i <= Model.PaginateProduct.TotalPage; i++)
-                                {
-                                    <li class="page-item active @(Model.PaginateProduct.CurrentPage == i ? "disabled" : "")"><a class="page-link" asp-controller="Shop" asp-action="Index" asp-route-page="@i">@i</a></li>
-                                }
-
-                                <li class="page-item @(Model.PaginateProduct.HasNext ? "" : "disabled")">
-                                    <a class="page-link" asp-action="Index" asp-route-page="@(Model.PaginateProduct.CurrentPage + 1)" aria-label="Next">>></a>
-                                </li>
-
-                            </ul>
-                        </nav>
-                    </div>
+                    
 
                 </div>
                 <div class="col-lg-3 col-sm-12">
@@ -76,32 +61,30 @@
                                 <h3>FILTER BY PRICE</h3>
                             </div>
                             <div class="price-filter">
-                                <div class="card">
-
-
-                                    <div class="range-slider">
-                                        <input type="range" class="min-price" value="100" min="10" max="500"
-                                               step="10" style="accent-color: #d8d8d8;">
-                                        <input type="range" class="max-price" value="250" min="10" max="500"
-                                               step="10" style="accent-color: #d8d8d8;">
-                                    </div>
-                                    <div class="price-content">
-
-                                        <div style="color: gray;">
-                                            <p>Price:</p>
+                                <form id="filterForm" method="post" asp-controller="shop" asp-action="index">
+                                    <div class="card">
+                                        <div class="range-slider">
+                                            <input name="value1" type="range" class="min-price" value="100" min="10" max="500"
+                                                   step="10" style="accent-color: #d8d8d8;">
+                                            <input name="value2" type="range" class="max-price" value="250" min="10" max="500"
+                                                   step="10" style="accent-color: #d8d8d8;">
                                         </div>
-                                        <div>
-                                            <p id="min-value">50</p>
-                                        </div>
-
-                                        <div>
-                                            <p id="max-value">500</p>
-                                        </div>
-                                        <div class="filter-button">
-                                            <button>FILTER</button>
+                                        <div class="price-content">
+                                            <div style="color: gray;">
+                                                <p>Price:</p>
+                                            </div>
+                                            <div>
+                                                <p id="min-value">50</p>
+                                            </div>
+                                            <div>
+                                                <p id="max-value">500</p>
+                                            </div>
+                                            <div class="filter-button">
+                                                <button type="submit">FILTER</button>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
+                                </form>
                             </div>
 
 
@@ -145,13 +128,10 @@
 
                         <div class="product-categories">
 
-                            @foreach (var genre in Model.Genres)
-                            {
-                                sumCategoryProducts += (int)genre.ProductGenres?.Count();
-                            }
+                            
                             <div class="product-category">
                                 <p class="all-product">All</p>
-                                <span>( @sumCategoryProducts )</span>
+                                <span>( @Model.CountProducts )</span>
                             </div>
                             @foreach (var genre in Model.Genres)
                             {
@@ -213,7 +193,7 @@
                         <div class="tags-name">
                             @foreach (var tag in Model.Tags)
                             {
-                                <p data-id="@tag.Id" class="product-tag">@tag.Name</p>
+                                <p data-id="@tag.Id" class="tag">@tag.Name</p>
                             }
                         </div>
                         <div class="borders">

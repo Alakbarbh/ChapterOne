@@ -16,5 +16,7 @@ namespace ChapterOne.Services
             Dictionary<string, string> settings = _context.Settings.AsEnumerable().ToDictionary(m => m.Key, m => m.Value);
             return settings;
         }
+
+        public Dictionary<string, string> GetHeaderBackgroundData() => _context.HeaderBackgrounds.AsEnumerable().ToDictionary(m => m.Key, m => m.Value);
     }
 }

@@ -5,9 +5,12 @@ using ChapterOne.Models;
 using ChapterOne.Services;
 using ChapterOne.Services.Interfaces;
 using ChapterOne.ViewModels;
+using MailKit.Search;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json.Linq;
+using System.Data;
 using System.Drawing;
 using ProductDetailVM = ChapterOne.ViewModels.ProductDetailVM;
 
@@ -22,6 +25,7 @@ namespace ChapterOne.Controllers
         private readonly IAuthorService _authorService;
         private readonly ICartService _cartService;
         private readonly IWishlistService _wishlistService;
+        private readonly ILayoutService _layoutService;
 
         public ShopController(AppDbContext context,
                               IGenreService genreService,
@@ -29,7 +33,8 @@ namespace ChapterOne.Controllers
                               IAuthorService authorService,
                               ITagService tagService,
                               ICartService cartService,
-                              IWishlistService wishlistService)
+                              IWishlistService wishlistService,
+                              ILayoutService layoutService)
 
         {
             _context = context;
@@ -39,82 +44,240 @@ namespace ChapterOne.Controllers
             _tagService = tagService;
             _cartService = cartService;
             _wishlistService = wishlistService;
+            _layoutService = layoutService;
         }
 
 
-        public async Task<IActionResult> Index(int page = 1, int take = 5, int? cateId = null)
+        public async Task<IActionResult> Index(int page = 1, int take = 6, string sortValue = null, string searchText = null, int? genreId = null, int? authorId = null, int? tagId = null, int? value1 = null, int? value2 = null)
         {
-            List<Product> paginateProduct = await _productService.GetPaginateDatas(page, take, cateId);
-            int pageCount = await GetPageCountAsync(take);
-            Paginate<Product> paginateDatas = new(paginateProduct, page, pageCount);
+            List<Product> datas = await _productService.GetPaginatedDatasAsync(page, take, sortValue, searchText, genreId, authorId, tagId, value1, value2);
+            List<ProductVM> mappedDatas = GetMappedDatas(datas);
+            ViewBag.genreId = genreId;
+            ViewBag.tagId = tagId;
+            ViewBag.authorId = authorId;
+            ViewBag.value1 = value1;
+            ViewBag.value2 = value2;
+            ViewBag.searchText = searchText;
+            ViewBag.sortValue = sortValue;
 
-            List<Genre> genres = await _genreService.GetAllAsync();
-            List<Product> newProducts = await _productService.GetNewProducts();
-            List<Product> products = await _productService.GetAll();
+            int pageCount = 0;
+
+
+            if (sortValue != null)
+            {
+                pageCount = await GetPageCountAsync(take, sortValue, null, null, null, null, null, null);
+            }
+            if (genreId != null)
+            {
+                pageCount = await GetPageCountAsync(take, null, null, genreId, null, null, null, null);
+            }
+            if (authorId != null)
+            {
+                pageCount = await GetPageCountAsync(take, null, null, null, authorId, null, null, null);
+            }
+            if (tagId != null)
+            {
+                pageCount = await GetPageCountAsync(take, null, null, null, null, tagId, null, null);
+            }
+            if (value1 != null && value2 != null)
+            {
+                pageCount = await GetPageCountAsync(take, null, null, null, null, null, value1, value2);
+            }
+
+            if (sortValue == null && searchText == null && genreId == null && authorId == null && tagId == null && value1 == null && value2 == null)
+            {
+                pageCount = await GetPageCountAsync(take, null, null, null, null, null,null,null);
+            }
+
+            Paginate<ProductVM> paginatedDatas = new(mappedDatas, page, pageCount);
+
             List<Tag> tags = await _tagService.GetAllAsync();
-            List<Author> authors = await _authorService.GetAllAsync();
-            Dictionary<string, string> headerBackground = _context.HeaderBackgrounds.AsEnumerable().ToDictionary(m => m.Key, m => m.Value);
+            List<Models.Author> authors = await _authorService.GetAllAsync();
+            List<Genre> genres = await _genreService.GetAllAsync();
 
             ShopVM model = new()
             {
-                Genres = genres,
-                NewProduct = newProducts,
-                Products = products,
-                PaginateProduct = paginateDatas,
+                Products = await _productService.GetAll(),
                 Tags = tags,
+                Genres = genres,
                 Authors = authors,
-                HeaderBackgrounds = headerBackground,
+                HeaderBackgrounds = _layoutService.GetHeaderBackgroundData(),
+                PaginateDatas = paginatedDatas,
+                CountProducts = await _productService.GetCountAsync(),
             };
-
             return View(model);
         }
 
 
-        private async Task<int> GetPageCountAsync(int take)
+        private async Task<int> GetPageCountAsync(int take, string sortValue, string searchText, int? genreId, int? authorId, int? tagId, int? value1, int? value2)
         {
-            var productCount = await _productService.GetCountAsync();
-            return (int)Math.Ceiling((decimal)productCount / take);
+            int prodCount = 0;
+            if (sortValue is not null)
+            {
+                prodCount = await _productService.GetProductsCountBySortTextAsync(sortValue);
+            }
+            if (searchText is not null)
+            {
+                prodCount = await _productService.GetProductsCountBySearchTextAsync(searchText);
+            }
+            if (genreId is not null)
+            {
+                prodCount = await _productService.GetProductsCountByGenreAsync(genreId);
+            }
+            if (authorId is not null)
+            {
+                prodCount = await _productService.GetProductsCountByAuthorAsync(authorId);
+            }
+            if (tagId is not null)
+            {
+                prodCount = await _productService.GetProductsCountByTagAsync(tagId);
+            }
+            if (value1 != null && value2 != null)
+            {
+                prodCount = await _productService.GetProductsCountByRangeAsync(value1, value2); ;
+            }
+            if (sortValue == null && searchText == null && genreId == null && tagId == null && authorId == null && value1 == null && value2 == null)
+            {
+                prodCount = await _productService.GetCountAsync();
+            }
+
+            return (int)Math.Ceiling((decimal)prodCount / take);
+        }
+
+        private List<ProductVM> GetMappedDatas(List<Product> products)
+        {
+            List<ProductVM> mappedDatas = new();
+            foreach (var product in products)
+            {
+                ProductVM productList = new()
+                {
+                    Id = product.Id,
+                    Name = product.Name,
+                    Price = product.Price,
+                    Image = product.Image,
+                };
+                mappedDatas.Add(productList);
+            }
+            return mappedDatas;
         }
 
 
-        public async Task<IActionResult> GetAllProduct(int? id)
-        {
-            List<Product> products = await _productService.GetAll();
+        //private async Task<int> GetPageCountAsync(int take)
+        //{
+        //    var productCount = await _productService.GetCountAsync();
+        //    return (int)Math.Ceiling((decimal)productCount / take);
+        //}
 
-            return PartialView("_ProductsPartial", products);
+
+        //public async Task<IActionResult> GetAllProduct(int? id)
+        //{
+        //    List<Product> products = await _productService.GetAll();
+
+        //    return PartialView("_ProductsPartial", products);
+        //}
+
+
+        [HttpGet]
+        public async Task<IActionResult> GetAllProducts(int page = 1, int take = 6)
+        {
+            int pageCount = await GetPageCountAsync(take, null, null, null, null, null, null, null);
+            var products = await _productService.GetPaginatedDatasAsync(page, take, null, null, null, null, null, null, null);
+            List<ProductVM> mappedDatas = GetMappedDatas(products);
+            Paginate<ProductVM> paginatedDatas = new(mappedDatas, page, pageCount);
+            return PartialView("_ProductsPartial", paginatedDatas);
         }
 
 
-        public async Task<IActionResult> GetProductByAuthor(int? id)
+        [HttpGet]
+        public async Task<IActionResult> GetRangeProducts(int value1, int value2, int page = 1, int take = 6)
         {
-            List<Product> products = await _context.ProductAuthors.Include(m => m.Author).Include(m => m.Product).Where(m => m.AuthorId == id).Select(m => m.Product).ToListAsync();
-
-            return PartialView("_ProductsPartial", products);
+            List<Product> products = await _context.Products.Where(x => x.Price >= value1 && x.Price <= value2).Include(p => p.Image).ToListAsync();
+            ViewBag.value1 = value1;
+            ViewBag.value2 = value2;
+            var productCount = products.Count();
+            int pageCount = (int)Math.Ceiling((decimal)productCount / take);
+            List<ProductVM> mappedDatas = GetMappedDatas(products);
+            Paginate<ProductVM> paginatedDatas = new(mappedDatas, page, pageCount);
+            return PartialView("_ProductsPartial", paginatedDatas);
         }
 
 
-        public async Task<IActionResult> GetProductByGenre(int? id)
+        [HttpGet]
+        public async Task<IActionResult> GetProductsByGenre(int? id, int page = 1, int take = 6)
         {
-            List<Product> products = await _context.ProductGenres.Include(m => m.Product).ThenInclude(m => m.ProductGenres).Where(m => m.GenreId == id).Select(m => m.Product).ToListAsync();
+            if (id is null) return BadRequest();
+            ViewBag.genreId = id;
 
-            return PartialView("_ProductsPartial", products);
+            var products = await _productService.GetProductsByGenreIdAsync(id, page, take);
+
+            int pageCount = await GetPageCountAsync(take, null, null, (int)id, null, null, null, null);
+
+            Paginate<ProductVM> model = new(products, page, pageCount);
+
+            return PartialView("_ProductsPartial", model);
         }
 
 
-        public async Task<IActionResult> GetProductsByTag(int? id)
+        [HttpGet]
+        public async Task<IActionResult> GetProductsByTag(int? id, int page = 1, int take = 6)
         {
-            List<Product> products = await _context.ProductTags.Where(m => m.Tag.Id == id).Select(m => m.Product).ToListAsync();
+            if (id is null) return BadRequest();
+            ViewBag.tagId = id;
 
-            return PartialView("_ProductsPartial", products);
+            var products = await _productService.GetProductsByTagIdAsync(id);
+
+            int pageCount = await GetPageCountAsync(take, null, null, null, null, (int)id, null, null);
+
+            Paginate<ProductVM> model = new(products, page, pageCount);
+
+            return PartialView("_ProductsPartial", model);
         }
 
 
-        public async Task<IActionResult> GetProductFilteredByPrice(string icon)
+        [HttpGet]
+        public async Task<IActionResult> GetProductsByAuthor(int? id, int page = 1, int take = 6)
         {
-            List<Product> products = await _context.Products.OrderByDescending(m => m.Price).ToListAsync();
+            if (id is null) return BadRequest();
+            ViewBag.authorId = id;
+            var products = await _productService.GetProductsByAuthorIdAsync(id);
+            int pageCount = await GetPageCountAsync(take, null, null, null, (int)id, null, null, null);
 
-            return PartialView("_ProductsPartial", products);
+            Paginate<ProductVM> model = new(products, page, pageCount);
+
+            return PartialView("_ProductsPartial", model);
         }
+
+
+        //public async Task<IActionResult> GetProductByAuthor(int? id)
+        //{
+        //    List<Product> products = await _context.ProductAuthors.Include(m => m.Author).Include(m => m.Product).Where(m => m.AuthorId == id).Select(m => m.Product).ToListAsync();
+
+        //    return PartialView("_ProductsPartial", products);
+        //}
+
+
+        //public async Task<IActionResult> GetProductByGenre(int? id)
+        //{
+        //    List<Product> products = await _context.ProductGenres.Include(m => m.Product).ThenInclude(m => m.ProductGenres).Where(m => m.GenreId == id).Select(m => m.Product).ToListAsync();
+
+        //    return PartialView("_ProductsPartial", products);
+        //}
+
+
+        //public async Task<IActionResult> GetProductsByTag(int? id)
+        //{
+        //    List<Product> products = await _context.ProductTags.Where(m => m.Tag.Id == id).Select(m => m.Product).ToListAsync();
+
+        //    return PartialView("_ProductsPartial", products);
+        //}
+
+
+        //public async Task<IActionResult> GetProductFilteredByPrice(string icon)
+        //{
+        //    List<Product> products = await _context.Products.OrderByDescending(m => m.Price).ToListAsync();
+
+        //    return PartialView("_ProductsPartial", products);
+        //}
 
 
         public async Task<IActionResult> MainSearch(string searchText)

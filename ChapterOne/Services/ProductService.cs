@@ -1,6 +1,7 @@
 ﻿using ChapterOne.Data;
 using ChapterOne.Models;
 using ChapterOne.Services.Interfaces;
+using ChapterOne.ViewModels;
 using Microsoft.EntityFrameworkCore;
 
 namespace ChapterOne.Services
@@ -82,5 +83,261 @@ namespace ChapterOne.Services
         {
             return await _context.ProductComments.FirstOrDefaultAsync(pc => pc.Id == id);
         }
+
+        public async Task<List<Product>> GetPaginatedDatasAsync(int page, int take, string sortValue, string searchText, int? genreId, int? tagId, int? authorId, int? value1, int? value2)
+        {
+            List<Product> products = products = await _context.Products
+                                                            .Include(p => p.ProductGenres)
+                                                            .ThenInclude(pc => pc.Genre)
+                                                            .Include(p => p.ProductAuthors)
+                                                            .ThenInclude(ps => ps.Author)
+                                                            .Include(p => p.ProductTags)
+                                                            .ThenInclude(ps => ps.Tag)
+                                                            .Skip((page * take) - take)
+                                                            .Take(take)
+                                                            .ToListAsync();
+
+            //if (sortValue != null)
+            //{
+
+            //    if(sortValue == "Sort by Latest")
+            //    {
+            //        return  await _context.Products
+            //                                .OrderBy(p => p.CreateDate).
+            //                                 Skip((page * take) - take)
+            //                                .Take(take).ToListAsync();
+            //    }
+
+            //    if (sortValue == "Sort by Popularity")
+            //    {
+            //        return await _context.Products
+            //                                .OrderByDescending(p => p.SaleCount).
+            //                                 Skip((page * take) - take)
+            //                                .Take(take).ToListAsync();
+            //    }
+
+            //    if (sortValue == "Sort by Rated")
+            //    {
+            //        return await _context.Products
+            //                                .OrderByDescending(p => p.Rate).
+            //                                 Skip((page * take) - take)
+            //                                .Take(take).ToListAsync();
+            //    }
+            //    if (sortValue == "Sort by High Price")
+            //    {
+            //        return await _context.Products
+            //                                .OrderByDescending(p => p.Price).
+            //                                 Skip((page * take) - take)
+            //                                .Take(take).ToListAsync();
+            //    }
+            //    if (sortValue == "Sort by Low Price")
+            //    {
+            //        return await _context.Products
+            //                                .OrderBy(p => p.Price).
+            //                                 Skip((page * take) - take)
+            //                                .Take(take).ToListAsync();
+            //    }
+            //}
+            if (searchText != null)
+            {
+                products = await _context.Products
+                .OrderByDescending(p => p.Id)
+                .Where(p => p.Name.ToLower().Contains(searchText.ToLower()))
+                .Skip((page * take) - take)
+                .Take(take)
+                .ToListAsync();
+            }
+            if (genreId != null)
+            {
+                return await _context.ProductGenres
+                .Include(p => p.Product)
+                .Where(pc => pc.Genre.Id == genreId)
+                .Select(p => p.Product)
+                .Skip((page * take) - take)
+                .Take(take)
+                .ToListAsync();
+            }
+            if (authorId != null)
+            {
+                return await _context.ProductAuthors
+                        .Include(p => p.Product)
+                        .Where(pc => pc.Author.Id == authorId)
+                        .Select(p => p.Product)
+                        .Skip((page * take) - take)
+                        .Take(take)
+                        .ToListAsync();
+            }
+            if (tagId != null)
+            {
+                return await _context.ProductTags
+                .Include(p => p.Product)
+                .Where(pc => pc.Tag.Id == tagId)
+                .Skip((page * take) - take)
+                .Take(take)
+                .Select(p => p.Product)
+                .ToListAsync();
+            }
+            
+            if (value1 != null && value2 != null)
+            {
+                products = await _context.Products
+               .Include(p => p.Image)
+               .Where(p => p.Price >= value1 && p.Price <= value2)
+               .Skip((page * take) - take)
+               .Take(take)
+               .ToListAsync();
+
+            }
+
+
+            return products;
+        }
+
+        public async Task<int> GetProductsCountByRangeAsync(int? value1, int? value2)
+        {
+            return await _context.Products.Where(p => p.Price >= value1 && p.Price <= value2)
+                                 .Include(p => p.Image)
+                                 .CountAsync();
+        }
+        public async Task<int> GetProductsCountBySearchTextAsync(string searchText)
+        {
+            return await _context.Products.Where(p => p.Name.ToLower().Contains(searchText.ToLower()))
+                                 .Include(p => p.Image)
+                                 .CountAsync();
+        }
+        public async Task<int> GetProductsCountBySortTextAsync(string sortValue)
+        {
+            int count = 0;
+            if (sortValue == "1")
+            {
+                return await _context.Products.Include(m => m.Image).CountAsync();
+            };
+            if (sortValue == "2")
+            {
+                count = await _context.Products.Include(m => m.Image).OrderByDescending(p => p.SaleCount).CountAsync();
+            };
+            if (sortValue == "3")
+            {
+                count = await _context.Products.Include(m => m.Image).OrderByDescending(p => p.Rate).CountAsync();
+            };
+            if (sortValue == "4")
+            {
+                count = await _context.Products.Include(m => m.Image).OrderByDescending(p => p.CreateDate).CountAsync();
+            };
+            if (sortValue == "5")
+            {
+                count = await _context.Products.Include(m => m.Image).OrderByDescending(p => p.Price).CountAsync();
+            };
+            if (sortValue == "6")
+            {
+                count = await _context.Products.Include(m => m.Image).OrderBy(p => p.Price).CountAsync();
+            };
+
+            return count;
+        }
+
+        public async Task<int> GetProductsCountByGenreAsync(int? genreId)
+        {
+            return await _context.ProductGenres
+                 .Include(p => p.Product)
+                 .Where(pc => pc.Genre.Id == genreId)
+                 .Select(p => p.Product)
+                 .CountAsync();
+        }
+        public async Task<int> GetProductsCountByAuthorAsync(int? authorId)
+        {
+            return await _context.ProductAuthors
+                 .Include(p => p.Product)
+                 .Where(pc => pc.Author.Id == authorId)
+                 .Select(p => p.Product)
+                 .CountAsync();
+        }
+        public async Task<int> GetProductsCountByTagAsync(int? tagId)
+        {
+            return await _context.ProductTags
+                  .Include(p => p.Product)
+                  .Where(pc => pc.Tag.Id == (int)tagId)
+                  .Select(p => p.Product)
+                  .CountAsync();
+        }
+
+
+        public async Task<List<ProductVM>> GetProductsByGenreIdAsync(int? id, int page = 1, int take = 9)
+        {
+            List<ProductVM> model = new();
+            var products = await _context.ProductGenres
+                .Include(p => p.Product)
+                .Where(pc => pc.Genre.Id == id)
+                .Select(p => p.Product)
+                .Skip((page * take) - take)
+                .Take(take)
+                .ToListAsync();
+
+            foreach (var item in products)
+            {
+                model.Add(new ProductVM
+                {
+                    Id = item.Id,
+                    Price = item.Price,
+                    Name = item.Name,
+                    Image = item.Image,
+                    Rating = item.Rate
+                });
+            }
+            return model;
+        }
+
+        public async Task<List<ProductVM>> GetProductsByAuthorIdAsync(int? id, int page = 1, int take = 9)
+        {
+            List<ProductVM> model = new();
+            var products = await _context.ProductAuthors
+                .Include(p => p.Product)
+                .Where(pc => pc.Author.Id == id)
+                .Select(p => p.Product)
+                .Skip((page * take) - take)
+                .Take(take)
+                .ToListAsync();
+            foreach (var item in products)
+            {
+                model.Add(new ProductVM
+                {
+                    Id = item.Id,
+                    Price = item.Price,
+                    Name = item.Name,
+                    Image = item.Image,
+                    Rating = item.Rate
+                });
+            }
+            return model;
+        }
+
+        public async Task<List<ProductVM>> GetProductsByTagIdAsync(int? id, int page = 1, int take = 9)
+        {
+            List<ProductVM> model = new();
+            var products = await _context.ProductTags
+                .Include(p => p.Product)
+                .Where(pc => pc.Tag.Id == id)
+                .Select(p => p.Product)
+                .Skip((page * take) - take)
+                .Take(take)
+                .ToListAsync();
+
+            foreach (var item in products)
+            {
+                model.Add(new ProductVM
+                {
+                    Id = item.Id,
+                    Price = item.Price,
+                    Name = item.Name,
+                    Image = item.Image,
+                    Rating = item.Rate
+                });
+            }
+            return model;
+        }
+
+
+
+        
     }
 }
