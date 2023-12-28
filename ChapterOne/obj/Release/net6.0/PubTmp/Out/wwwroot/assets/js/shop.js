@@ -51,7 +51,6 @@ $(document).ready(function () {
 
     function getProducts(clickedElem, url) {
         $(document).on("click", clickedElem, function (e) {
-            debugger
             e.preventDefault();
             let parent = $(".product-list")
             $.ajax({

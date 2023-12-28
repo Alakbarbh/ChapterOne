@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "vqOuHx9fuXGuSNKPRU5KxYzB1FoKzFJ/yyPbKTaSkEY2A8WuBg5toLpOClwrVa0CKEyjes9l4PdAVkDFHqeVcA==",
+  "dgSpecHash": "lLJgX+xrlQy9han18lmris67nSqWoPQztEzUsxCZjYxlOlbAJ38BKVhXTQ+Qy3bu/A+0X9ZTZ7UjByD9ZEALPw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\VICTUS\\Desktop\\ChapterOne\\ChapterOne\\ChapterOne.csproj",
+  "projectFilePath": "C:\\Users\\VICTUS\\Desktop\\Dərsini oxu!\\Ələkbər end lahiyə(ChapterOne)\\ChapterOne\\ChapterOne.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\VICTUS\\.nuget\\packages\\bouncycastle.cryptography\\2.2.1\\bouncycastle.cryptography.2.2.1.nupkg.sha512",
     "C:\\Users\\VICTUS\\.nuget\\packages\\humanizer\\2.14.1\\humanizer.2.14.1.nupkg.sha512",

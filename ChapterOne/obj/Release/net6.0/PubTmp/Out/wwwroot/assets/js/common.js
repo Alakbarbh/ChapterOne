@@ -124,6 +124,25 @@ $(document).ready(function () {
             return false;
         })
 
+        //phone
+        $(document).on("click", ".cart-add", function (e) {
+            console.log(this)
+            let id = $(this).parent().attr("data-id");
+            let data = { id: id };
+            let count = (".basketNumber");
+            $.ajax({
+                type: "Post",
+                url: "/Shop/AddToCart",
+                data: data,
+                success: function (res) {
+                    $(count).text(res);
+                }
+            })
+            return false;
+        })
+
+
+
 
         //delete product from basket
         $(document).on("click", ".delete-cart", function () {
@@ -144,6 +163,35 @@ $(document).ready(function () {
                     $(prod).remove();
                     res--;
                     $(".basket-count").text(res)
+                    grandTotal();
+                    //$(".show-alert").removeClass("d-none")
+
+                }
+
+            })
+            return false;
+        })
+
+
+        //delete product from basket
+        $(document).on("click", ".delete-cart", function () {
+            let id = $(this).parent().parent().attr("data-id");
+            let prod = $(this).parent().parent();
+            let tbody = $(".table-body").children();
+            let data = { id: id };
+
+            $.ajax({
+                type: "Post",
+                url: `Cart/DeleteDataFromBasket`,
+                data: data,
+                success: function (res) {
+                    if ($(tbody).length == 1) {
+                        $(".basket-products").addClass("d-none");
+                        $(".show-alert").removeClass("d-none")
+                    }
+                    $(prod).remove();
+                    res--;
+                    $(".basketNumber").text(res)
                     grandTotal();
                     //$(".show-alert").removeClass("d-none")
 
@@ -247,6 +295,23 @@ $(document).ready(function () {
             return false;
         })
 
+
+        $(document).on("click", ".wishlist-add", function (e) {
+
+            let id = $(this).parent().attr("data-id");
+            let data = { id: id };
+            let count = (".wishlistNumber");
+            $.ajax({
+                type: "Post",
+                url: "/Shop/AddToWishlist",
+                data: data,
+                success: function (res) {
+                    $(count).text(res);
+                }
+            })
+            return false;
+        })
+
         //delete product from wishlist
         $(document).on("click", ".delete-wishlist", function () {
 
@@ -272,10 +337,36 @@ $(document).ready(function () {
             return false;
         })
 
+
+        //delete product from wishlist
+        $(document).on("click", ".delete-wishlist", function () {
+
+            let id = $(this).parent().parent().attr("data-id");
+
+            let product = $(this).parent().parent();
+            let tablebody = $(".wishlist-table-body").children();
+            let data = { id: id };
+            $.ajax({
+                type: "Post",
+                url: `wishlist/DeleteDataFromWishlist`,
+                data: data,
+                success: function (res) {
+                    if ($(tablebody).length == 1) {
+                        $(".wishlist-products").addClass("d-none");
+                        $(".show-alert").removeClass("d-none")
+                    }
+                    $(product).remove();
+                    res--;
+                    $(".wishlistNumber").text(res)
+                }
+            })
+            return false;
+        })
+
     })
 
 
-    x
+    
 
 
 
@@ -304,6 +395,7 @@ $(document).ready(function () {
         //add cart (product detail)
         $(document).on("click", ".addCart", function (e) {
             let id = $(this).attr("data-id");
+            console.log(id)
             let data = { id: id };
             let count = (".basket-count");
             $.ajax({
@@ -319,6 +411,39 @@ $(document).ready(function () {
 
     })
 
+
+    //search
+    let searchInput = $(".search-input");
+    let rightIcons = $(".right-icons");
+    let navMenu = $(".nav-main-menu");
+    let social = $(".social-icons");
+
+
+    $(".search-icon").on("click", function (e) {
+        $(rightIcons).css({ 'opacity': '0' });
+        $(navMenu).css({ 'opacity': '0' });
+        $(social).css({ 'opacity': '0' });
+        $(searchInput).css({ 'opacity': '1', 'z-index': '5' });
+    })
+
+    $(".close-icon").on("click", function () {
+        $(rightIcons).css({ 'opacity': '1' });
+        $(navMenu).css({ 'opacity': '1' });
+        $(social).css({ 'opacity': '1' });
+        $(searchInput).css({ 'opacity': '0', 'z-index': '-5' });
+        $(".search-input input").val("");
+        $(".not-found").css({ 'display': 'd-none' });
+
+    })
+
+
     
     
 })
+
+let phoneLogin = document.querySelector("#navbar-phone .icons .phone-login")
+phoneLogin.addEventListener("click", function () {
+    document.querySelector("#navbar-phone .phone-login-register").classList.toggle("d-none")
+})
+
+

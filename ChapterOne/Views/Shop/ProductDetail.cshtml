@@ -36,11 +36,11 @@
                         @if (User.Identity.IsAuthenticated)
                         {
                             <div class="add-basket-button d-flex">
-                                <div data-id="@Model.Id" class="add-btn-first addCart">
-                                    <button>ADD TO BASKET</button>
+                                <div data-id="@Model.ProductDt.Id" class="add-btn-first addCart">
+                                    <button style="text-transform:uppercase;">Add to basket</button>
                                 </div>
-                                <div data-id="@Model.Id" class="add-btn-first add-to-wishlist-detail">
-                                    <button style="background-color:green">Add to Wishlist</button>
+                                <div data-id="@Model.ProductDt.Id" class="add-btn-first add-to-wishlist-detail">
+                                    <button style="background-color:green;text-transform:uppercase;">Add to Wishlist</button>
                                 </div>
                             </div>
                         }
@@ -48,16 +48,20 @@
                         {
                             <div class="add-basket-button d-flex">
                                 <div>
-                                    <a asp-controller="Account" asp-action="Login" style="background-color: #d14031;text-decoration:none;color:white;">Add to Cart</a>
+                                    <button style="background-color:#d14031;">
+                                        <a asp-controller="Account" asp-action="Login" style="text-decoration:none;color:white;text-transform:uppercase;">Add to Cart</a>
+                                   </button>
                                 </div>
                                 <div>
-                                    <a asp-controller="Account" asp-action="Login" style="background-color:green;text-decoration:none;color:white;">Add to Cart</a>
+                                    <button style="background-color:green;">
+                                        <a asp-controller="Account" asp-action="Login" style="text-decoration:none;color:white;text-transform:uppercase;">Add to Wishlist</a>
+                                    </button>
                                 </div>
                             </div>
                         }
 
                         <div class="sku-code">
-                            <p>SKU:</p>
+                            <p>SKU: </p>
                             <span>@Model.ProductDt.SKU</span>
                         </div>
                         <div class="categories">
@@ -65,7 +69,7 @@
                             <span> @Model.ProductDt.ProductGenres?.FirstOrDefault().Genre.Name</span>
                         </div>
                         <div class="tags">
-                            <p>Tags:</p>
+                            <p>Tags: </p>
                             <span>@Model.ProductDt.ProductTags?.FirstOrDefault().Tag.Name</span>
                         </div>
 
@@ -77,7 +81,7 @@
                             </div>
                             <div class="author-name">
                                 <p>France</p>
-                                <span>Jane Doe</span>
+                                <span>@Model.ProductDt.ProductAuthors.FirstOrDefault().Author.Name</span>
                             </div>
                         </div>
 

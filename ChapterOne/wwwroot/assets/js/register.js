@@ -38,6 +38,7 @@ $(document).ready(function(){
         });
 })
 
+
 $(document).ready(function () {
     //show-password
     const togglePassword2 = document.querySelector(".confirm-password-input .eyes");

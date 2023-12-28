@@ -20,6 +20,7 @@ namespace ChapterOne.Controllers
         private readonly IGalleryService _galleryService;
         private readonly ITeamService _teamService;
         private readonly IProductService _produtcService;
+        private readonly IGenreService _genreService;
 
         public HomeController(AppDbContext context,
                               ISliderService sliderService,
@@ -29,7 +30,8 @@ namespace ChapterOne.Controllers
                               IBrandService brandService,
                               IGalleryService galleryService,
                               ITeamService teamService,
-                              IProductService productService)
+                              IProductService productService,
+                              IGenreService genreService)
         {
             _context = context;
             _sliderService = sliderService;
@@ -40,6 +42,7 @@ namespace ChapterOne.Controllers
             _galleryService = galleryService;
             _teamService = teamService;
             _produtcService = productService;
+            _genreService = genreService;
         }
 
         public async Task<IActionResult> Index()
@@ -52,8 +55,8 @@ namespace ChapterOne.Controllers
             List<Gallery> galleries = await _galleryService.GetAllAsync();
             List<Team> teams = await _teamService.GetAllAsync();
             List<Product> products = await _produtcService.GetAll();
+            List<Genre> genres = await _genreService.GetAllAsync();
             Dictionary<string, string> headerBackground = _context.HeaderBackgrounds.AsEnumerable().ToDictionary(m => m.Key, m => m.Value);
-            //List<Product> actions = await _produtcService.GetActionGenresProducts();
             HomeVM model = new()
             {
                 Sliders = sliders,
@@ -65,7 +68,7 @@ namespace ChapterOne.Controllers
                 Teams = teams,
                 HeaderBackgrounds = headerBackground,
                 Products = products,
-                
+                Genres = genres
             };
 
             return View(model);

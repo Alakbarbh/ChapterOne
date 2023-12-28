@@ -16,8 +16,8 @@
     </section>
     <section id="cart-products" @*style="position: relative"*@>
         <div class="container">
-         @*   @if (Model.Count > 0)
-            {*@
+            @if (Model.Count > 0)
+            {
                 <div class="basket-products">
                     <table class="table product-table">
                         <thead>
@@ -34,9 +34,9 @@
                         <tbody class="table-body">
                             @foreach (var item in Model)
                             {
-                                <tr data-id="@item.Id">
+                                <tr data-id="@item.Id" class="bskt-view">
 
-                                    <td>
+                                    <td class="productImg">
                                         <img src="~/assets/images/shop/@item.Image" alt="">
                                     </td>
                                     <td>
@@ -45,8 +45,8 @@
                                     <td>
                                         <span>$ </span><span>@item.Price.ToString("0.00")</span>
                                     </td>
-                                    <td>
-                                        <button><i class="fa-solid fa-minus dec"></i></button>
+                                    <td class="dec-inc">
+                                        <button class="decs"><i class="fa-solid fa-minus dec"></i></button>
                                         <span><input type="text" value="@item.Count"></span>
                                         <button><i class="fa-solid fa-plus inc"></i></button>
                                     </td>
@@ -78,12 +78,11 @@
                                 <span class="grand-total">@grandTotal.ToString("0.00")</span>
                             </div>
                         </div>
-                    </div>
                 </div>
-
+    
 
                 @*<a asp-controller="Shop" asp-action="Index" style="padding: 12px; background-color: #b97a56; border: none; position: absolute; right: 92px; top: 515px;" class="btn btn-primary shop">Prosses to checkout</a>*@
-            @*}*@
+            }
 
             <div class="show-alert d-none">
                 <div class="alert">

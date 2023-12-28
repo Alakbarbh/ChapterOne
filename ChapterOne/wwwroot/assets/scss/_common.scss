@@ -361,13 +361,29 @@
                     }
                 }
             }
+        }
 
+
+        .phone-login-register {
+            width: 100px;
+            height: 20px;
+            box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+            border-radius: 7px;
+            margin-left:50px !important;
+            ul {
+                li {
+                    list-style: none;
+
+                    a {
+                        text-decoration: none;
+                    }
+                }
+            }
         }
 
         .hamburger-icon {
             margin-top: 20px;
         }
-
     }
 
     .search-input {

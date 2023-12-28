@@ -46,8 +46,10 @@
                     </div>
                     <div class="search-input d-none">
                         <div class="border"></div>
-                        <form action="#" class="hm-searchbox">
-                            <input class="input-search" type="text" placeholder="Search">
+                        <form asp-controller="Shop" asp-action="Index">
+                            <input name="searchText" class="input-search" type="text" placeholder="Search">
+                            <button class="widgets-searchbox-btn" style="display: none;" type="submit">
+                            </button>
                         </form>
                         <div class="border"></div>
                     </div>
@@ -84,18 +86,52 @@
                 <div class="logo-img">
                     <a asp-controller="Home" asp-action="Index"><img src="~/assets/images/home/book-logo-5.png" alt=""></a>
                 </div>
-                <div class="icons">
+                <div class="icons" style="margin-left:7px">
                     <ul>
                         <li><a asp-controller="Cart" asp-action="Index"><i class="fa-solid fa-cart-shopping"></i></a></li>
-                        <li><a asp-controller="Account" asp-action="Login"><i class="fa-solid fa-user"></i></a></li>
                         <li><a asp-controller="Wishlist" asp-action="Index"><i class="fa-solid fa-heart"></i></a></li>
                         <li><i class="fa-solid fa-magnifying-glass search"></i></li>
+                        <li><a><i class="fa-solid fa-user phone-login"></i></a></li>
                     </ul>
                 </div>
+
+                <div class="basketCount" style="margin-top:5px">
+                    <span class="basketNumber" style="color:red;margin-left:-134px">
+                        @Model.BasketCount
+                    </span>
+                </div>
+
+                <div class="wishlistCount" style="margin-top:5px">
+                    <span class="wishlistNumber" style="color:red;margin-left:-137px">
+                        @Model.WishlistCount
+                    </span>
+                </div>
+
                 <div class="hamburger-icon">
                     <i class="fa-solid fa-bars"></i>
                 </div>
 
+            </div>
+            <div class="phone-login-register d-none" style="margin-left:200px;box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;width:173px;height:55px">
+                <ul style="list-style:none;">
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li style="font-family:cursive">
+                            <a class="dropdown-item" href="my-account.html">@User.Identity.Name</a>
+                        </li>
+                        <div style="width:174px;margin-left:-33px;margin-top:3px" class="border"></div>
+                        <li style="font-family:cursive;margin-left:-15px" class="nav-item">
+                            <form asp-controller="Account" asp-action="Logout" asp-route-userId="@usermanager.Users.Where(u=>u.UserName==User.Identity.Name).FirstOrDefault().Id" method="post">
+                                <button style="border:none;color:black;margin-left:50px;background-color:white" type="submit" class="nav-link">Logout</button>
+                            </form>
+                        </li>
+                    }else{
+                        <li><a style="text-decoration:none;color:black;margin-left:-20px;font-family:cursive" asp-controller="Account" asp-action="Login">Login</a></li>
+                        <div style="width:173px;margin-left:-33px;margin-top:3px" class="border"></div>
+                        <li><a style="text-decoration:none;color:black;margin-left:-20px;font-family:cursive" asp-controller="Account" asp-action="Register">Register</a></li>
+                    }
+                    
+                </ul>
             </div>
             <div class="search-input d-none mt-2">
                 <div class="border"></div>
@@ -103,7 +139,7 @@
                 <div class="border"></div>
             </div>
             <div class="hamburger-menu d-none">
-                <ul>
+                <ul style="margin-left:-17px">
                     <li><a asp-controller="Home" asp-action="Index">Home</a></li>
                     <li><a asp-controller="About" asp-action="Index">About</a></li>
                     <li><a asp-controller="Shop" asp-action="Index">Shop</a></li>

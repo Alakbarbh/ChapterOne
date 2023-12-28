@@ -116,16 +116,17 @@ namespace ChapterOne.Controllers
             {
                 prodCount = await _productService.GetProductsCountBySortTextAsync(sortValue);
             }
-            if (searchText is not null)
-            {
-                prodCount = await _productService.GetProductsCountBySearchTextAsync(searchText);
-            }
+            //if (searchText is not null)
+            //{
+            //    prodCount = await _productService.GetProductsCountBySearchTextAsync(searchText);
+            //}
             if (genreId is not null)
             {
                 prodCount = await _productService.GetProductsCountByGenreAsync(genreId);
             }
             if (authorId is not null)
             {
+                prodCount = await _productService.GetProductsCountByAuthorAsync(authorId);
                 prodCount = await _productService.GetProductsCountByAuthorAsync(authorId);
             }
             if (tagId is not null)
@@ -275,29 +276,29 @@ namespace ChapterOne.Controllers
         }
 
 
-        public async Task<IActionResult> MainSearch(string searchText)
-        {
-            var products = await _context.Products
-                                .Include(m => m.ProductGenres)?
-                                .OrderByDescending(m => m.Id)
-                                .Where(m => !m.SoftDelete && m.Name.ToLower().Trim().Contains(searchText.ToLower().Trim()))
-                                .ToListAsync();
+        //public async Task<IActionResult> MainSearch(string searchText)
+        //{
+        //    var products = await _context.Products
+        //                        .Include(m => m.ProductGenres)?
+        //                        .OrderByDescending(m => m.Id)
+        //                        .Where(m => !m.SoftDelete && m.Name.ToLower().Trim().Contains(searchText.ToLower().Trim()))
+        //                        .ToListAsync();
 
-            return View(products);
-        }
+        //    return View(products);
+        //}
 
 
-        public async Task<IActionResult> Search(string searchText)
-        {
-            List<Product> products = await _context.Products
-                                            .Include(m => m.ProductGenres)
-                                            .Include(m => m.ProductAuthors)
-                                            .Include(m => m.ProductTags)
-                                            .Where(m => m.Name.ToLower().Contains(searchText.ToLower()))
-                                            .Take(5)
-                                            .ToListAsync();
-            return PartialView("_SearchPartial", products);
-        }
+        //public async Task<IActionResult> Search(string searchText)
+        //{
+        //    List<Product> products = await _context.Products
+        //                                    .Include(m => m.ProductGenres)
+        //                                    .Include(m => m.ProductAuthors)
+        //                                    .Include(m => m.ProductTags)
+        //                                    .Where(m => m.Name.ToLower().Contains(searchText.ToLower()))
+        //                                    .Take(5)
+        //                                    .ToListAsync();
+        //    return PartialView("_SearchPartial", products);
+        //}
 
 
         public async Task<IActionResult> ProductDetail(int? id)

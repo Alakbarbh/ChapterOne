@@ -25,14 +25,14 @@ namespace ChapterOne.Services
         public async Task<Product> GettFullDataById(int id)
         {
             var a = await _context.Products
-                                                                .Include(m => m.ProductTags)
-                                                                .ThenInclude(m => m.Tag)
-                                                                .Include(m=>m.ProductAuthors)
-                                                                .ThenInclude(m => m.Author)
-                                                                .Include(m => m.ProductComments)
-                                                                .Include(m => m.ProductGenres)
-                                                                .ThenInclude(m => m.Genre)
-                                                                .FirstOrDefaultAsync(m => m.Id == id);
+                                        .Include(m => m.ProductTags)
+                                        .ThenInclude(m => m.Tag)
+                                        .Include(m=>m.ProductAuthors)
+                                        .ThenInclude(m => m.Author)
+                                        .Include(m => m.ProductComments)
+                                        .Include(m => m.ProductGenres)
+                                        .ThenInclude(m => m.Genre)
+                                        .FirstOrDefaultAsync(m => m.Id == id);
             return a;
         }
         public async Task<Product> GetById(int id) => await _context.Products.FindAsync(id);
